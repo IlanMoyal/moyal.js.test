@@ -1,0 +1,22 @@
+{
+	"name": "moyal.js.test",
+	"version": "1.0.0",
+	"description": "A lightweight, dependency-free JavaScript testing utility.",
+	"type": "module",
+	"main": "dist/moyal.test.cjs.js",
+	"module": "dist/moyal.test.mjs",
+	"browser": "dist/moyal.test.umd.js",
+	"exports": {
+	  "require": "./dist/moyal.test.cjs.js",
+	  "import": "./dist/moyal.test.mjs"
+	},
+	"author": "Ilan Moyal",
+	"license": "MIT",
+	"scripts": {
+	  "build": "rollup -c",
+	  "test": "echo 'Write tests in ./test and integrate a test runner.'"
+	},
+	"devDependencies": {
+	  "rollup": "^3.0.0"
+	}
+  }
