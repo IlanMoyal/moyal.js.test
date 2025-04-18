@@ -1,6 +1,3 @@
-import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
-
 // test.moyal.multiLevelAutoNumbering.js
 import "../../src/moyal.test.js";
 
@@ -37,4 +34,4 @@ grp.groupStart(ml.next("After reset"))
 	.areEqual("4. ", "4. ", mn.unnest().next())
 .groupClose();
 
-grp.run(test_flags.write_mode);
+export default grp;

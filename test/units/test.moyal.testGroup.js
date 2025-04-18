@@ -1,10 +1,9 @@
 // test.moyal.testGroup.js
 import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
 
-new moyal.test.TestGroup(ml.next("TestGroup API and Behavior"))
+export default new moyal.test.TestGroup(ml.next("TestGroup API and Behavior"))
 
 	.groupStart(ml.nest().next("basic grouping"))
 		.areEqual("1 + 1 = 2", 2, 1 + 1)
@@ -44,6 +43,4 @@ new moyal.test.TestGroup(ml.next("TestGroup API and Behavior"))
 			.isFalse("Intended failure", true)   // will fail
 			.throws("Expect error", () => { throw new Error("intentional") })
 		.groupClose()
-	.groupClose()
-
-	.run(test_flags.write_mode);
+	.groupClose();

@@ -1,11 +1,8 @@
 // test.moyal.exceptions.js
 import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
-
-new moyal.test.TestGroup(ml.next("Exception Testing (Throws / NoThrows)"))
-
+export default new moyal.test.TestGroup(ml.next("Exception Testing (Throws / NoThrows)"))
 	.groupStart(ml.nest().next("Basic Throws"))
 		.throws("Throws basic error", () => { throw new Error("boom"); })
 		.throws("Throws specific error object", () => { throw new TypeError("wrong type"); })
@@ -31,6 +28,4 @@ new moyal.test.TestGroup(ml.next("Exception Testing (Throws / NoThrows)"))
 		.throws("Fails due to predicate mismatch", 
 			() => { throw new Error("bad"); }, 
 			err => err.message === "expected") // should fail
-	.groupClose()
-
-	.run(test_flags.write_mode);
+	.groupClose();	

@@ -1,10 +1,9 @@
 // test.moyal.sequences.js
 import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
 
-new moyal.test.TestGroup(ml.next("Sequence Comparison Tests"))
+export default new moyal.test.TestGroup(ml.next("Sequence Comparison Tests"))
 	.groupStart(ml.nest().next("basic equality"))
 		.sequencesAreEqual("Empty arrays", [], [])
 		.sequencesAreEqual("Simple number arrays", [1, 2, 3], [1, 2, 3])
@@ -35,6 +34,4 @@ new moyal.test.TestGroup(ml.next("Sequence Comparison Tests"))
 		.sequencesAreEqual("Expected not iterable", null, [1, 2])       // fail
 		.sequencesAreEqual("Actual not iterable", [1, 2], undefined)    // fail
 		.sequencesAreEqual("Both invalid", {}, {})                      // fail
-	.groupClose()
-
-	.run(test_flags.write_mode);
+	.groupClose();

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>moyal.js.test – Browser Test Runner</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 2em;
+      background-color: #111;
+      color: #eee;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 0.2em;
+    }
+    #summary {
+      margin: 1em 0;
+      font-size: 1.2em;
+    }
+    #log {
+      white-space: pre-wrap;
+      font-family: monospace;
+      background: #222;
+      padding: 1em;
+      border-radius: 8px;
+      overflow-x: auto;
+      max-height: 80vh;
+    }
+    .pass { color: lightgreen; }
+    .fail { color: #f88; }
+  </style>
+</head>
+<body>
+  <h1>🧪 moyal.js.test – Browser Test Runner</h1>
+  <div id="summary">Running tests...</div>
+  <div id="log"></div>
+
+  <!-- Load your library -->
+  <script src="../dist/moyal.test.js"></script>
+
+  <!-- Load all your test files -->
+  <script src="test.moyal.types.js"></script>
+  <script src="test.moyal.assertions.js"></script>
+  <script src="test.moyal.exceptions.js"></script>
+  <script src="test.moyal.sequences.js"></script>
+  <script src="test.moyal.testGroup.js"></script>
+  <script src="test.moyal.sequentialText.js"></script>
+  <script src="test.moyal.autoNumbering.js"></script>
+
+  <script>
+    const summaryEl = document.getElementById("summary");
+    const logEl = document.getElementById("log");
+
+    let passCount = 0;
+    let failCount = 0;
+
+    const oldLog = console.log;
+    console.log = (...args) => {
+      const line = args.map(arg =>
+        typeof arg === 'string' ? arg : JSON.stringify(arg, null, 2)
+      ).join(' ');
+
+      // Basic visual markers
+      if (line.includes('✔') || line.toLowerCase().includes('passed')) passCount++;
+      else if (line.includes('✘') || line.toLowerCase().includes('fail')) failCount++;
+
+      const div = document.createElement("div");
+      div.textContent = line;
+      div.className = line.includes('✔') ? 'pass' :
+                      line.includes('✘') ? 'fail' : '';
+      logEl.appendChild(div);
+    };
+
+    window.addEventListener("load", () => {
+      try {
+        if (typeof moyal?.test?.runAll === "function") {
+          moyal.test.runAll();
+
+          // Delay summary so logs are complete
+          setTimeout(() => {
+            summaryEl.innerHTML = `✅ Passed: <span class="pass">${passCount}</span> | ❌ Failed: <span class="fail">${failCount}</span>`;
+          }, 100);
+        } else {
+          summaryEl.textContent = "❌ Could not find `moyal.test.runAll()`";
+        }
+      } catch (e) {
+        console.error("Test runner error:", e);
+        summaryEl.textContent = "❌ Error running tests – check console.";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,10 +1,9 @@
 // test.moyal.autoNumbering.js
 import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
 
-new moyal.test.TestGroup(ml.next("AutoNumbering Tests"))
+export default new moyal.test.TestGroup(ml.next("AutoNumbering Tests"))
 	.groupStart(ml.nest().next("Simple numbered output"))
 		.areEqual("First", "1. Step A", new moyal.test.AutoNumbering().next("Step A"))
 		.areEqual("Second", "2. Step B", (() => {
@@ -25,5 +24,4 @@ new moyal.test.TestGroup(ml.next("AutoNumbering Tests"))
 		.areEqual("Custom prefix format", "001 - Hello", new moyal.test.AutoNumbering(1, "00{0} - ").next("Hello"))
 	.groupClose()
 
-	.throws("Format without {0} should throw", () => new moyal.test.AutoNumbering(1, "--"))
-	.run(test_flags.write_mode);
+	.throws("Format without {0} should throw", () => new moyal.test.AutoNumbering(1, "--"));	

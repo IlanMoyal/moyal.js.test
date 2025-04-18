@@ -1,10 +1,9 @@
 // test.moyal.sequentialText.js
 import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
 
-new moyal.test.TestGroup(ml.next("SequentialText Tests"))
+export default new moyal.test.TestGroup(ml.next("SequentialText Tests"))
 	.groupStart(ml.nest().next("Basic sequence"))
 		.isTrue("First call is 'A1'", () => {
 			const st = new moyal.test.SequentialText("A{0}", 1);
@@ -36,6 +35,4 @@ new moyal.test.TestGroup(ml.next("SequentialText Tests"))
 		})
 	.groupClose()
 
-	.throws("startValue < 1 should throw", () => new moyal.test.SequentialText("bad", 0))
-
-	.run(test_flags.write_mode);
+	.throws("startValue < 1 should throw", () => new moyal.test.SequentialText("bad", 0));	

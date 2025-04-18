@@ -1,10 +1,9 @@
 // test.moyal.assertions.js
 import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
 
-new moyal.test.TestGroup(ml.next("Basic Assertion Tests"))
+export default new moyal.test.TestGroup(ml.next("Basic Assertion Tests"))
 
 	.groupStart(ml.nest().next("areEqual"))
 		.areEqual("Direct equality", 2 + 2, 4)
@@ -46,6 +45,4 @@ new moyal.test.TestGroup(ml.next("Basic Assertion Tests"))
 		.isDefined("false is defined", false)
 		.isUndefined("undefined is undefined", undefined)
 		.isDefined("null is defined", null) // note: null is defined!
-	.groupClose()
-
-	.run(test_flags.write_mode);
+	.groupClose();

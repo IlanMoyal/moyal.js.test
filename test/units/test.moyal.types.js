@@ -1,10 +1,9 @@
 // test.moyal.types.js
 import "../../src/moyal.test.js";
-import test_flags from '../test.moyal.flags.js';
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
 
-new moyal.test.TestGroup(ml.next("Type Checks: moyal.test static methods"))
+export default new moyal.test.TestGroup(ml.next("Type Checks: moyal.test static methods"))
 	.groupStart(ml.nest().next("isString"))
 		.isTrue("String literal", moyal.test.isString("hello"))
 		.isTrue("String object", moyal.test.isString(new String("hi")))
@@ -38,6 +37,4 @@ new moyal.test.TestGroup(ml.next("Type Checks: moyal.test static methods"))
 		.isFalse("Plain object is not iterable", moyal.test.isIterable({ a: 1 }))
 		.isFalse("null is not iterable", moyal.test.isIterable(null))
 		.isFalse("undefined is not iterable", moyal.test.isIterable(undefined))
-	.groupClose()
-
-	.run(test_flags.write_mode);
+	.groupClose();
