@@ -1,38 +1,23 @@
-﻿/*
- * moyal.js.test - A tiny javascript testing framework.
+﻿/*!
+ * moyal.js.test - A lightweight JavaScript testing framework.
  *
- * Version: 1.0.0
- * 
  * File: moyal.test.js
- * 
- * GitHub repository: https://github.com/IlanMoyal/moyal.js.test
+ * Version: 1.0.0
+ * Repository: https://github.com/IlanMoyal/moyal.js.test
+ * Author: Ilan Moyal (https://www.moyal.es)
+ * Contact: ilan.amoyal[guess...what]gmail.com
  *
- * Copyright (C) 2021 Ilan Moyal (http://www.moyal.es) (C) All rights reserved.
+ * Description:
+ * A minimalist, zero-dependency testing library for JavaScript,
+ * designed to be embeddable, expressive, and suitable for both
+ * browser and Node.js environments.
  *
- * Email: ilan.amoyal[guess...what]gmail.com
+ * License:
+ * MIT License – Permission is granted for free use, modification, and distribution,
+ * provided that the copyright notice and license appear in all copies.
+ * Full license text: https://opensource.org/licenses/MIT
  *
- * This project is licensed under the MIT License (see below).
- * The text of license can also be found here: https://opensource.org/licenses/MIT
- *
- * MIT license
- * ***********
- * Begin license text->
- *
- * Copyright 2021, Ilan Moyal © All Rights Reserved
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
- * documentation files (the "Software"), to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
- * to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of
- * the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
- * THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
- * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
- * -> End license text.
+ * © 2000–present Ilan Moyal. All rights reserved.
  */
 
 /* The following guarantees moyal will be available globally (browser, Node, etc.) without double-defining. */
@@ -56,6 +41,20 @@ if (typeof globalThis === 'undefined') {
 
 import _libVersion from '../version.js';
 
+/**
+ * @class moyal.test
+ *
+ * The main static interface for the moyal.js.test framework.
+ * 
+ * Provides assertion utilities for test development and a central entry point to define and run tests.
+ * Also contains type utilities to assist in dynamic validation.
+ *
+ * Example usage:
+ * ```js
+ * moyal.test.isTrue("Test if value is true", myValue);
+ * moyal.test.areEqual("Value check", expected, actual);
+ * ```
+ */
 moyal.test = class {
     static _version = _libVersion;
 
@@ -112,11 +111,12 @@ moyal.test = class {
         return (too === "object" || too === "function") && (name === "[object Function]" || name === "[object GeneratorFunction]");
     }
 
-    /* direct test functions */
+    /* 
+     * Direct test functions 
+     */
 
     /**
-     * Adds an equality assertion to the group.
-     * Checks if `actual === expected`, or uses a custom comparer if provided.
+     * Asserts strict equality - checks if `actual === expected`, or uses a custom comparer if provided.
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} expected - Expected value.
@@ -127,7 +127,18 @@ moyal.test = class {
     static areEqual(testName, expected, actual, comparer = null) { return new moyal.test.AreEqual(testName, expected, actual, comparer).run();}
 
     /**
-     * Adds an assertion to the group that verifies a value is `true`.
+     * Asserts strict inequality - checks if `actual !== not_expected`, or uses a custom comparer if provided.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} not_expected - The value we not expecting.
+     * @param {*} actual - Actual value to compare.
+     * @param {(a: any, b: any) => boolean} [comparer] - Optional custom comparison function.
+     * @returns {boolean} True if the test succeeded; otherwise, false.
+     */
+    static areNotEqual(testName, not_expected, actual, comparer = null) { return new moyal.test.AreNotEqual(testName, not_expected, actual, comparer).run();}
+
+    /**
+     * Asserts that specified value is strictly `true`.
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `true`.
@@ -136,13 +147,49 @@ moyal.test = class {
     static isTrue(testName, actual) { return new moyal.test.IsTrue(testName, actual).run(); }
 
     /**
-     * Adds an assertion to the group that verifies a value is `false`.
+     * Asserts that specified value is strictly `false`.
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `false`.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static isFalse(testName, actual) { return new moyal.test.IsFalse(testName, actual).run(); }
+
+    /**
+     * Assets that the specfied value is strictly `null`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is `null`.
+     * @returns {boolean} True if the test succeeded; otherwise, false.
+     */
+    static isNull(testName, actual) { return new moyal.test.IsNull(testName, actual).run(); }
+    
+    /**
+     * Asserts that the specified value is **not** `null`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is not `null`.
+     * @returns {boolean} True if the test succeeded; otherwise, false.
+     */
+    static isNotNull(testName, actual) {return new moyal.test.IsNotNull(testName, actual).run();}
+
+    /**
+     * Asserts that specified value is **not** `undefined`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is defined.
+     * @returns {boolean} True if the test succeeded; otherwise, false.
+     */
+    static isDefined(testName, actual) { return new moyal.test.IsDefined(testName, actual).run(); }
+
+    /**
+     * Asserts that specified value is strictly `undefined`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is `undefined`.
+     * @returns {boolean} True if the test succeeded; otherwise, false.
+     */
+    static isUndefined(testName, actual) { return new moyal.test.IsUndefined(testName, actual).run(); }
 
     /**
      * Adds an assertion that verifies a function throws an error.
@@ -179,6 +226,21 @@ moyal.test = class {
     static sequencesAreEqual(testName, expected, actual, itemComparer) { return new moyal.test.SequencesAreEqual(testName, expected, actual, itemComparer).run(); }
 }
 
+/**
+ * @class moyal.test.SequentialText
+ *
+ * A utility class that generates a sequence of formatted strings like `"1"`, `"2"`, etc., using a
+ * text template such as `"{0}"` or `"Step {0}"`.
+ * 
+ * Supports resetting and iteration with `for...of`.
+ *
+ * Example:
+ * ```js
+ * const st = new moyal.test.SequentialText("Item {0}", 1);
+ * st.next(); // "Item 1"
+ * st.next(); // "Item 2"
+ * ```
+ */
 moyal.test.SequentialText = class {
     /**
      * Generator that produces an infinite sequence of formatted strings using a number.
@@ -204,6 +266,9 @@ moyal.test.SequentialText = class {
      * @param {number} startValue - The starting number, default is 1.
      */
     constructor(textFormat, startValue) {
+        if (startValue != null && (!Number.isInteger(startValue) || startValue < 1)) {
+            throw new Error("startValue must be a positive integer");
+        }
         this.#_textFormat = textFormat ?? "{0}";
         this.#_startValue = startValue ?? 1;
     }
@@ -230,7 +295,7 @@ moyal.test.SequentialText = class {
      * Closes the generator and cleans up internal state.
      */
     close() {
-        this.#_gen.return();
+        if (this.#_gen?.return) this.#_gen.return();
         this.#_gen = null;
 	}
 
@@ -246,6 +311,20 @@ moyal.test.SequentialText = class {
     }
 }
 
+/**
+ * @class moyal.test.AutoNumbering
+ *
+ * Extends {@link moyal.test.SequentialText} to support formatted auto-numbered items like `"1. Step A"`.
+ * 
+ * Useful for numbering tests, documentation sections, or steps in a procedure.
+ *
+ * Example:
+ * ```js
+ * const an = new moyal.test.AutoNumbering();
+ * an.next("Initialize DB"); // "1. Initialize DB"
+ * an.next("Check Schema");  // "2. Check Schema"
+ * ```
+ */
 moyal.test.AutoNumbering = class extends moyal.test.SequentialText {
     /**
      * Constructs an auto-numbering generator that prefixes a number to each item.
@@ -258,7 +337,11 @@ moyal.test.AutoNumbering = class extends moyal.test.SequentialText {
      *        The string must contain "{0}" as a placeholder.
      */
     constructor(startValue, numberingTextFormat) {
-        super(numberingTextFormat?? "{0}. ", startValue ?? 1);
+        numberingTextFormat ??= "{0}. ";
+        if(!moyal.test.isString(numberingTextFormat) || numberingTextFormat.indexOf("{0}") < 0) {
+            throw new Error("Automatic numbering format must include {0}");
+        }
+        super(numberingTextFormat, startValue ?? 1);
     }
 
     /**
@@ -270,11 +353,153 @@ moyal.test.AutoNumbering = class extends moyal.test.SequentialText {
      * @param {string} [text=""] - Optional content to append after the number.
      * @returns {string} Numbered string like "1. Hello"
      */
+    next(text) { return super.next() + (text ?? ""); }
+}
+
+/**
+ * @class moyal.test.MultiLevelAutoNumbering
+ *
+ * A hierarchical auto-numbering utility supporting nested sequences like:
+ * ```
+ * 1.
+ * 1.1.
+ * 1.2.
+ * 2.
+ * 2.1.1.
+ * ```
+ * 
+ * Internally uses a stack of {@link moyal.test.AutoNumbering} instances, one for each level.
+ * Supports `nest()` to go deeper and `unnest()` to go back.
+ *
+ * Example:
+ * ```js
+ * const ml = new moyal.test.MultiLevelAutoNumbering();
+ * ml.next("Root A");           // "1. Root A"
+ * ml.nest().next("Child A");   // "1.1. Child A"
+ * ml.next("Child B");         // "1.2. Child B"
+ * ml.unnest().next("Root B");  // "2. Root B"
+ * ml.next("Root C");           // "3. Root B"
+ * ```
+ */
+moyal.test.MultiLevelAutoNumbering = class {
+    /** @private {string} Stores the most recent result to calculate the nested prefix */
+    #_current = "";
+
+    /** @private {moyal.test.AutoNumbering[]} Stack of AutoNumbering generators, one per nesting level */
+    #_an = [];
+
+    /** @private {number} The start value of the auto numbering */
+    #_startValue = 1;
+
+    /**
+     * Creates a new multi-level auto-numbering generator.
+     * 
+     * Only the default format `"{0}. "` is supported — other formats are not allowed.
+     *
+     * @param {number} [startValue=1] - The starting number for the top-level counter.
+     * 
+     * @throws {Error} If a custom numbering format is provided.
+     */
+    constructor(startValue) {
+        this.#_startValue = startValue ?? 1;
+        this.reset();
+    }
+
+    /**
+     * Resets this instance of {@link moyal.test.MultiLevelAutoNumbering}.
+     */ 
+    reset(){
+        this.#_current = "";
+        this.#_an.length = 0;
+        this.#_an.push(new moyal.test.AutoNumbering(this.#_startValue, null));
+    }
+
+    /**
+     *  Gets the current nesting level (1 = root).
+     * 
+     * @returns {number} Current nesting level (1 = root) 
+     * */
+    get level() { return this.#_an.length; }
+
+    /**
+     * Returns the next string in the current nesting level.
+     * 
+     * @param {string} [text] - Optional content to append after the number (e.g., a title).
+     * @returns {string} Formatted numbered string like `1. Title` or `2.3. Another`.
+     */
     next(text) {
-        return super.next() + (text ?? "");
+        this.#_current = this.#_an[this.#_an.length - 1].next();
+        return this.#_current + (text ?? "");
+    }
+
+    /**
+     * Increases the nesting level (e.g., goes from `2.` to `2.1.`, or from `1.2.` to `1.2.1.`).
+     * 
+     * The new level resets its own counter, while prefixing the last generated parent string.
+     * 
+     * @param {number} [startValue=1] - Starting number for the new level.
+     * @returns {moyal.test.MultiLevelAutoNumbering} The current instance (for chaining).
+     */
+    nest(startValue) {
+        let nxtFormat = this.#_current.trim();
+        nxtFormat += "{0}. ";
+        this.#_an.push(new moyal.test.AutoNumbering(startValue ?? 1, nxtFormat));
+        return this;
+    }
+
+    /**
+     * Decreases the nesting level (e.g., goes from `1.1.1.` to `1.1.`).
+     * 
+     * Does nothing if already at the top-level (level 1).
+     *
+     * @returns {moyal.test.MultiLevelAutoNumbering} The current instance (for chaining).
+     */
+    unnest() { 
+        if(this.#_an.length > 1)
+            this.#_an.pop();
+        return this;
     }
 }
 
+/**
+ * Internal class used by assertions to carry both the result of a test evaluation
+ * and any associated metadata (such as expected/actual values) for logging.
+ *
+ * @private
+ * @class
+ */
+class TestInternalResult{
+    /**
+     * @type {boolean} Indicates if the test passed or failed.
+     */
+    _result = null;
+
+    /**
+     * @type {any} Additional context (e.g., expected/actual values) to display with the result.
+     */
+    _additionalData = null;
+
+    /**
+     * Constructs a new result object for use in lazy assertions.
+     *
+     * @param {boolean} result - The outcome of the test (true/false).
+     * @param {any} additionalData - Extra metadata to assist in diagnostics (optional).
+     */
+    constructor(result, additionalData) {
+        this._result = result;
+        this._additionalData = additionalData;
+    }
+}
+
+/**
+ * @class moyal.test.BaseTest
+ *
+ * Abstract base class for all test types.
+ * 
+ * Provides a unified interface for managing test name, success/failure status, timing, and output.
+ * Subclasses must override the `_run_impl()` method to implement test logic.
+ * @abstract
+ */
 moyal.test.BaseTest = class {
     // Private fields to hold test state and metadata
     #_testName = null;
@@ -384,7 +609,7 @@ moyal.test.BaseTest = class {
      * @protected
      */
     _run_impl() {
-        throw new Error("Method 'runImpl()' must be implemented by subclass");
+        throw new Error("Method 'run_impl()' must be implemented by subclass");
     }
 
     /**
@@ -404,7 +629,8 @@ moyal.test.BaseTest = class {
      * If there are errors or additional data, it uses a collapsed group for clarity.
      */
     write() {
-        let label = `%c${this.name}: ${(this.succeeded ? this.successMessage : this.failureMessage)} (${this.elapsed} ms`
+        const labelName = this.name?.trim() || "(unnamed test)";
+        let label = `%c${labelName}: ${(this.succeeded ? this.successMessage : this.failureMessage)} (${this.elapsed} ms`
         let css = this.succeeded ? "color: green" : "color: red";
         if (this.errorCount === 0) {
             label += ")";
@@ -439,7 +665,7 @@ moyal.test.BaseTest = class {
         // Show additional data if available
         if (this.additionalData != null) {
             if (this.errorCount > 0) {
-                console.groupCollapsed("errors");
+                console.groupCollapsed("additional data");
             }
             console.log(this.additionalData);
             if (this.errorCount > 0) {
@@ -451,6 +677,14 @@ moyal.test.BaseTest = class {
     }
 }
 
+/**
+ * @class moyal.test.Assert
+ *
+ * A generic assertion test class that evaluates either a boolean or a function returning boolean.
+ * 
+ * Inherits from {@link moyal.test.BaseTest}.
+ * Typically used for boolean tests or custom logic.
+ */
 moyal.test.Assert = class extends moyal.test.BaseTest {
     // Holds the test logic, result, context, error and timing info
     #_test = null;
@@ -487,15 +721,23 @@ moyal.test.Assert = class extends moyal.test.BaseTest {
             return true;
 
         if (!moyal.test.isFunction(this.#_test))
-            return false; /* not strict comparison */
+            return false; // Test is neither true nor a function
 
         let res;
         const t0 = performance.now();
         try {
-            res = this.#_test.call(this.#_thisArg) === true;
+            let tmp =  this.#_test.call(this.#_thisArg);
+            if(tmp instanceof TestInternalResult){
+                this.additionalData = tmp._additionalData;
+                res = tmp._result === true;
+            }
+            else {
+                res = tmp;
+            }
         }
         catch (e) {
-            res = this._push_error(e);                
+            this._push_error(e);
+            res = false;
         }
         const t1 = performance.now();
         this.elapsed = t1 - t0;        
@@ -504,45 +746,263 @@ moyal.test.Assert = class extends moyal.test.BaseTest {
     }
 };
 
+/**
+ * @class moyal.test.AreEqual
+ *
+ * A test that compares two values using strict equality (`===`) or a custom comparer function.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ */
 moyal.test.AreEqual = class extends moyal.test.Assert {
     /**
      * Compares two values using `===` or a custom comparer function.
+     * Values can be passed directly or as functions for deferred evaluation.
      *
      * @param {string} testName - Name of the test.
-     * @param {any} expected - Expected value.
-     * @param {any} actual - Actual value.
-     * @param {Function} [comparer] - Optional function (expected, actual) => boolean.
+     * @param {any|Function} expected - Expected value or function returning it.
+     * @param {any|Function} actual - Actual value or function returning it.
+     * @param {Function} [comparer] - Optional custom equality function (expected, actual) => boolean.
+     * @param {any} [thisArg] - Optional context for invoking deferred or comparison functions.
      */
-    constructor(testName, expected, actual, comparer) {
+    constructor(testName, expected, actual, comparer, thisArg) {
         // Use the comparer if provided, otherwise compare using strict equality
-        super(testName, comparer != null ? comparer(expected, actual) : expected === actual, `Actual value equals to the expected (${actual} === ${expected})`, `Actual value (${actual}) does not equal to the expected (${expected})`, { "expected": expected, "actual": actual });
+        let needsDelayedExecution = moyal.test.isFunction(expected) || moyal.test.isFunction(actual) || moyal.test.isFunction(comparer);        
+        let test;
+        let ad = null;
+        if(needsDelayedExecution){
+            test = () => {
+                let expectedVal = moyal.test.isFunction(expected) ? expected.call(thisArg ?? globalThis) : expected;
+                let actualVal   = moyal.test.isFunction(actual)   ? actual.call(thisArg ?? globalThis)   : actual;
+
+                return new TestInternalResult(
+                    moyal.test.isFunction(comparer)  ? comparer.call(thisArg ?? globalThis, expectedVal, actualVal) : expectedVal === actualVal,
+                    { "expected": expectedVal, "actual": actualVal }
+                );
+            }
+        }
+        else {
+            test = expected === actual;
+            ad = { "expected": expected, "actual": actual };
+        }
+        super(testName, 
+            test, 
+            "Expected and actual values matched", 
+            "Expected and actual values did not match", 
+            ad,
+            thisArg);
     }
 }
 
-moyal.test.IsTrue = class extends moyal.test.Assert {
+/**
+ * @class moyal.test.AreNotEqual
+ *
+ * A test that verifies two values are **not equal** using strict inequality (`!==`)
+ * or a custom comparer function that is expected to return `false`.
+ *
+ * This test passes when `actual !== not_expected`, or when the `comparer` returns `false`.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ *
+ * Example:
+ * ```js
+ * new moyal.test.AreNotEqual("Should be different", 42, value);
+ * new moyal.test.AreNotEqual("Custom inequality", a, b, (a, b) => deepCompare(a, b));
+ * ```
+ */
+moyal.test.AreNotEqual = class extends moyal.test.Assert {
+    /**
+     * Constructs a new inequality assertion.
+     *
+     * @param {string} testName - Name of the test.
+     * @param {any|Function} not_expected - Value the actual result must NOT match.
+     * @param {any|Function} actual - Actual value or function returning it.
+     * @param {Function} [comparer] - Optional function for comparing (not_expected, actual).
+     * @param {any} [thisArg] - Optional context for invoking deferred or comparison functions.
+     */
+    constructor(testName, not_expected, actual, comparer) {
+        // Use the comparer if provided, otherwise compare using strict equality
+        let needsDelayedExecution = moyal.test.isFunction(not_expected) || moyal.test.isFunction(actual) || moyal.test.isFunction(comparer);        
+        let test;
+        let ad = null;
+        if(needsDelayedExecution){
+            test = () => {
+                let not_expectedVal = moyal.test.isFunction(not_expected) ? not_expected.call(thisArg ?? globalThis) : not_expected;
+                let actualVal   = moyal.test.isFunction(actual)   ? actual.call(thisArg ?? globalThis)   : actual;
+
+                return new TestInternalResult(
+                    moyal.test.isFunction(comparer) ? !comparer.call(thisArg ?? globalThis, not_expectedVal, actualVal) : not_expectedVal !== actualVal,
+                    { "not_expected": not_expectedVal, "actual": actualVal }
+                );
+            }
+        }
+        else {
+            test = not_expected !== actual;
+            ad = { "not_expected": not_expected, "actual": actual };
+        }
+
+        super(testName, 
+            test, 
+            "Actual value did not match the disallowed value (as expected!)",
+            "Actual value matched the disallowed value (not as expected!)",
+            ad,
+            thisArg);
+    }
+}
+
+/**
+ * @class moyal.test.IsTrue
+ *
+ * A test that asserts the actual value is strictly `true`.
+ * 
+ * Can accept a boolean value or a function returning boolean.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ */
+moyal.test.IsTrue = class extends moyal.test.AreEqual {
     /**
      * Asserts that a value is strictly `true`.
      *
      * @param {string} testName - The name of the test.
-     * @param {any} actual - The actual value to test.
+     * @param {any|Function} actual - The value or function to evaluate.
+     * @param {any} [thisArg] - Optional context in which to invoke deferred evaluation.
      */
-    constructor(testName, actual) {
-        super(testName, true === actual, `Actual value is true as expected`, `Actual value (${actual}) is not true (which is the expected value)`);
+    constructor(testName, actual, thisArg) {
+        super(testName, true, actual, null, thisArg);
     }
 }
 
-moyal.test.IsFalse = class extends moyal.test.Assert {
+/**
+ * @class moyal.test.IsFalse
+ *
+ * A test that asserts the actual value is strictly `false`.
+ * 
+ * Can accept a boolean value or a function returning boolean.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ */
+moyal.test.IsFalse = class extends moyal.test.AreEqual {
     /**
      * Asserts that a value is strictly `false`.
      *
      * @param {string} testName - The name of the test.
-     * @param {any} actual - The actual value to test.
+     * @param {any|Function} actual - The value or function to evaluate.
+     * @param {any} [thisArg] - Optional context for evaluation.
      */
-    constructor(testName, actual) {
-        super(testName, false === actual, `Actual value is false as expected`, `Actual value (${actual}) is not false (which is the expected value)`);
+    constructor(testName, actual, thisArg) {
+        super(testName, false, actual, null, thisArg);
     }
 }
 
+/**
+ * @class moyal.test.IsNull
+ *
+ * A test that asserts the actual value is strictly `null`.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ *
+ * Example:
+ * ```js
+ * moyal.test.isNull("Should be null", myValue);
+ * ```
+ */
+moyal.test.IsNull = class extends moyal.test.AreEqual {
+    /**
+     * Constructs a null-check assertion.
+     *
+     * @param {string} testName - Descriptive name of the test.
+     * @param {any|Function} actual - Value to test or function that returns it.
+     * @param {any} [thisArg] - Optional context for function calls.
+     */
+    constructor(testName, actual, thisArg) {
+        super(testName, null, actual, null, thisArg);
+    }
+}
+
+/**
+ * @class moyal.test.IsNotNull
+ *
+ * A test that asserts the actual value is **not** `null`.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ *
+ * Example:
+ * ```js
+ * moyal.test.isNotNull("Should not be null", myValue);
+ * ```
+ */
+moyal.test.IsNotNull = class extends moyal.test.AreNotEqual {
+    /**
+     * Constructs a not-null assertion.
+     *
+     * @param {string} testName - Descriptive name of the test.
+     * @param {any|Function} actual - Value to check.
+     * @param {any} [thisArg] - Optional context for invocation.
+     */
+    constructor(testName, actual, thisArg) {
+        super(testName, null, actual, null, thisArg);
+    }
+}
+
+/**
+ * @class moyal.test.IsDefined
+ *
+ * A test that asserts the actual value is **not** `undefined`.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ *
+ * Example:
+ * ```js
+ * moyal.test.isDefined("Value should be defined", myValue);
+ * ```
+ */
+moyal.test.IsDefined = class extends moyal.test.AreNotEqual {
+    /**
+     * Constructs a defined-check assertion.
+     *
+     * @param {string} testName - Descriptive name of the test.
+     * @param {any|Function} actual - Value to evaluate or function to call.
+     * @param {any} [thisArg] - Optional context for evaluation.
+     */
+    constructor(testName, actual, thisArg) {
+        super(testName, undefined, actual, null, thisArg);
+    }
+}
+
+/**
+ * @class moyal.test.IsUndefined
+ *
+ * A test that asserts the actual value is strictly `undefined`.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ *
+ * Example:
+ * ```js
+ * moyal.test.isUndefined("Should be undefined", maybeMissing);
+ * ```
+ */
+moyal.test.IsUndefined = class extends moyal.test.AreEqual {
+     /**
+     * Constructs an undefined-check assertion.
+     *
+     * @param {string} testName - Descriptive name of the test.
+     * @param {any|Function} actual - Value to test or a function that returns it.
+     * @param {any} [thisArg] - Optional context for deferred invocation.
+     */
+    constructor(testName, actual, thisArg) {
+        super(testName, undefined, actual, null, thisArg);
+    }
+}
+
+/**
+ * @class moyal.test.ThrowsBase
+ *
+ * Base class for tests that evaluate whether a function throws or not.
+ * 
+ * Supports optional error validation via predicate functions.
+ *
+ * Inherits from {@link moyal.test.Assert}.
+ * Not used directly — use {@link moyal.test.Throws} or {@link moyal.test.NoThrows} instead.
+ */
 moyal.test.ThrowsBase = class extends moyal.test.Assert {
     #_checkErrorFn = null;
     #_thisArg = null;
@@ -552,20 +1012,25 @@ moyal.test.ThrowsBase = class extends moyal.test.Assert {
      * Base class to test whether a function throws (or not), and optionally validate the error thrown.
      *
      * @param {string} testName - Name of the test.
-     * @param {boolean} expected - Whether an error is expected (`true` = should throw).
+     * @param {boolean} expectingError - Whether an error is expected (`true` = should throw).
      * @param {Function} fn - Function to test.
      * @param {Function} [checkErrorFn] - Optional error predicate to validate the thrown error.
      * @param {any} [thisArg] - Optional `this` context for invoking the test/check function.
      */
-    constructor(testName, expected, fn, checkErrorFn, thisArg) {
-        expected = (expected === true);
-        const msg1 = "An error WAS NOT thrown, or it was thrown but WAS NOT PASSED the error predicate.";
-        const msg2 = "An error WAS NOT thrown.";
-        const msg3 = "An error WAS thrown.";
-        super(testName, fn, expected ? msg3 : msg2, expected ? msg1 : msg3, thisArg);
+    constructor(testName, expectingError, fn, checkErrorFn, thisArg) {
+        expectingError = (expectingError === true);
+        const errWasThrownAsExpected = "An error was thrown (as expected)!"; 
+        const errWasNotThrownAsExpected = "An error was NOT thrown (as expected)."; 
+        const errExpectedFail = "Expected an error, but none was thrown or it did not satisfy the predicate."; 
+        const errWasThrownAsUnexpectedly = "An error was not thrown (unexpectedly)."; 
+
+        super(testName, fn, 
+            expectingError ? errWasThrownAsExpected : errWasNotThrownAsExpected, 
+            expectingError ? errExpectedFail : errWasThrownAsUnexpectedly, 
+            thisArg);
         if (!moyal.test.isFunction(fn)) { throw new Error("fn parameter must be a function"); }
-        if (expected && checkErrorFn != null && !moyal.test.isFunction(checkErrorFn)) { throw new Error("checkErrorFn parameter must be a function, null or undefined"); }
-        this.#_expected = expected;
+        if (expectingError && checkErrorFn != null && !moyal.test.isFunction(checkErrorFn)) { throw new Error("checkErrorFn parameter must be a function, null or undefined"); }
+        this.#_expected = expectingError;
         this.#_thisArg = thisArg;
         this.#_checkErrorFn = checkErrorFn;
     }
@@ -577,15 +1042,24 @@ moyal.test.ThrowsBase = class extends moyal.test.Assert {
      * @protected
      */
     _run_impl() {
-        super._run_impl();
+        const basePassed = super._run_impl();
 
-        if (this.errors.length === 1) {
+        if (!basePassed && this.errors.length === 1) {
             return this.#_expected && (this.#_checkErrorFn == null || this.#_checkErrorFn.call(this.#_thisArg, this.errors[0]) === true);
         }
         return !this.#_expected; 
     }
 }
 
+/**
+ * @class moyal.test.Throws
+ *
+ * A test that expects a function to throw an exception.
+ * 
+ * You may optionally provide a predicate to verify the thrown error.
+ *
+ * Inherits from {@link moyal.test.ThrowsBase}.
+ */
 moyal.test.Throws = class extends moyal.test.ThrowsBase {
     /**
      * Tests that a function throws, and optionally that the thrown error satisfies a condition.
@@ -600,6 +1074,13 @@ moyal.test.Throws = class extends moyal.test.ThrowsBase {
     }
 }
 
+/**
+ * @class moyal.test.NoThrows
+ *
+ * A test that verifies a function does not throw any error.
+ *
+ * Inherits from {@link moyal.test.ThrowsBase}.
+ */
 moyal.test.NoThrows = class extends moyal.test.ThrowsBase {
     /**
      * Tests that a function does NOT throw.
@@ -608,11 +1089,20 @@ moyal.test.NoThrows = class extends moyal.test.ThrowsBase {
      * @param {Function} fn - The function to test.
      * @param {any} [thisArg] - Optional `this` context.
      */
-    constructor(testName, fn, checkErrorFn, thisArg) {
+    constructor(testName, fn, thisArg) {
         super(testName, false, fn, null, thisArg);
     }
 }
 
+/**
+ * @class moyal.test.SequencesAreEqual
+ *
+ * A test that compares two iterable sequences element-by-element for equality.
+ * 
+ * You can supply a custom item comparison function. Results include index mismatches.
+ *
+ * Inherits from {@link moyal.test.BaseTest}.
+ */
 moyal.test.SequencesAreEqual = class extends moyal.test.BaseTest {
     #_expected = null;
     #_actual = null;
@@ -672,18 +1162,18 @@ moyal.test.SequencesAreEqual = class extends moyal.test.BaseTest {
         // Check lengths
         if (expectedArr.length === actualArr.length) {
             // Check individual items
-            let indecesDifferent = [];
+            let indicesDifferent = [];
             for (var i = 0; i < expectedArr.length; i++) {
                 let res = this.#_itemComparer != null ? this.#_itemComparer.call(this.#_thisArg ?? undefined, expectedArr[i], actualArr[i]) : expectedArr[i] === actualArr[i];
                 if (res !== true) {
-                    indecesDifferent.push(i);
+                    indicesDifferent.push(i);
                 }
             }
 
-            if (indecesDifferent.length > 0)
-                this.additionalData["Problem found"] = "Different element indeces are: {" + indecesDifferent.join(", ") + "}";
+            if (indicesDifferent.length > 0)
+                this.additionalData["Problem found"] = "Different element indices are: {" + indicesDifferent.join(", ") + "}";
 
-            res = indecesDifferent.length === 0;
+            res = indicesDifferent.length === 0;
         }
         else{
             this.additionalData["Problem found"] = "expected.length !== actual.length";
@@ -697,6 +1187,27 @@ moyal.test.SequencesAreEqual = class extends moyal.test.BaseTest {
     }
 }
 
+/**
+ * @class moyal.test.TestGroup
+ *
+ * A container for managing and executing multiple tests (or nested groups of tests).
+ * 
+ * Automatically aggregates success/failure counts and outputs structured logs.
+ * 
+ * Supports fluent-style chaining:
+ * ```js
+ * group.isTrue("A", true)
+ *      .areEqual("Compare", 1, 1)
+ *      .throws("Expect error", () => { throw new Error(); });
+ *      .groupStart("another group")
+ *              .areEqual("Compare", 3, 3)
+ *              .throws("Expect error", () => { throw new Error(); });
+ *      .groupClose()
+ *      .run();
+ * ```
+ *
+ * Inherits from {@link moyal.test.BaseTest}.
+ */
 moyal.test.TestGroup = class extends moyal.test.BaseTest {
     #_tests = [];
     #_directFailureCount = 0;
@@ -744,7 +1255,7 @@ moyal.test.TestGroup = class extends moyal.test.BaseTest {
      */
     run(write){
         this.#_write = write;
-        super.run(write);
+        return super.run(write);
     }
     /**
      * Executes all tests/groups in this group.
@@ -869,28 +1380,84 @@ moyal.test.TestGroup = class extends moyal.test.BaseTest {
      * @param {*} expected - Expected value.
      * @param {*} actual - Actual value to compare.
      * @param {(a: any, b: any) => boolean} [comparer] - Optional custom comparison function.
+     * @param {any} [thisArg] - Optional context for evaluation.
      * @returns {moyal.test.TestGroup} The current test group (for chaining).
      */
-    areEqual(testName, expected, actual, comparer) { this.add(new moyal.test.AreEqual(testName, expected, actual, comparer)); return this; }
+    areEqual(testName, expected, actual, comparer, thisArg) { this.add(new moyal.test.AreEqual(testName, expected, actual, comparer, thisArg)); return this; }
+
+     /**
+     * Adds an inequality assertion to the group.
+     * Checks if `actual !== not_expected`, or uses a custom comparer if provided.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} not_expected - The value we're not expecting.
+     * @param {*} actual - Actual value to compare.
+     * @param {(a: any, b: any) => boolean} [comparer] - Optional custom comparison function.
+     * @param {any} [thisArg] - Optional context for evaluation.
+     * @returns {moyal.test.TestGroup} The current test group (for chaining).
+     */
+     areNotEqual(testName, not_expected, actual, comparer, thisArg) { this.add(new moyal.test.AreNotEqual(testName, not_expected, actual, comparer, thisArg)); return this; }
 
     /**
      * Adds an assertion to the group that verifies a value is `true`.
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `true`.
+     * @param {any} [thisArg] - Optional context for evaluation.
      * @returns {moyal.test.TestGroup} The current test group (for chaining).
      */
-    isTrue(testName, actual) { this.add(new moyal.test.IsTrue(testName, actual)); return this; }
+    isTrue(testName, actual, thisArg) { this.add(new moyal.test.IsTrue(testName, actual, thisArg)); return this; }
 
     /**
      * Adds an assertion to the group that verifies a value is `false`.
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `false`.
+     * @param {any} [thisArg] - Optional context for evaluation.
      * @returns {moyal.test.TestGroup} The current test group (for chaining).
      */
-    isFalse(testName, actual) { this.add(new moyal.test.IsFalse(testName, actual)); return this; }
+    isFalse(testName, actual, thisArg) { this.add(new moyal.test.IsFalse(testName, actual, thisArg)); return this; }
 
+    /**
+     * Adds an assertion to the group that verifies a value is strictly `null`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is `null`.
+     * @param {any} [thisArg] - Optional context for evaluation.
+     * @returns {moyal.test.TestGroup} The current test group (for chaining).
+     */
+    isNull(testName, actual, thisArg) { this.add(new moyal.test.IsNull(testName, actual, thisArg)); return this; }
+    
+    /**
+     * Adds an assertion to the group that verifies a value is **not** `null`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is not `null`.
+     * @param {any} [thisArg] - Optional context for evaluation.
+     * @returns {moyal.test.TestGroup} The current test group (for chaining).
+     */
+    isNotNull(testName, actual, thisArg) {this.add(new moyal.test.IsNotNull(testName, actual, thisArg)); return this;}
+
+     /**
+     * Adds an assertion to the group that verifies a value is **not** `undefined`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is defined.
+     * @param {any} [thisArg] - Optional context for evaluation.
+     * @returns {moyal.test.TestGroup} The current test group (for chaining).
+     */
+    isDefined(testName, actual, thisArg) { this.add( new moyal.test.IsDefined(testName, actual, thisArg));  return this;}
+
+    /**
+     * Adds an assertion to the group that verifies a value is strictly `undefined`.
+     *
+     * @param {string} testName - Descriptive test title.
+     * @param {*} actual - Value to assert is `undefined`.
+     * @param {any} [thisArg] - Optional context for evaluation.
+     * @returns {moyal.test.TestGroup} The current test group (for chaining).
+     */
+    isUndefined(testName, actual, thisArg) { this.add( new moyal.test.IsUndefined(testName, actual, thisArg));  return this;}
+    
     /**
      * Adds an assertion that verifies a function throws an error.
      * Optionally verifies the error with a predicate.
@@ -898,7 +1465,7 @@ moyal.test.TestGroup = class extends moyal.test.BaseTest {
      * @param {string} testName - Descriptive test title.
      * @param {Function} fn - Function expected to throw.
      * @param {(err: any) => boolean} [checkErrorFn] - Optional predicate to inspect the thrown error.
-     * @param {object} [thisArg] - Optional `this` binding for `fn` and `checkErrorFn`.
+     * @param {any} [thisArg] - Optional context for evaluation.
      * @returns {moyal.test.TestGroup} The current test group (for chaining).
      */
     throws(testName, fn, checkErrorFn, thisArg) { this.add(new moyal.test.Throws(testName, fn, checkErrorFn, thisArg)); return this; }
