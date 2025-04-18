@@ -819,7 +819,7 @@ moyal.test.AreNotEqual = class extends moyal.test.Assert {
      * @param {Function} [comparer] - Optional function for comparing (not_expected, actual).
      * @param {any} [thisArg] - Optional context for invoking deferred or comparison functions.
      */
-    constructor(testName, not_expected, actual, comparer) {
+    constructor(testName, not_expected, actual, comparer, thisArg) {
         // Use the comparer if provided, otherwise compare using strict equality
         let needsDelayedExecution = moyal.test.isFunction(not_expected) || moyal.test.isFunction(actual) || moyal.test.isFunction(comparer);        
         let test;
