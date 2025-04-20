@@ -1,6 +1,6 @@
 #my generated directories
 build/generated/
-
+packages/
 
 # Logs
 logs
