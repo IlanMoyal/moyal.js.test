@@ -1,3 +1,7 @@
+/* 
+ * File: utils.js
+ */
+
 export default class {
 	static exit(code) {
 		if (typeof process !== 'undefined' && typeof process.exit === 'function') {

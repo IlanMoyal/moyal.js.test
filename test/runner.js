@@ -1,17 +1,12 @@
-import test_utils from "./test.moyal.utils.js";
-import test_settings from "./test.moyal.settings.js"; 
+/* 
+ * File: runner.js
+ */
+
+import './setup-globalThis-polyfill.js';
+import test_utils from "./utils.js";
+import test_settings from "./settings.js"; 
 
 /* Loads the test and run each of them, one by one */
-
-Promise.all(test_settings.test_files.map(path => import(path)))
-    .then(modules => {
-        for (const mod of modules) {
-			let test = mod.default;
-			test.run(test_settings.write_mode);
-        }
-    })
-    .catch(err => console.error("Failed to load test:", err));
-
 Promise.all(test_settings.test_files.map(path => import(path)))
     .then(modules => {
         let hasFailure = false;
@@ -22,9 +17,8 @@ Promise.all(test_settings.test_files.map(path => import(path)))
             try {
                 const result = test.run(test_settings.write_mode);
                 // If test.run returns a boolean or result object
-                if (result === false) {
+                if (result === false) 
                     hasFailure = true;
-                }
             } catch (err) {
                 console.error(`Error while running test: ${err}`);
                 hasFailure = true;

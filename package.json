@@ -1,7 +1,7 @@
 {
-	"name": "moyal.js.test",
+	"name": "moyal.js.test", 
 	"version": "1.0.0",
-	"description": "A lightweight, dependency-free JavaScript testing utility.",
+	"description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
 	"type": "module",
 	"main": "dist/moyal.test.cjs.js",
 	"module": "dist/moyal.test.mjs",
@@ -10,13 +10,17 @@
 	  "require": "./dist/moyal.test.cjs.js",
 	  "import": "./dist/moyal.test.mjs"
 	},
+	"files": ["dist/", "README.md"],
 	"author": "Ilan Moyal",
 	"license": "MIT",
 	"scripts": {
-	  "build": "rollup -c",
-	  "test": "echo 'Write tests in ./test and integrate a test runner.'"
+		"pretest": "node ./build/prepare_build_info.js",
+		"test": "node ./test/runner.js",
+		"prebuild": "npm run test",
+		"build": "node ./build/build.js"
 	},
 	"devDependencies": {
-	  "rollup": "^3.0.0"
+	  "rollup": "^3.0.0",
+	  "@rollup/plugin-terser": "^0.4.3"
 	}
   }

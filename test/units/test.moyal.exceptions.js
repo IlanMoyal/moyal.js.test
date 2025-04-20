@@ -1,7 +1,11 @@
-// test.moyal.exceptions.js
+/* 
+ * File: test.moyal.exceptions.js
+ */
+
 import "../../src/moyal.test.js";
 
 const ml = new moyal.test.MultiLevelAutoNumbering();
+
 export default new moyal.test.TestGroup(ml.next("Exception Testing (Throws / NoThrows)"))
 	.groupStart(ml.nest().next("Basic Throws"))
 		.throws("Throws basic error", () => { throw new Error("boom"); })

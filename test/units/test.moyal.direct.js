@@ -1,4 +1,7 @@
-// test.moyal.direct.js
+/* 
+ * File: test.moyal.direct.js
+ */
+
 import "../../src/moyal.test.js";
 
 class DirectTest{

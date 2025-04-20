@@ -1,4 +1,7 @@
-// test.moyal.multiLevelAutoNumbering.js
+/* 
+ * File:  test.moyal.multiLevelAutoNumbering.js
+ */
+
 import "../../src/moyal.test.js";
 
 const ml = new moyal.test.MultiLevelAutoNumbering();

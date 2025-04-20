@@ -20,26 +20,10 @@
  * © 2000–present Ilan Moyal. All rights reserved.
  */
 
-/* The following guarantees moyal will be available globally (browser, Node, etc.) without double-defining. */
-if (typeof globalThis === 'undefined') {
-    (function() {
-        if (typeof self !== 'undefined') {
-        self.globalThis = self;
-        } else if (typeof window !== 'undefined') {
-        window.globalThis = window;
-        } else if (typeof global !== 'undefined') {
-        global.globalThis = global;
-        } else {
-        this.globalThis = this;
-        }
-    })();
-}
-
 // Ensure moyal global namespace exists
 (function (global) {global.moyal = global.moyal || {};})(globalThis);
 
-
-import _libVersion from '../version.js';
+import build_info from "../build/generated/build_info.js";
 
 /**
  * @class moyal.test
@@ -56,7 +40,7 @@ import _libVersion from '../version.js';
  * ```
  */
 moyal.test = class {
-    static _version = _libVersion;
+    static _version = build_info.version;
 
      /**
      * Returns the version of the test library.
@@ -70,7 +54,7 @@ moyal.test = class {
      * This is a read-only property used for diagnostics or compatibility checks.
      * @returns {string} Semantic version string.
      */
-    get Version() { return _version; }
+    get Version() { return this.constructor._version; }
 
     /* 
      * Independent type checking ability 
