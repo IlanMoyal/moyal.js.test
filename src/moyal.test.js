@@ -23,7 +23,7 @@
 // Ensure moyal global namespace exists
 (function (global) {global.moyal = global.moyal || {};})(globalThis);
 
-import build_info from "../build/generated/build_info.js";
+import build_info from "../build/generated/build-info.js";
 
 /**
  * @class moyal.test

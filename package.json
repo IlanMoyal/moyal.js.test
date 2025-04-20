@@ -13,7 +13,7 @@
 	"author": "Ilan Moyal",
 	"license": "MIT",
 	"scripts": {
-		"pretest": "node ./build/prepare_build_info.js",
+		"pretest": "node ./build/prepare-build-info.js",
 		"test": "node ./test/runner.js",
 		"prebuild": "npm run test",
 		"build": "node ./build/build.js",
