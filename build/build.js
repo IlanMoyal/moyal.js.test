@@ -13,7 +13,7 @@ function runCommand(cmd, label) {
 		console.log(`\n⏳ ${label}...`);
 		execSync(cmd, { cwd: rootDir, stdio: 'inherit' });
 		console.log(`✅ ${label} done.`);
-	} catch (err) {
+	} catch {
 		console.error(`❌ Failed: ${label}`);
 		process.exit(1);
 	}

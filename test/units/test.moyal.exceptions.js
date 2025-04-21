@@ -20,7 +20,7 @@ export default new moyal.test.TestGroup(ml.next("Exception Testing (Throws / NoT
 	.groupClose()
 
 	.groupStart(ml.next("NoThrows"))
-		.noThrows("Safe code does not throw", () => { let a = 2 + 2; })
+		.noThrows("Safe code does not throw", () => { let unused__a = 2 + 2; })
 		.noThrows("Function returns value safely", () => { return "ok"; })
 	.groupClose()
 

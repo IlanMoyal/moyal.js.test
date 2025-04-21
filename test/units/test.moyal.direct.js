@@ -5,7 +5,7 @@
 import "../../src/moyal.test.js";
 
 class DirectTest{
-	run(write) {
+	run(unused__write) {
 		const ml = new moyal.test.MultiLevelAutoNumbering();
 
 		moyal.test.areEqual(ml.next("areEqual - numbers"), 42, 40 + 2);
@@ -29,7 +29,7 @@ class DirectTest{
 		moyal.test.throws(ml.next("throws - should throw error"), () => { throw new Error("boom"); });
 		moyal.test.throws(ml.next("throws - validate error message"), () => { throw new Error("fail"); }, e => e.message === "fail");
 
-		moyal.test.noThrows(ml.next("noThrows - safe function"), () => { const x = 1 + 1; });
+		moyal.test.noThrows(ml.next("noThrows - safe function"), () => { const unused__e = 1 + 1; });
 	}
 }
 

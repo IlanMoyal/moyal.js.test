@@ -1,8 +1,8 @@
-//run
 
-node build/build.js
+From the root of the project run
 
-// Install dependencies (only once):
+
+1. To build Install dependencies (only once):
 npm install
 
 // Build the package:
