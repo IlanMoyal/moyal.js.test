@@ -1,8 +1,7 @@
 ﻿/*!
  * moyal.js.test - A lightweight JavaScript testing framework.
  *
- * File: moyal.test.js
- * Version: 1.0.0
+ * File: moyal.test.js* 
  * Repository: https://github.com/IlanMoyal/moyal.js.test
  * Author: Ilan Moyal (https://www.moyal.es)
  * Contact: ilan.amoyal[guess...what]gmail.com

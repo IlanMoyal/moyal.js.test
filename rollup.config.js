@@ -1,4 +1,18 @@
 import terser from '@rollup/plugin-terser';
+import _buildInfo from './build/generated/build-info.js'
+
+const terserBanner = `/*!
+ * moyal.js.test v${_buildInfo.version}
+ * (c) 2000–present Ilan Moyal
+ * Released under the MIT License
+ */`;
+
+ const minifiedTerser = terser({
+	format: {
+	  comments: false,  // remove all comments
+	  preamble: terserBanner // but inject this one
+	}
+});
 
 export default [
 	/* UMD - Development version (with documentations) */
@@ -19,7 +33,7 @@ export default [
 		  format: 'umd',
 		  name: 'moyal.test' 
 		},
-		plugins: [terser()]
+		plugins: [minifiedTerser]
 	},
 
 	/* ESM - Development version (with documentations) */
@@ -38,7 +52,7 @@ export default [
 		  file: `dist/moyal.test.min.mjs`,
 		  format: 'es'
 		},
-		plugins: [terser()]
+		plugins: [minifiedTerser]
 	},
 
 	/* CJS - Development version (with documentations) */
@@ -57,11 +71,7 @@ export default [
 		  file: `dist/moyal.test.cjs.min.js`,
 		  format: 'cjs'
 		},
-		plugins: [terser({
-			format: {
-			  comments: false // 👈 Remove all comments, even /*! ... */
-			}
-		  })]
+		plugins: [minifiedTerser]
 	}
   ];
   
