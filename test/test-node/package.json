@@ -1,0 +1,8 @@
+{
+	"name": "test-node-moyal-js-test",
+	"type": "module",
+	"dependencies": {
+	  "@moyal/js-test": "^1.0.0"
+	}
+  }
+  
