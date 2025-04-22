@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
 	"type": "module",
+	"types": "types/moyal.test.d.ts",
 	"main": "dist/moyal.test.cjs.js",
 	"module": "dist/moyal.test.mjs",
 	"browser": "dist/moyal.test.umd.js",
@@ -24,15 +25,15 @@
 		"prepack": "npm run check",
 		"pack": "npm run pack:local && npm run pack:preview",
 		"version:patch": "npm version patch && git push && git push --tags",
-  		"version:minor": "npm version minor && git push && git push --tags"	,
-		"version:major": "npm version major && git push && git push --tags"	
+		"version:minor": "npm version minor && git push && git push --tags",
+		"version:major": "npm version major && git push && git push --tags"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.25.0",
-		"@rollup/plugin-terser": "^0.4.3",
+		"@rollup/plugin-terser": "^0.4.3",		
 		"eslint": "^9.25.0",
 		"globals": "^16.0.0",
-		"rollup": "^3.0.0"
+		"rollup": "^3.0.0"		
 	},
 	"files": [
 		"dist/",

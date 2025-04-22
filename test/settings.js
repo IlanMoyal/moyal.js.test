@@ -12,8 +12,7 @@ export default {
 		"./units/test.moyal.multiLevelAutoNumbering.js",
 		"./units/test.moyal.sequences.js",
 		"./units/test.moyal.sequentialText.js",
-		"./units/test.moyal.testGroup.js",
-		"./units/test.moyal.types.js"
+		"./units/test.moyal.testGroup.js"		
 	],
 
 	/* 
@@ -21,5 +20,5 @@ export default {
 	 * true - log all, 
 	 * null - log failures only 
 	 */
-	"write_mode": null
+	"write_mode": true
 };
