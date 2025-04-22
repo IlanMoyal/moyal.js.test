@@ -1,6 +1,6 @@
 {
 	"name": "@moyal/js-test",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
 	"type": "module",
 	"types": "types/moyal.test.d.ts",
@@ -32,10 +32,10 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.25.0",
-		"@rollup/plugin-terser": "^0.4.3",		
+		"@rollup/plugin-terser": "^0.4.3",
 		"eslint": "^9.25.0",
 		"globals": "^16.0.0",
-		"rollup": "^3.0.0"		
+		"rollup": "^3.0.0"
 	},
 	"files": [
 		"dist/",
