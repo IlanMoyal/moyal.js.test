@@ -4,12 +4,11 @@
 
 import "../../src/moyal.test.js";
 
-const ml = new moyal.test.MultiLevelAutoNumbering();
-const grp = new moyal.test.TestGroup(ml.next("MultiLevelAutoNumbering Tests"));
+const grp = new moyal.test.TestGroup("MultiLevelAutoNumbering Tests");
 
 let mn = new moyal.test.MultiLevelAutoNumbering();
 
-grp.groupStart(ml.nest().next("First sequence"))
+grp.groupStart("First sequence")
 	.areEqual("1. A message", "1. A message", mn.next("A message"))
 	.areEqual("2. Another message", "2. Another message", mn.next("Another message"))
 	.areEqual("3. ", "3. ", mn.next())
@@ -24,7 +23,7 @@ grp.groupStart(ml.nest().next("First sequence"))
 
 mn.reset();
 
-grp.groupStart(ml.next("After reset"))
+grp.groupStart("After reset")
 	.areEqual("1. A message", "1. A message", mn.next("A message"))
 	.areEqual("2. Another message", "2. Another message", mn.next("Another message"))
 	.areEqual("3. ", "3. ", mn.next())

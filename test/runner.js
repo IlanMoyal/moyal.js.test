@@ -1,13 +1,23 @@
 /* 
  * File: runner.js
+ *
+ * This runner can be run from both browser or node.
+ * However, under Node environment it is better to execure runner-for-node.js
  */
 
-import './setup-globalThis-polyfill.js';
-import test_utils from "./utils.js";
-import test_settings from "./settings.js"; 
+import testUtils from "./utils/utils.js";
+/* ensures existence of globalThis */
+testUtils.fixGlobal();
+
+/* create global multi level automatic number  */
+import "../src/moyal.test.js";
+const mlAutoNumber = new moyal.test.MultiLevelAutoNumbering();
 
 /* Loads the test and run each of them, one by one */
-Promise.all(test_settings.test_files.map(path => import(path)))
+import testSettings from "./settings.js";
+const testUnits = testSettings.unitTests;
+const list = testUnits.list;
+Promise.all(list.map(path => import(`${testUnits.basePath}/${path}`)))
     .then(modules => {
         let hasFailure = false;
 
@@ -15,10 +25,12 @@ Promise.all(test_settings.test_files.map(path => import(path)))
             const test = mod.default;
 
             try {
-                const result = test.run(test_settings.write_mode);
-                // If test.run returns a boolean or result object
+                const result = test.run(testSettings.writeMode, mlAutoNumber);
+                
+                /* If test.run returns a boolean or result object */
                 if (result === false) 
                     hasFailure = true;
+
             } catch (err) {
                 console.error(`Error while running test: ${err}`);
                 hasFailure = true;
@@ -26,9 +38,9 @@ Promise.all(test_settings.test_files.map(path => import(path)))
 			if(hasFailure)
 				break;
         }
-        test_utils.exit(hasFailure ? 1 : 0);
+        testUtils.exit(hasFailure ? 1 : 0);
     })
     .catch(err => {
         console.error("Failed to load tests:", err);
-        test_utils.exit(1);
+        testUtils.exit(1);
     });

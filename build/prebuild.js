@@ -1,7 +1,13 @@
-// prepare_build_info.js
+/* 
+ * File: prebuild.js 
+ */
 
 import fs from 'fs';
-const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync('./project.settings.json', 'utf-8'));
+
+// Resolve the root directory
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const rootDir = resolve(__dirname, '..');
 
 const build_info =  {
 	version: pkg.version

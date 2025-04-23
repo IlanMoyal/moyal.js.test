@@ -985,12 +985,13 @@ moyal.test.BaseTest = class {
      * @param {boolean} write - If true, writes the result to the console; 
      *          If false doesn't write the result to the console; 
      *          Otherwise writes only failures to the console.
+     * @param {moyal.test.MultiLevelAutoNumbering} [mlAutoNumber] - Optional multi-level automatic numbering to automatically prefix messages with numbers.
      * @returns {boolean} Whether the test passed.
      */
-    run(write) { 
+    run(write, mlAutoNumber) { 
         this.succeeded = this._run_impl();
         if (write === true || (write !== false && !this.succeeded)) {
-            this.write();
+            this.write(mlAutoNumber);
 		}
         return this.succeeded;
     }
@@ -1019,10 +1020,14 @@ moyal.test.BaseTest = class {
      * 
      * If the test passes with no errors, it uses a flat `console.log`.
      * If there are errors or additional data, it uses a collapsed group for clarity.
+     * @param {moyal.test.MultiLevelAutoNumbering} [mlAutoNumber] - Optional multi-level automatic numbering to automatically prefix messages with numbers. 
      */
-    write() {
+    write(mlAutoNumber) {
+        if(mlAutoNumber == null || !(mlAutoNumber instanceof moyal.test.MultiLevelAutoNumbering)) 
+            mlAutoNumber = null;
+        
         const labelName = this.name?.trim() || "(unnamed test)";
-        let label = `%c${labelName}: ${(this.succeeded ? this.successMessage : this.failureMessage)} (${this.elapsed} ms`
+        let label = `${(mlAutoNumber?.next() ?? "")}${labelName}: ${(this.succeeded ? this.successMessage : this.failureMessage)} (${this.elapsed} ms`
         let color = this.succeeded ? "green" : "red";
         if (this.errorCount === 0) {
             label += ")";
@@ -1680,12 +1685,13 @@ moyal.test.TestGroup = class extends moyal.test.BaseTest {
      * @param {boolean} write - If true, writes the result to the console; 
      *          If false doesn't write the result to the console; 
      *          Otherwise writes only failures to the console.
+     * @param {moyal.test.MultiLevelAutoNumbering} [mlAutoNumber] - Optional multi-level automatic numbering to automatically prefix messages with numbers.
      * @returns {boolean} Whether the test passed.
      * @override
      */
-    run(write){
+    run(write, mlAutoNumber){
         this.#_write = write;
-        return super.run(write);
+        return super.run(write, mlAutoNumber);
     }
     /**
      * Executes all tests/groups in this group without printing.
@@ -1728,10 +1734,14 @@ moyal.test.TestGroup = class extends moyal.test.BaseTest {
      * Outputs a summary line and recursively logs all child test results.
      * Uses collapsed group for passed tests and expanded group for failed ones.
      * 
+     * @param {moyal.test.MultiLevelAutoNumbering} [mlAutoNumber] - Optional multi-level automatic numbering to automatically prefix messages with numbers.
      * @override
      */
-    write() {
-        let label = `${this.name}: (${this.elapsed}ms, `;
+    write(mlAutoNumber) {
+        if(mlAutoNumber == null || !(mlAutoNumber instanceof moyal.test.MultiLevelAutoNumbering))
+            mlAutoNumber = null;
+
+        let label = `${(mlAutoNumber?.next() ?? "")}${this.name}: (${this.elapsed}ms, `;
         let color;
         if (this.#_directFailureCount === 0) {
             color = "green";
@@ -1756,11 +1766,15 @@ moyal.test.TestGroup = class extends moyal.test.BaseTest {
         else {
             moyal.test.logger.group(label, color);
 		}
-        for (let t of this.#_tests) {
-            if(this.#_write === true || (this.#_write == null && !t.succeeded))
-                t.write();
+        if(this.#_tests?.length > 0) {
+            mlAutoNumber?.nest()
+            for (let t of this.#_tests) {
+                if(this.#_write === true || (this.#_write == null && !t.succeeded)) {
+                    t.write(mlAutoNumber);
+                }
+            }
+            mlAutoNumber?.unnest();
         }
-        
         moyal.test.logger.groupEnd();
     }
 

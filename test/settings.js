@@ -1,24 +1,24 @@
-/* 
- * File: settings.js
- */
-
 export default {
-	/* hold the tests to run */
-	"test_files": [
-		"./units/test.moyal.assertions.js",
-		"./units/test.moyal.autoNumbering.js",
-		"./units/test.moyal.direct.js",
-		"./units/test.moyal.exceptions.js",
-		"./units/test.moyal.multiLevelAutoNumbering.js",
-		"./units/test.moyal.sequences.js",
-		"./units/test.moyal.sequentialText.js",
-		"./units/test.moyal.testGroup.js"		
-	],
-
-	/* 
-	 * false - don't log, 
-	 * true - log all, 
-	 * null - log failures only 
+	"unitTests" : {
+		/*
+		 * base path to the unit tests
+		 */
+		"basePath": "./units",
+		"list": [ /* list of the unit tests, excluding the base path */
+			"test.moyal.assertions.js",
+			"test.moyal.autoNumbering.js",
+			"test.moyal.direct.js",
+			"test.moyal.exceptions.js",
+			"test.moyal.multiLevelAutoNumbering.js",
+			"test.moyal.sequences.js",
+			"test.moyal.sequentialText.js",
+			"test.moyal.testGroup.js"		
+		]
+	},	
+	/*
+	 * true - write all 
+	 * false - write none
+	 * null | undefined - write errors only
 	 */
-	"write_mode": true
+	"writeMode": null
 };
