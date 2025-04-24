@@ -21,10 +21,12 @@
 		"check": "npm run lint && npm run test",
 		"prebuild": "npm run test",
 		"build": "node ./build/build.js",
+
 		"pack:local": "bash ./build/pack-local.sh",
 		"pack:preview": "bash ./build/pack-preview.sh",
 		"prepack": "npm run check",
 		"pack": "npm run pack:local && npm run pack:preview",
+		
 		"version:patch": "npm version patch && git push && git push --tags",
 		"version:minor": "npm version minor && git push && git push --tags",
 		"version:major": "npm version major && git push && git push --tags",

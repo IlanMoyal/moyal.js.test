@@ -2,6 +2,7 @@
 my-files/
 build/generated/
 packages/
+src/auto-generated/
 
 # Logs
 logs

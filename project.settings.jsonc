@@ -1,0 +1,26 @@
+/*
+ * Edit this file to set all project settings.
+ */
+ {
+	"scope": "@moyal",
+	"lib": "js-test",
+	"version": "1.1.0",
+	"description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
+	"author": "Ilan Moyal",
+	"license": "MIT",
+	"sourceFolder": "src",
+	"sourceFile": "moyal.test.js",
+	"testFolder": "test",
+	"outputFolder": "dist",
+	"outputBaseFilename": "moyal.test",
+	"outputExposedName": "moyalTest",
+	"devDependencies": {
+	  "@eslint/js": "^9.25.0",
+	  "@rollup/plugin-terser": "^0.4.3",
+	  "chokidar": "^4.0.3",
+	  "comment-json": "^4.2.5",
+	  "eslint": "^9.25.0",
+	  "globals": "^16.0.0",
+	  "rollup": "^3.0.0"
+	}
+  }

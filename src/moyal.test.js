@@ -23,7 +23,7 @@
 //@ts-ignore
 (function (global) {global.moyal = global.moyal || {};})(globalThis);
 
-import _build_info from "../build/generated/build-info.js";
+import BuildInfo from "./auto-generated/build-info.js";
 
 class _InternalUtils {
     /* 
@@ -96,7 +96,7 @@ moyal.test = class {
      * @returns {string} Semantic version string.
      */
     static get Version() {
-        return _build_info.version;
+        return BuildInfo.version;
     }
 
     static get logger() {

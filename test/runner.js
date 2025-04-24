@@ -5,9 +5,9 @@
  * However, under Node environment it is better to execure runner-for-node.js
  */
 
-import testUtils from "./utils/utils.js";
+import utils from "../scripts/include/utils.js";
 /* ensures existence of globalThis */
-testUtils.fixGlobal();
+utils.fixGlobal();
 
 /* create global multi level automatic number  */
 import "../src/moyal.test.js";
@@ -38,9 +38,9 @@ Promise.all(list.map(path => import(`${testUnits.basePath}/${path}`)))
 			if(hasFailure)
 				break;
         }
-        testUtils.exit(hasFailure ? 1 : 0);
+        utils.exit(hasFailure ? 1 : 0);
     })
     .catch(err => {
         console.error("Failed to load tests:", err);
-        testUtils.exit(1);
+        utils.exit(1);
     });

@@ -20,5 +20,5 @@ export default {
 	 * false - write none
 	 * null | undefined - write errors only
 	 */
-	"writeMode": null
+	"writeMode": true
 };
