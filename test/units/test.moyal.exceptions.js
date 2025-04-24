@@ -4,10 +4,8 @@
 
 import "../../src/moyal.test.js";
 
-const ml = new moyal.test.MultiLevelAutoNumbering();
-
-export default new moyal.test.TestGroup(ml.next("Exception Testing (Throws / NoThrows)"))
-	.groupStart(ml.nest().next("Basic Throws"))
+export default new moyal.test.TestGroup("Exception Testing (Throws / NoThrows)")
+	.groupStart("Basic Throws")
 		.throws("Throws basic error", () => { throw new Error("boom"); })
 		.throws("Throws specific error object", () => { throw new TypeError("wrong type"); })
 		.throws("Throws matches predicate", 
@@ -15,20 +13,20 @@ export default new moyal.test.TestGroup(ml.next("Exception Testing (Throws / NoT
 			err => err instanceof RangeError && /range/.test(err.message))
 	.groupClose()
 
-	.groupStart(ml.next("Throws fails if no error"))
+	.groupStart("Throws fails if no error")
 		.throws("Fails because no error thrown", () => {}) // should fail
 	.groupClose()
 
-	.groupStart(ml.next("NoThrows"))
+	.groupStart("NoThrows")
 		.noThrows("Safe code does not throw", () => { let unused__a = 2 + 2; })
 		.noThrows("Function returns value safely", () => { return "ok"; })
 	.groupClose()
 
-	.groupStart(ml.next("NoThrows fails if error thrown"))
+	.groupStart("NoThrows fails if error thrown")
 		.noThrows("Fails because error thrown", () => { throw "error"; }) // should fail
 	.groupClose()
 
-	.groupStart(ml.next("Throws predicate fails"))
+	.groupStart("Throws predicate fails")
 		.throws("Fails due to predicate mismatch", 
 			() => { throw new Error("bad"); }, 
 			err => err.message === "expected") // should fail

@@ -5,31 +5,42 @@
 import "../../src/moyal.test.js";
 
 class DirectTest{
-	run(unused__write) {
-		const ml = new moyal.test.MultiLevelAutoNumbering();
+	/**
+	 * 
+	 * @param {boolean} write 
+	 * @param {moyal.test.MultiLevelAutoNumbering} mlAutoNumber 
+	 */
+	run(write, mlAutoNumber) {
+		if(mlAutoNumber == null || !(mlAutoNumber instanceof moyal.test.MultiLevelAutoNumbering))
+			mlAutoNumber = new moyal.test.MultiLevelAutoNumbering();
 
-		moyal.test.areEqual(ml.next("areEqual - numbers"), 42, 40 + 2);
-		moyal.test.areEqual(ml.next("areEqual - strings"), "hello", "he" + "llo");
-		moyal.test.areNotEqual(ml.next("areNotEqual - numbers"), 42, 43);
-		moyal.test.areNotEqual(ml.next("areNotEqual - different types"), 42, "42");
+		// moyal.test.logger.group(mlAutoNumber.next("test direct (static) test funstions:"));
+		// mlAutoNumber.nest();
 
-		moyal.test.isTrue(ml.next("isTrue - boolean true"), true);
-		moyal.test.isTrue(ml.next("isTrue - expression"), 1 + 1 === 2);
-		moyal.test.isFalse(ml.next("isFalse - boolean false"), false);
-		moyal.test.isFalse(ml.next("isFalse - expression"), 2 + 2 === 5);
+		moyal.test.areEqual(mlAutoNumber.next("direct (static) areEqual - numbers"), 42, 40 + 2, null, write);
+		moyal.test.areEqual(mlAutoNumber.next("direct (static) areEqual - strings"), "hello", "he" + "llo", null, write);
+		moyal.test.areNotEqual(mlAutoNumber.next("direct (static) areNotEqual - numbers"), 42, 43, null, write);
+		moyal.test.areNotEqual(mlAutoNumber.next("direct (static) areNotEqual - different types"), 42, "42", null, write);
 
-		moyal.test.isNull(ml.next("isNull - null literal"), null);
-		moyal.test.isNotNull(ml.next("isNotNull - number"), 5);
-		moyal.test.isNotNull(ml.next("isNotNull - object"), {});
+		moyal.test.isTrue(mlAutoNumber.next("direct (static) isTrue - boolean true"), true, null, write);
+		moyal.test.isTrue(mlAutoNumber.next("direct (static) isTrue - expression"), 1 + 1 === 2, write);
+		moyal.test.isFalse(mlAutoNumber.next("direct (static) isFalse - boolean false"), false, write);
+		moyal.test.isFalse(mlAutoNumber.next("direct (static) isFalse - expression"), 2 + 2 === 5, write);
 
-		moyal.test.isUndefined(ml.next("isUndefined - undefined literal"), undefined);
-		moyal.test.isDefined(ml.next("isDefined - number"), 1);
-		moyal.test.isDefined(ml.next("isDefined - null is defined"), null);
+		moyal.test.isNull(mlAutoNumber.next("direct (static) isNull - null literal"), null, write);
+		moyal.test.isNotNull(mlAutoNumber.next("direct (static) isNotNull - number"), 5, write);
+		moyal.test.isNotNull(mlAutoNumber.next("direct (static) isNotNull - object"), {}, write);
 
-		moyal.test.throws(ml.next("throws - should throw error"), () => { throw new Error("boom"); });
-		moyal.test.throws(ml.next("throws - validate error message"), () => { throw new Error("fail"); }, e => e.message === "fail");
+		moyal.test.isUndefined(mlAutoNumber.next("direct (static) isUndefined - undefined literal"), undefined, write);
+		moyal.test.isDefined(mlAutoNumber.next("direct (static) isDefined - number"), 1, write);
+		moyal.test.isDefined(mlAutoNumber.next("direct (static) isDefined - null is defined"), null, write);
 
-		moyal.test.noThrows(ml.next("noThrows - safe function"), () => { const unused__e = 1 + 1; });
+		moyal.test.throws(mlAutoNumber.next("direct (static) throws - should throw error"), () => { throw new Error("boom"); }, null, null, write);
+		moyal.test.throws(mlAutoNumber.next("direct (static) throws - validate error message"), () => { throw new Error("fail"); }, e => e.message === "fail", null, write);
+
+		moyal.test.noThrows(mlAutoNumber.next("direct (static) noThrows - safe function"), () => { const unused__e = 1 + 1; }, null, write);
+
+		// moyal.test.logger.groupEnd(mlAutoNumber.unnest());
 	}
 }
 

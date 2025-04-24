@@ -1,77 +1,77 @@
-import terser from '@rollup/plugin-terser';
-import _buildInfo from './build/generated/build-info.js'
+/*!
+ * File: rollup.config.js 
+ */
 
-const terserBanner = `/*!
- * moyal.js.test v${_buildInfo.version}
+import terser from '@rollup/plugin-terser';
+import settingsAccessor from "./scripts/include/settings-accessor.js";
+const __projectSettings = settingsAccessor.projectSettings;
+
+const __terserBanner = `/*!
+ * ${settingsAccessor.scope}/${__projectSettings.lib} v${settingsAccessor.package.version}
  * (c) 2000–present Ilan Moyal
- * Released under the MIT License
+ * Released under the ${__projectSettings.license} License
  */`;
 
- const minifiedTerser = terser({
+ const __minifyingTerser = terser({
 	format: {
 	  comments: false,  // remove all comments
-	  preamble: terserBanner // but inject this one
+	  preamble: __terserBanner // but inject this one
 	}
 });
 
-export default [
-	/* UMD - Development version (with documentations) */
-	{
-	  input: 'src/moyal.test.js',
-	  output: {
-		file: `dist/moyal.test.umd.js`,
-		format: 'umd',
-		name: 'moyal.test' 
-	  }
-	},
+const __outputFormats = {
+	/* UMD - For regular script tag */
+	"umd": [{
+		"extension": "umd.js", 
+		"plugins": []
+	}, {
+		"extension": "umd.min.js", 
+		"plugins": [__minifyingTerser]
+	}],
+	/* ESM - For module style */
+	"es": [{
+		"extension": "mjs", 
+		"plugins": []
+	}, {
+		"extension": "min.mjs", 
+		"plugins": [__minifyingTerser]
+	}],
+	/* CJS - For NodeJS common JS */
+	"cjs": [{
+		"extension": "cjs.js", 
+		"plugins": []
+	}, {
+		"extension": "cjs.min.js", 
+		"plugins": [__minifyingTerser]
+	}]
+};
 
-	/* UMD - Production version (minified) */
-	{
-		input: 'src/moyal.test.js',
-		output: {
-		  file: `dist/moyal.test.umd.min.js`,
-		  format: 'umd',
-		  name: 'moyal.test' 
-		},
-		plugins: [minifiedTerser]
-	},
+const output = [];
 
-	/* ESM - Development version (with documentations) */
-	{
-	  input: 'src/moyal.test.js',
-	  output: {
-		file: `dist/moyal.test.mjs`,
-		format: 'es'
-	  }
-	},
+const sourceFile = `${(__projectSettings.sourceFolder ?? "src")}/${(__projectSettings.sourceFile ?? "index.js")}`;
+const outputFolder = settingsAccessor.projectSettings.outputFolder ?? "./dist";
+const baseFilename = settingsAccessor.projectSettings.outputBaseFilename;
+const exposedName = settingsAccessor.projectSettings.outputExposedName;
 
-	/* ESM - Production version (minified) */
-	{
-		input: 'src/moyal.test.js',
-		output: {
-		  file: `dist/moyal.test.min.mjs`,
-		  format: 'es'
-		},
-		plugins: [minifiedTerser]
-	},
+for (const [format, outputVariations] of Object.entries(__outputFormats)) {
+	for (const variation of outputVariations) {
+		const outputFile = `${outputFolder}/${baseFilename}.${variation.extension}`;
 
-	/* CJS - Development version (with documentations) */
-	{
-	  input: 'src/moyal.test.js',
-	  output: {
-		file: `dist/moyal.test.cjs.js`,
-		format: 'cjs'
-	  }
-	},
+		const config = {
+			input: sourceFile,
+			output: {
+				file: outputFile,
+				format
+			},
+			plugins: variation.plugins
+		};
+		
+		if (format === "umd") {
+			config.output.name = exposedName;
+		}
 
-	/* CJS - Production version (minified) */
-	{
-		input: 'src/moyal.test.js',
-		output: {
-		  file: `dist/moyal.test.cjs.min.js`,
-		  format: 'cjs'
-		},
-		plugins: [minifiedTerser]
+		output.push(config);
 	}
-  ];
-  
+} 
+
+export default output;
