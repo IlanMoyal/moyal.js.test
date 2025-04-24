@@ -29,7 +29,7 @@ const __outputFormats = {
 		"plugins": [__minifyingTerser]
 	}],
 	/* ESM - For module style */
-	"mjs": [{
+	"es": [{
 		"extension": "mjs", 
 		"plugins": []
 	}, {
@@ -49,7 +49,7 @@ const __outputFormats = {
 const output = [];
 
 const sourceFile = `${(__projectSettings.sourceFolder ?? "src")}/${(__projectSettings.sourceFile ?? "index.js")}`;
-const outputFolder = settingsAccessor.projectSettings.outputFolder ?? "dist";
+const outputFolder = settingsAccessor.projectSettings.outputFolder ?? "./dist";
 const baseFilename = settingsAccessor.projectSettings.outputBaseFilename;
 const exposedName = settingsAccessor.projectSettings.outputExposedName;
 

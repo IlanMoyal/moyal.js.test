@@ -14,15 +14,15 @@ import { init_entries as __init_entries} from "./init-entries.js";
 
 const __root = utils.getRootDirectory();
 
-export default class SettingsAccessor{
+export default class SettingsAccessor {
 	static #_packageTemplateFilename = __init_entries.packageTemplateFilename;
 	static get packageTemplateFilename() { return this.#_packageTemplateFilename; }
 	
-	static #_projectSettingsFilename = "project.settings-test.jsonc";
+	static #_projectSettingsFilename = __init_entries.projectSettingsFilename;
 	static get projectSettingsFilename() { return this.#_projectSettingsFilename; }
 
 	// TODO: when development complete, change to "package.json"
-	static #_packageFilename = "package-test.json";
+	static #_packageFilename = __init_entries.packageFilename;
 	static get packageFilename() { return this.#_packageFilename; }
 
 	static #_packageTemplatePath;
@@ -70,7 +70,7 @@ export default class SettingsAccessor{
 	}
 
 	static createEmptyPackageIfNotExists(){
-		utils.createFileIfNotExists(this.#_packagePath);
+		utils.createFileIfNotExists(this.#_packagePath, "{}");
 	}
 
 	static toObject() {

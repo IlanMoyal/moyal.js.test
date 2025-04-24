@@ -6,7 +6,7 @@
  */
  
 {
-	"moyal-comment": "THIS IS AUTO_GENERATED FILE. DON'T EDIT IT. INSTEAD EDIT build/package.template.jsonc and project.settings.jsonc",
+	"x-moyal-auto-generated-comment": "THIS IS AN AUTO_GENERATED FILE. DON'T EDIT IT! INSTEAD EDIT build/package.template.jsonc and project.settings.jsonc",
 	"name": "{{scope}}/{{lib}}",
 	"version": "{{version}}",
 	"description": "{{description}}",

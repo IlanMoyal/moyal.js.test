@@ -11,7 +11,7 @@
 	"sourceFolder": "src",
 	"sourceFile": "moyal.test.js",
 	"testFolder": "test",
-	"outputFolder": "dist",
+	"outputFolder": "./dist",
 	"outputBaseFilename": "moyal.test",
 	"outputExposedName": "moyalTest",
 	"devDependencies": {
