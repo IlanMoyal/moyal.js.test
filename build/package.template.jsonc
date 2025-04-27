@@ -62,7 +62,7 @@
 		/* publish and related */
 		"publish:switch": "node ./scripts/publish-switch.js switch",
 		"publish:restore": "node ./scripts/publish-switch.js restore",
-		"publish:npm": "npm run publish:switch && npm publish --access public && npm run publish:restore",
+		"publish:npm": "npm run publish:switch && npm publish --access public && node ./scripts/publish-switch.js restore",
 		"release": "npm run build && npm run version:release && npm run publish:npm"
 	},
 	"devDependencies": "::placeholder::", /* dependencies required only during development */
