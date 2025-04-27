@@ -10,10 +10,8 @@ const fieldsToSync = ["version", "devDependencies", "dependencies"];
 
 function syncProjectSettings() {
 	SettingsAccessor.validateAllFilesExistOrThrow()
-
 	const packageJsonObj = SettingsAccessor.package;
 	const projectSettingsObj = SettingsAccessor.projectSettings;
-	SettingsAccessor.validateAllFilesExistOrThrow()
 
 	/* Conditionally copy fields */
 	let changed = false;
