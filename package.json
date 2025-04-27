@@ -1,7 +1,7 @@
 {
   "x-moyal-auto-generated-comment": "THIS IS AN AUTO_GENERATED FILE. DON'T EDIT IT! INSTEAD EDIT build/package.template.jsonc and project.settings.jsonc",
   "name": "@moyal/js-test",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
   "type": "module",
   "main": "./dist/moyal.test.cjs.js",
@@ -41,7 +41,7 @@
     "pack": "npm run pack:local && npm run pack:preview",
     "publish:switch": "node ./scripts/publish-switch.js switch",
     "publish:restore": "node ./scripts/publish-switch.js restore",
-    "publish:npm": "npm run publish:switch && npm publish --access public && npm run publish:restore",
+    "publish:npm": "npm run publish:switch && npm publish --access public && node ./scripts/publish-switch.js restore",
     "release": "npm run build && npm run version:release && npm run publish:npm"
   },
   "devDependencies": {

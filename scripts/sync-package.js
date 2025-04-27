@@ -33,27 +33,24 @@ function applyTemplate(template, values) {
         * JSON.parse(interpolated) - Validate the output is still valid JSON 
         * JSON.stringify(...) - beautify the result
         */
-       let temp = JSON.parse(interpolated);
-       interpolated = JSON.stringify(temp, null, 2);
+       let pkg = JSON.parse(interpolated);
+       interpolated = JSON.stringify(pkg, null, 2);
        
        /* no scripts in publish version */
-       delete temp.scripts;
-       delete temp.devDependencies;
-       delete temp["x-moyal-auto-generated-comment"];
-       publishInterpolated = JSON.stringify(temp, null, 2);
+       publishInterpolated = JSON.stringify(SettingsAccessor.preparePackageForPublish(pkg), null, 2);
 
     } catch (err) {
         throw new Error(`Interpolated package.json is invalid: ${err.message}`);
     }
 
-    return [interpolated, publishInterpolated];
+    return {"packageJson": interpolated, "publishPackageJson": publishInterpolated};
 }
 
 function syncPackageJson() {
     SettingsAccessor.validateAllFilesExistOrThrow();
     const json = applyTemplate(SettingsAccessor.packageTemplateJson, SettingsAccessor.projectSettings); 
-    SettingsAccessor.packageJson = json[0];
-    SettingsAccessor.publishPackageJson = json[1];
+    SettingsAccessor.packageJson = json.packageJson;
+    SettingsAccessor.publishPackageJson = json.publishPackageJson;
     console.log(`Synced ${SettingsAccessor.packageFilename} from ${SettingsAccessor.projectSettingsFilename} and ${SettingsAccessor.packageTemplateFilename}`);
 }
 
