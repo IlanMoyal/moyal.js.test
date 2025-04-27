@@ -6,8 +6,6 @@
 
 import SettingsAccessor from "./include/settings-accessor.js";
 
-
-
 const fieldsToSync = ["version", "devDependencies", "dependencies"];
 
 function syncProjectSettings() {
@@ -16,9 +14,6 @@ function syncProjectSettings() {
 	const packageJsonObj = SettingsAccessor.package;
 	const projectSettingsObj = SettingsAccessor.projectSettings;
 	SettingsAccessor.validateAllFilesExistOrThrow()
-
-	const packageJsonObj = SettingsAccessor.package;
-	const projectSettingsObj = SettingsAccessor.projectSettings;
 
 	/* Conditionally copy fields */
 	let changed = false;
@@ -34,7 +29,6 @@ function syncProjectSettings() {
 		} else if (field in projectSettingsObj) {
 			delete projectSettingsObj[field];
 			console.log(`✘ Removed '${field}' (not in ${SettingsAccessor.packageFilename})`);
-			console.log(`✘ Removed '${field}' (not in ${SettingsAccessor.packageFilename})`);
 			changed = true;
 		}
 	});
@@ -44,11 +38,7 @@ function syncProjectSettings() {
 		SettingsAccessor.projectSettings = projectSettingsObj;
 		SettingsAccessor.publishPackage = SettingsAccessor.preparePackageForPublish(SettingsAccessor.package); /* also update package to publish */
 		console.log(`🔁 Synced ${SettingsAccessor.projectSettingsFilename} from ${SettingsAccessor.packageFilename}`);
-		SettingsAccessor.projectSettings = projectSettingsObj;
-		SettingsAccessor.publishPackage = SettingsAccessor.preparePackageForPublish(SettingsAccessor.package); /* also update package to publish */
-		console.log(`🔁 Synced ${SettingsAccessor.projectSettingsFilename} from ${SettingsAccessor.packageFilename}`);
 	} else {
-		console.log(`✅ "${SettingsAccessor.projectSettingsFilename}" and "${SettingsAccessor.publishPackageFilename}" are already up to date`);
 		console.log(`✅ "${SettingsAccessor.projectSettingsFilename}" and "${SettingsAccessor.publishPackageFilename}" are already up to date`);
 	}
 }
