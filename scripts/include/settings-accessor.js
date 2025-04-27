@@ -8,12 +8,15 @@ import fs from "fs";
 import path from "path";
 import utils from "./utils.js";
 import jsonc from "comment-json";
+import { Portability } from "./portability.js";
 
-//TODO: On completion of workflow development - change to init_entries
 import { init_entries as __init_entries} from "./init-entries.js";
 
 const __root = utils.getRootDirectory();
 
+ /* no scripts in publish version */
+ const __publishedPackageKeysToRemove = ["scripts", "devDependencies", /^x-moyal-.*$/];
+ 
 export default class SettingsAccessor {
 	static #_packageTemplateFilename = __init_entries.packageTemplateFilename;
 	static get packageTemplateFilename() { return this.#_packageTemplateFilename; }
@@ -66,6 +69,18 @@ export default class SettingsAccessor {
 	static set publishPackageJson(pkg) {utils.writeJsonString(this.#_publishPackagePath, pkg);}
 	static get publishPackage() {return JSON.parse(this.publishPackageJson);}
 	static set publishPackage(pkg) { utils.writeJson(this.#_publishPackagePath, pkg);}
+
+	/**
+	 * Prepares a copy of the package object for publishing
+	 * by removing specified keys (string match or regex match).
+	 * 
+	 * @param {Object} packageJson - The original package.json object
+	 * @param {(string | RegExp)[]} keysToRemove - Keys to remove (can be strings or RegExp patterns)
+	 * @returns {Object} A new package object ready for publishing
+	 */
+	static preparePackageForPublish(packageJson) {
+		return Portability.removeObjectKeys(packageJson, __publishedPackageKeysToRemove);
+	}
 
 	static validateAllFilesExistOrThrow() {
 		if (!fs.existsSync(this.#_packageTemplatePath)) throw new Error("Missing package template.");

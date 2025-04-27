@@ -4,16 +4,17 @@
  * Synchronizes project.settings.jsonc from package.json.
  */
 
-import settingsAccessor from "./include/settings-accessor.js";
-import jsonc from "comment-json";
+import SettingsAccessor from "./include/settings-accessor";
+
+
 
 const fieldsToSync = ["version", "devDependencies", "dependencies"];
 
 function syncProjectSettings() {
-	settingsAccessor.validateAllFilesExistOrThrow()
-	
-	const packageJsonObj = settingsAccessor.package;
-	const projectSettingsObj = settingsAccessor.projectSettings;
+	SettingsAccessor.validateAllFilesExistOrThrow()
+
+	const packageJsonObj = SettingsAccessor.package;
+	const projectSettingsObj = SettingsAccessor.projectSettings;
 
 	/* Conditionally copy fields */
 	let changed = false;
@@ -28,20 +29,18 @@ function syncProjectSettings() {
 			}
 		} else if (field in projectSettingsObj) {
 			delete projectSettingsObj[field];
-			console.log(`✘ Removed '${field}' (not in ${settingsAccessor.packageFilename})`);
+			console.log(`✘ Removed '${field}' (not in ${SettingsAccessor.packageFilename})`);
 			changed = true;
 		}
 	});
 
 	/* Stringify and write back as JSONC */
 	if (changed) {
-		// const jsoncString = jsonc.stringify(projectSettingsObj, null, 2);
-		// settingsAccessor.projectSettingsJson = jsoncString;
-		//const jsoncString = jsonc.stringify(projectSettingsObj, null, 2);
-		settingsAccessor.projectSettings = projectSettingsObj;
-		console.log(`🔁 Synced ${settingsAccessor.projectSettingsFilename} from ${settingsAccessor.packageFilename}`);
+		SettingsAccessor.projectSettings = projectSettingsObj;
+		SettingsAccessor.publishPackage = SettingsAccessor.preparePackageForPublish(SettingsAccessor.package); /* also update package to publish */
+		console.log(`🔁 Synced ${SettingsAccessor.projectSettingsFilename} from ${SettingsAccessor.packageFilename}`);
 	} else {
-		console.log(`✅ ${settingsAccessor.projectSettingsFilename} is already up to date`);
+		console.log(`✅ "${SettingsAccessor.projectSettingsFilename}" and "${SettingsAccessor.publishPackageFilename}" are already up to date`);
 	}
 }
 
