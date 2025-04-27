@@ -7,7 +7,15 @@ import SettingsAccessor from "./include/settings-accessor.js";
 
 const PACKAGE_JSON = SettingsAccessor.packagePath;
 const PACKAGE_PUBLISH_JSON = SettingsAccessor.publishPackagePath;
-const PACKAGE_BACKUP_JSON = PACKAGE_JSON + ".backup";
+const PACKAGE_BACKUP_JSON = PACKAGE_JSON + ".publish-backup";
+
+function gitAssumeUnchanged(filePath) {
+    execSync(`git update-index --assume-unchanged "${filePath}"`);
+}
+
+function gitNoAssumeUnchanged(filePath) {
+    execSync(`git update-index --no-assume-unchanged "${filePath}"`);
+}
 
 async function copyOrFail(from, to) {
     try {
@@ -48,6 +56,9 @@ async function publishSwitch() {
     // Move publish-ready package into place
     await renameOrFail(PACKAGE_PUBLISH_JSON, PACKAGE_JSON);
 
+    // mark package.json as git-unchanged, so version command can work.
+    gitAssumeUnchanged(PACKAGE_JSON);
+
     console.log("✅ Switched package.json for publish.");
 }
 
@@ -67,6 +78,9 @@ async function publishRestore() {
 
     // Restore backup
     await renameOrFail(PACKAGE_BACKUP_JSON, PACKAGE_JSON);
+
+    // clear the flag the mark package.json as git-unchanged.
+    gitNoAssumeUnchanged(PACKAGE_JSON);
 
     console.log("✅ Restored original package.json.");
 }
