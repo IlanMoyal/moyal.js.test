@@ -4,6 +4,7 @@
 
 import fs from "fs";
 import SettingsAccessor from "./include/settings-accessor.js";
+import { execSync } from "child_process";
 
 const PACKAGE_JSON = SettingsAccessor.packagePath;
 const PACKAGE_PUBLISH_JSON = SettingsAccessor.publishPackagePath;
