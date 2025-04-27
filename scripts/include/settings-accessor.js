@@ -20,10 +20,12 @@ export default class SettingsAccessor {
 	
 	static #_projectSettingsFilename = __init_entries.projectSettingsFilename;
 	static get projectSettingsFilename() { return this.#_projectSettingsFilename; }
-
-	// TODO: when development complete, change to "package.json"
+	
 	static #_packageFilename = __init_entries.packageFilename;
 	static get packageFilename() { return this.#_packageFilename; }
+
+	static #_publishPackageFilename = __init_entries.publishPackageFilename;
+	static get publishPackageFilename() { return this.#_publishPackageFilename; }
 
 	static #_packageTemplatePath;
 	static get packageTemplatePath(){return this.#_packageTemplatePath;}
@@ -34,11 +36,15 @@ export default class SettingsAccessor {
 	static #_packagePath;
 	static get packagePath(){return this.#_packagePath;}
 
+	static #_publishPackagePath;
+	static get publishPackagePath(){return this.#_publishPackagePath;}
+
 	static
 	{
 		this.#_packageTemplatePath = path.join(__root, this.#_packageTemplateFilename);
 		this.#_projectSettingsPath = path.join(__root, this.#_projectSettingsFilename);
 		this.#_packagePath = path.join(__root, this.#_packageFilename);
+		this.#_publishPackagePath = path.join(__root, this.#_publishPackageFilename);
 	}
 	
 	static get packageTemplateJson() {return fs.readFileSync(this.#_packageTemplatePath, "utf-8");}
@@ -56,28 +62,36 @@ export default class SettingsAccessor {
 	static get package() {return JSON.parse(this.packageJson);}
 	static set package(pkg) { utils.writeJson(this.#_packagePath, pkg);}
 
+	static get publishPackageJson() {return fs.readFileSync(this.#_publishPackagePath, "utf-8");}
+	static set publishPackageJson(pkg) {utils.writeJsonString(this.#_publishPackagePath, pkg);}
+	static get publishPackage() {return JSON.parse(this.publishPackageJson);}
+	static set publishPackage(pkg) { utils.writeJson(this.#_publishPackagePath, pkg);}
+
 	static validateAllFilesExistOrThrow() {
 		if (!fs.existsSync(this.#_packageTemplatePath)) throw new Error("Missing package template.");
 		if (!fs.existsSync(this.#_projectSettingsPath)) throw new Error("Missing project settings.");
-		console.info(this.#_packagePath);
 		if (!fs.existsSync(this.#_packagePath)) throw new Error("Missing package.json.");
+		if (!fs.existsSync(this.#_publishPackagePath)) throw new Error("Missing package.json.");
 	}
 
 	static allFilesExist() {
 		return fs.existsSync(this.#_packageTemplatePath)
 			&& fs.existsSync(this.#_projectSettingsPath)
-			&& fs.existsSync(this.#_packagePath);
+			&& fs.existsSync(this.#_packagePath)
+			&& fs.existsSync(this.#_publishPackagePath);
 	}
 
 	static createEmptyPackageIfNotExists(){
 		utils.createFileIfNotExists(this.#_packagePath, "{}");
+		utils.createFileIfNotExists(this.#_publishPackagePath, "{}");
 	}
 
 	static toObject() {
 		return {
 			template: this.packageTemplate,
 			settings: this.projectSettings,
-			pkg: this.package
+			pkg: this.package,
+			publishPkg: this.publishPackage,
 		};
 	}
 };

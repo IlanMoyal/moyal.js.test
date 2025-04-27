@@ -5,9 +5,10 @@
  * However, under Node environment it is better to execure runner-for-node.js
  */
 
-import utils from "../scripts/include/utils.js";
+import { Portability } from "../scripts/include/portability.js";
+
 /* ensures existence of globalThis */
-utils.fixGlobal();
+Portability.fixGlobal();
 
 /* create global multi level automatic number  */
 import "../src/moyal.test.js";
@@ -38,9 +39,9 @@ Promise.all(list.map(path => import(`${testUnits.basePath}/${path}`)))
 			if(hasFailure)
 				break;
         }
-        utils.exit(hasFailure ? 1 : 0);
+        Portability.exit(hasFailure ? 1 : 0);
     })
     .catch(err => {
         console.error("Failed to load tests:", err);
-        utils.exit(1);
+        Portability.exit(1);
     });
