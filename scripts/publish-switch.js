@@ -3,10 +3,10 @@
 */
 
 import fs from "fs";
-import SettingsAccessor from "./include/settings-accessor";
+import SettingsAccessor from "./include/settings-accessor.js";
 
 const PACKAGE_JSON = SettingsAccessor.packagePath;
-const PACKAGE_PUBLISH_JSON = SettingsAccessor.publishPackage;
+const PACKAGE_PUBLISH_JSON = SettingsAccessor.publishPackagePath;
 const PACKAGE_BACKUP_JSON = PACKAGE_JSON + ".backup";
 
 async function copyOrFail(from, to) {
