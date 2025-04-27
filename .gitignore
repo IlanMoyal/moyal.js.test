@@ -1,4 +1,4 @@
-#my ignored directories
+#my ignored directories and fils
 my-files/
 build/generated/
 packages/
