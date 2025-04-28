@@ -2,9 +2,9 @@
  * File:  test.moyal.sequences.js
  */
 
-import "../../src/moyal.test.js";
+import { TestGroup } from "../../src/moyal.test.js";
 
-export default new moyal.test.TestGroup("Sequence Comparison Tests")
+export default new TestGroup("Sequence Comparison Tests")
 	.groupStart("basic equality")
 		.sequencesAreEqual("Empty arrays", [], [])
 		.sequencesAreEqual("Simple number arrays", [1, 2, 3], [1, 2, 3])

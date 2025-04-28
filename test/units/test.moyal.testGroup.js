@@ -2,9 +2,9 @@
  * File: test.moyal.testGroup.js
  */
 
-import "../../src/moyal.test.js";
+import { TestGroup } from "../../src/moyal.test.js";
 
-export default new moyal.test.TestGroup("TestGroup API and Behavior")
+export default new TestGroup("TestGroup API and Behavior")
 
 	.groupStart("basic grouping")
 		.areEqual("1 + 1 = 2", 2, 1 + 1)

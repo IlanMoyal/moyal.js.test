@@ -7,22 +7,34 @@
 
 > A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.
 
-**Version:** 1.1.0  
+**Version:** 2.0.0  
 **Author:** Ilan Moyal  
 **Website:** [https://www.moyal.es](https://www.moyal.es)  
 **Repository:** [GitHub](https://github.com/IlanMoyal/moyal.js.test)  
 **License:** MIT  
 **NPM:** [https://www.npmjs.com/package/@moyal/js-test](https://www.npmjs.com/package/@moyal/js-test)
 
+## 📖 Table of Contents
+
+- [✨ Features](#-features)
+- [📦 Exported Modules and Classes](#-exported-modules-and-classes)
+- [🚀 Quick Start](#-quick-start)
+- [✅ Simple Usage](#-simple-usage)
+- [🔧 Available Assertion Methods](#-available-assertion-methods)
+- [🧰 Utility Types](#-utility-types)
+- [🖨️ Custom Logger Support](#-custom-logger-support)
+- [🔁 Version Access](#-version-access)
+- [📂 Example Test Files](#-example-test-files)
+- [🛠️ License](#-license)
+- [🧠 Author](#-author)
 
 ## ✨ Features
 
 - Minimalistic test runner with zero dependencies.
 - Works in both browser and Node.js environments.
-- Global `moyal.test` namespace (avoids polluting global scope).
 - Fluent-style test groups for structured assertions.
 - Rich console output with color-coded results and grouping.
-- Lazy evaluation support for async/deferred scenarios.
+- Lazy evaluation support for deferred execution (note: not true async test execution).
 - Built-in assertion types: equality, throws, null/undefined checks, and sequence comparison.
 - Utilities for test numbering and hierarchical auto-numbering.
 - Pluggable logger interface with default support for:
@@ -30,13 +42,46 @@
   - Node.js `console` with indentation and ANSI coloring
   - Fallback printer for unknown environments
 
+## 📦 Exported Modules and Classes
+### Testing types
+
+- `Test` - Contains static method for testing.
+- `TestBase` - Derive your class from TestBase to create custom test.
+- `Assert` - Base class for assertions.
+- `IsDefined` - Asserts that the specified evaluates to defined value.
+- `IsUndefined` - Asserts that the specified evaluates to undefined value.
+- `IsFalse` - Asserts that the specified evaluates to `false`.
+- `IsTrue` - Asserts that the specified evaluates to `false`.
+- `IsNull` - Asserts that the specified evaluates to `null`.
+- `IsNotNull` - Asserts that the specified evaluates to non `null` value.
+- `AreEqual` - Asserts that the specified values evaluations are equal.
+- `AreNotEqual` - Asserts that the specified values evaluations are not equal.
+- `ThrowsBase` - Base class to test error throwing.
+- `Throws` - Asserts that the specified throws error.
+- `NoThrows` - Asserts that the specified does not throw error.
+- `SequencesAreEqual` - Asserts that the specified sequences are equal.
+- `TestGroup` - Groups and enables chaining of multiple tests.
+
+### Utility types:
+- `SequentialText` - Utility class to generate sequential text.
+- `AutoNumbering` - Utility class to generate automatic incremented number.
+- `MultiLevelAutoNumbering` - Utility class to generate automatic incremented number.
+
+### Logging types:
+- `LoggerBase` - Base class for logger.
+- `SimpleLogger` - Simple logger for unknown environments.
+- `BrowserLogger` - Console logger for browser.
+- `NodeLogger` - Console logger for NodeJS.
+
+The namespace `MoyalTest` is also exported which wrapping all these types.
+
 ## 🚀 Quick Start
 
 ### In Browser (from your project)
 ```html
 <script type="module">
-  import './src/moyal.test.js';
-  moyal.test.isTrue("1 + 1 === 2", 1 + 1 === 2);
+  import {Test as tst} from '@moyal/js-test';
+  tst.isTrue("1 + 1 === 2", 1 + 1 === 2);
 </script>
 ```
 
@@ -46,39 +91,37 @@ Use the library directly from a CDN like [jsDelivr](https://www.jsdelivr.com/) o
 ```html
 <!-- Minified version -->
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@1.1.0/dist/moyal.test.umd.min.js";
-  moyal.test.isTrue("CDN test", true);
+  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.0.0/dist/moyal.test.umd.min.js";
+  MoyalTest.Test.isTrue("CDN test", true);
 </script>
 
 <!-- Full version (non-minified) -->
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@1.1.0/dist/moyal.test.umd.js";
+  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.0.0/dist/moyal.test.umd.js";
 </script>
 ```
 
 Or using **unpkg**:
 ```html
 <script type="module">
-  import "https://unpkg.com/@moyal/js-test@1.1.0/dist/moyal.test.umd.min.js";
+  import "https://unpkg.com/@moyal/js-test@2.0.0/dist/moyal.test.umd.min.js";
 </script>
 ```
+Note: When using CDN import, `MoyalTest` exposes all types globally, including `Test`, `TestGroup`, `SequentialText`, `AutoNumbering`, and `MultiLevelAutoNumbering` (full list below).
 
-### In Node.js
-```bash
-node test.moyal.js
-```
-
-## ✅ Basic Usage
+## ✅ Simple Usage
 
 ```js
-moyal.test.isTrue("Boolean check", 7 === 6 + 1);
-moyal.test.areEqual("Compare values", 10, 5 + 5);
-moyal.test.throws("Expect error", () => { throw new Error("Oops") });
+import {Test as tst} from '@moyal/js-test';
+tst.isTrue("Boolean check", 7 === 6 + 1);
+tst.areEqual("Compare values", 10, 5 + 5);
+tst.throws("Expect error", () => { throw new Error("Oops") });
 ```
 
 ### Fluent Test Group
 ```js
-const group = new moyal.test.TestGroup("My Test Group");
+import {TestGroup} from '@moyal/js-test';
+const group = new TestGroup("My Test Group");
 group
   .isTrue("Truthy check", true)
   .areEqual("Math", 2, 1 + 1)
@@ -86,24 +129,25 @@ group
   .run(true);
 ```
 
-## 🔧 Assertion Methods
+## 🔧 Available Assertion Methods
 
 ### Direct Static Assertions
 ```js
-moyal.test.areEqual(name, expected, actual, comparer?, write?);
-moyal.test.areNotEqual(name, notExpected, actual, comparer?, write?);
-moyal.test.isTrue(name, actual, write?);
-moyal.test.isFalse(name, actual, write?);
-moyal.test.isNull(name, actual, write?);
-moyal.test.isNotNull(name, actual, write?);
-moyal.test.isDefined(name, actual, write?);
-moyal.test.isUndefined(name, actual, write?);
-moyal.test.throws(name, fn, errorPredicate?, thisArg?, write?);
-moyal.test.noThrows(name, fn, thisArg?, write?);
-moyal.test.sequencesAreEqual(name, expectedIterable, actualIterable, itemComparer?, write?);
+import {Test as tst} from '@moyal/js-test';
+tst.areEqual(name, expected, actual, comparer?, write?);
+tst.areNotEqual(name, notExpected, actual, comparer?, write?);
+tst.isTrue(name, actual, write?);
+tst.isFalse(name, actual, write?);
+tst.isNull(name, actual, write?);
+tst.isNotNull(name, actual, write?);
+tst.isDefined(name, actual, write?);
+tst.isUndefined(name, actual, write?);
+tst.throws(name, fn, errorPredicate?, thisArg?, write?);
+tst.noThrows(name, fn, thisArg?, write?);
+tst.sequencesAreEqual(name, expectedIterable, actualIterable, itemComparer?, write?);
 ```
 
-### Test Group API (Chainable)
+### TestGroup API (Fluent Chaining)
 ```js
 group.isTrue(name, actual)
      .areEqual(name, expected, actual)
@@ -113,33 +157,35 @@ group.isTrue(name, actual)
      .groupClose();
 ```
 
-
-
 ## 🧰 Utility Types
 
 ### SequentialText
 ```js
-const seq = new moyal.test.SequentialText("Test {0}", 1);
+import {SequentialText} from '@moyal/js-test';
+const seq = new SequentialText("Test {0}", 1);
 seq.next(); // "Test 1"
 seq.next(); // "Test 2"
 ```
 or start with different value:
 ```js
-const seq = new moyal.test.SequentialText("Test {0}", 8);
+import {SequentialText} from '@moyal/js-test';
+const seq = new SequentialText("Test {0}", 8);
 seq.next(); // "Test 8"
 seq.next(); // "Test 9"
 ```
 
 ### AutoNumbering
 ```js
-const an = new moyal.test.AutoNumbering();
+import {AutoNumbering} from '@moyal/js-test';
+const an = new AutoNumbering();
 an.next("Step A"); // "1. Step A"
 an.next("Step B"); // "2. Step B"
 ```
 
 ### MultiLevelAutoNumbering
 ```js
-const ml = new moyal.test.MultiLevelAutoNumbering();
+import {MultiLevelAutoNumbering} from '@moyal/js-test';
+const ml = new MultiLevelAutoNumbering();
 ml.next("Root");        // "1. Root"
 ml.nest().next("Child"); // "1.1. Child"
 ml.next("Child"); // "1.2. Child"
@@ -153,8 +199,9 @@ ml.unnest().next("Root2"); // "2. Root2"
 
 ### MultiLevelAutoNumbering with TestGroup
 ```js
-const ml = new moyal.test.MultiLevelAutoNumbering();
-const group = new moyal.test.TestGroup("MLA Numbered Tests");
+import {MultiLevelAutoNumbering, TestGroup} from '@moyal/js-test';
+const ml = new MultiLevelAutoNumbering();
+const group = new TestGroup("MLA Numbered Tests");
 group.areEqual(ml.next("Test A"), 1, 1)
      .areEqual(ml.nest().next("Test B1"), "foo", "foo")
      .areEqual(ml.next("Test B2"), true, true)
@@ -163,12 +210,24 @@ group.areEqual(ml.next("Test A"), 1, 1)
 ```
 Usually you'll call nest() and unnest() when starting or closing a nested test group.
 
+Or even simpler:
+```js
+import {MultiLevelAutoNumbering, TestGroup} from '@moyal/js-test';
+const ml = new MultiLevelAutoNumbering();
+const group = new TestGroup("MLA Numbered Tests");
+group.areEqual("Test A", 1, 1)
+     .areEqual("Test B1", "foo", "foo")
+     .areEqual("Test B2", true, true)
+     .unnest().areEqual("Test C", 123, 123)
+     .run(true, ml);
+```
 
 ## 🖨️ Custom Logger Support
 
 Override console output with your custom logger:
 ```js
-class MyLogger extends moyal.test.LoggerBase {
+import {Test, LoggerBase} from '@moyal/js-test';
+class MyLogger extends LoggerBase {
   /* implement logger methods */
   log(message, color, ...args) { /* ... */}
   info(message, color, ...args) { /* ... */ }
@@ -179,40 +238,29 @@ class MyLogger extends moyal.test.LoggerBase {
   groupEnd() { /* ... */ }
 }
 
-moyal.test.logger = new MyLogger();  
+Test.logger = new MyLogger();  
 ```
 
 ## 🔁 Version Access
 
 Access the library version directly:
 ```js
-moyal.test.Version // → e.g., "1.1.0"
+import {Test} from "@moyal/js-test";
+
+Test.Version // → e.g., "2.0.0"
 ```
-
-## 🔁 Version Bumping
-
-We use NPM’s built-in version tools:
-```json
-"version:patch": "npm version patch && git push && git push --tags"
-"version:minor": "npm version minor && git push && git push --tags"
-"version:major": "npm version major && git push && git push --tags"
-```
-
-These commands:
-1. Bump `package.json` version.
-2. Commit and tag the version.
-3. Push both commits and tags to remote.
 
 ## 📂 Example Test Files
 
 Test examples under the `test/` folder:
 - `test.moyal.assertions.js`
-- `test.moyal.exceptions.js`
-- `test.moyal.sequences.js`
-- `test.moyal.testGroup.js`
-- `test.moyal.sequentialText.js`
 - `test.moyal.autoNumbering.js`
+- `test.moyal.direct.js`
+- `test.moyal.exceptions.js`
 - `test.moyal.multiLevelAutoNumbering.js`
+- `test.moyal.sequences.js`
+- `test.moyal.sequentialText.js`
+- `test.moyal.testGroup.js`
 
 You can run these in Node or browser.
 

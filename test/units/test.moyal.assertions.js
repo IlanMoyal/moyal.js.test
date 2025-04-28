@@ -1,9 +1,10 @@
 /* 
  * File: test.moyal.assertions.js
  */
-import "../../src/moyal.test.js";
 
-export default new moyal.test.TestGroup("Basic Assertion Tests")
+import { TestGroup } from "../../src/moyal.test.js";
+
+export default new TestGroup("Basic Assertion Tests")
 
 	.groupStart("areEqual")
 		.areEqual("Direct equality", 2 + 2, 4)

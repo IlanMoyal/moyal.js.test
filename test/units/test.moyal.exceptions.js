@@ -2,9 +2,9 @@
  * File: test.moyal.exceptions.js
  */
 
-import "../../src/moyal.test.js";
+import { TestGroup } from "../../src/moyal.test.js";
 
-export default new moyal.test.TestGroup("Exception Testing (Throws / NoThrows)")
+export default new TestGroup("Exception Testing (Throws / NoThrows)")
 	.groupStart("Basic Throws")
 		.throws("Throws basic error", () => { throw new Error("boom"); })
 		.throws("Throws specific error object", () => { throw new TypeError("wrong type"); })

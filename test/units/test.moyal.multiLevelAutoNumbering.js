@@ -2,11 +2,11 @@
  * File:  test.moyal.multiLevelAutoNumbering.js
  */
 
-import "../../src/moyal.test.js";
+import { MultiLevelAutoNumbering, TestGroup } from "../../src/moyal.test.js";
 
-const grp = new moyal.test.TestGroup("MultiLevelAutoNumbering Tests");
+const grp = new TestGroup("MultiLevelAutoNumbering Tests");
 
-let mn = new moyal.test.MultiLevelAutoNumbering();
+let mn = new MultiLevelAutoNumbering();
 
 grp.groupStart("First sequence")
 	.areEqual("1. A message", "1. A message", mn.next("A message"))
