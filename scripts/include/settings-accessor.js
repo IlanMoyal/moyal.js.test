@@ -8,9 +8,8 @@ import fs from "fs";
 import path from "path";
 import utils from "./utils.js";
 import jsonc from "comment-json";
-import { Portability } from "./portability.js";
-
 import { init_entries as __init_entries} from "./init-entries.js";
+import Portability from "./portability.js";
 
 const __root = utils.getRootDirectory();
 

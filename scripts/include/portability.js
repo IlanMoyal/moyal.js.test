@@ -69,3 +69,5 @@ export class Portability {
 		return result;
 	}
 };
+
+export default Portability;

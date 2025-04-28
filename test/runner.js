@@ -8,7 +8,7 @@
 import { Portability } from "../scripts/include/portability.js";
 
 /* ensures existence of globalThis */
-Portability.fixGlobal();
+//Portability.fixGlobal();
 
 /* create global multi level automatic number  */
 import {MultiLevelAutoNumbering} from "../src/moyal.test.js";
