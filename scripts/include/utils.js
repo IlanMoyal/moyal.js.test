@@ -84,5 +84,20 @@ export default class utils {
 			fs.mkdirSync(path.dirname(resolvedPath), { recursive: true });
 			fs.writeFileSync(resolvedPath, content);
 		} 
+	}	
+
+	static npmGetLoggedInUser() {
+		return execSync('npm whoami', { stdio: 'pipe' }).toString().trim();
+	}
+
+	static npmValidateLoggedIn() {
+		try {
+			const username = this.npmGetLoggedInUser();
+			console.log(`🔑 Logged in as: ${username}`);
+			return true;
+		} catch {
+			console.error('❌ Not logged in to npm. Please run: npm login');
+			return false;
+		}
 	}
 }
