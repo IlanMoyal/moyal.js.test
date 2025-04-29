@@ -7,7 +7,7 @@
 
 > A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.
 
-**Version:** 2.0.0  
+**Version:** 2.1.0  
 **Author:** Ilan Moyal  
 **Website:** [https://www.moyal.es](https://www.moyal.es)  
 **Repository:** [GitHub](https://github.com/IlanMoyal/moyal.js.test)  
@@ -91,20 +91,20 @@ Use the library directly from a CDN like [jsDelivr](https://www.jsdelivr.com/) o
 ```html
 <!-- Minified version -->
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.0.0/dist/moyal.test.umd.min.js";
+  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.1.0/dist/moyal.test.umd.min.js";
   MoyalTest.Test.isTrue("CDN test", true);
 </script>
 
 <!-- Full version (non-minified) -->
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.0.0/dist/moyal.test.umd.js";
+  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.1.0/dist/moyal.test.umd.js";
 </script>
 ```
 
 Or using **unpkg**:
 ```html
 <script type="module">
-  import "https://unpkg.com/@moyal/js-test@2.0.0/dist/moyal.test.umd.min.js";
+  import "https://unpkg.com/@moyal/js-test@2..0/dist/moyal.test.umd.min.js";
 </script>
 ```
 Note: When using CDN import, `MoyalTest` exposes all types globally, including `Test`, `TestGroup`, `SequentialText`, `AutoNumbering`, and `MultiLevelAutoNumbering` (full list below).
@@ -241,13 +241,16 @@ class MyLogger extends LoggerBase {
 Test.logger = new MyLogger();  
 ```
 
+**Note**
+The logger methods are chainable. 
+
 ## 🔁 Version Access
 
 Access the library version directly:
 ```js
 import {Test} from "@moyal/js-test";
 
-Test.Version // → e.g., "2.0.0"
+Test.Version // → e.g., "2.1.0"
 ```
 
 ## 📂 Example Test Files

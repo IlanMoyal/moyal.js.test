@@ -77,6 +77,7 @@ class LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} - The current instance for chaining.
      * @abstract
      */
     log(message, color, ...args){ /* eslint-disable-line no-unused-vars */ }
@@ -86,6 +87,7 @@ class LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @abstract
      */
      info(message, color, ...args){ /* eslint-disable-line no-unused-vars */ }
@@ -95,6 +97,7 @@ class LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @abstract
      */
      warn(message, color, ...args){ /* eslint-disable-line no-unused-vars */ }
@@ -104,6 +107,7 @@ class LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @abstract
      */
      error(message, color, ...args){ /* eslint-disable-line no-unused-vars */ }
@@ -112,6 +116,7 @@ class LoggerBase {
      * Starts grouped output.
      * @param {string} label - The group label.
      * @param {string} [color] - The color to be used.
+     * @returns {this} The current instance for chaining.
      * @abstract
      */
      group(label, color){ /* eslint-disable-line no-unused-vars */ }
@@ -120,12 +125,14 @@ class LoggerBase {
      * Starts grouped output (collapsed by default).
      * @param {string} label - The group label.
      * @param {string} [color] - The color to be used.
+     * @returns {this} The current instance for chaining.
      * @abstract
      */
      groupCollapsed(label, color){ /* eslint-disable-line no-unused-vars */ }
 
      /**
      * Ends group output.
+     * @returns {this} The current instance for chaining.
      * @abstract
      */
      groupEnd(){}
@@ -177,10 +184,12 @@ class SimpleLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     log (msg, color, ...args) { 
         console.log(this.colorfy(this.prefixMessage(msg), color, "white"), ...args);
+        return this;
     }
 
      /**
@@ -188,10 +197,12 @@ class SimpleLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     info(msg, color, ...args){ 
         console.info(this.colorfy(this.prefixMessage(msg), color, "cyan"), ...args);
+        return this;
     }
 
     /**
@@ -199,10 +210,12 @@ class SimpleLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     warn(msg, color, ...args){ 
         console.warn(this.colorfy(this.prefixMessage(msg), color, "yellow"), ...args);
+        return this;
     }
 
      /**
@@ -210,10 +223,12 @@ class SimpleLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     error(msg, color, ...args) { 
         console.error(this.colorfy(this.prefixMessage(msg), color, "red"), ...args);
+        return this;
     }
 
     #_group_impl(label, color) {
@@ -225,28 +240,34 @@ class SimpleLogger extends LoggerBase {
      * Starts grouped output.
      * @param {string} label - The group label.
      * @param {string} [color] - The color to be used.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     group(label, color){
         this.#_group_impl(label, color);
+        return this;
     }
 
     /**
     * Starts grouped output (collapsed by default).
     * @param {string} label - The group label.
     * @param {string} [color] - The color to be used.
+    * @returns {this} The current instance for chaining.
     * @override
     */
     groupCollapsed(label, color){
         this.#_group_impl(label, color);
+        return this;
     }
 
     /**
     * Ends group output.
+    * @returns {this} The current instance for chaining.
     * @override
     */
     groupEnd() { 
         this.#_decrementLevel(); 
+        return this;
     }
 }
 
@@ -269,10 +290,12 @@ class BrowserLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     log(message, color, ...args) {
-         console.log(`%c${message}`, `color:${this.#_sanitizeColor(color) ?? "inherit"}`, ...args)
+         console.log(`%c${message}`, `color:${this.#_sanitizeColor(color) ?? "inherit"}`, ...args);
+         return this;
     }
 
      /**
@@ -280,10 +303,12 @@ class BrowserLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     info(msg, color, ...args) {
         console.info(`%c${msg}`, `color:${this.#_sanitizeColor(color) ?? "blue"}`, ...args);
+        return this;
     }
 
     /**
@@ -291,10 +316,12 @@ class BrowserLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     warn(msg, color, ...args) {
         console.warn(`%c${msg}`, `color:${this.#_sanitizeColor(color) ?? "orange"}`, ...args);
+        return this;
     }
 
      /**
@@ -302,38 +329,46 @@ class BrowserLogger extends LoggerBase {
      * @param {string} message - The message.
      * @param {string} [color] - The color to be used.
      * @param  {...any} args - Additional arguments.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     error(msg, color, ...args) {
         console.error(`%c${msg}`, `color:${this.#_sanitizeColor(color) ?? "red"}`, ...args);
+        return this;
     }
 
      /**
      * Starts grouped output.
      * @param {string} label - The group label.
      * @param {string} [color] - The color to be used.
+     * @returns {this} The current instance for chaining.
      * @override
      */
     group(label, color) {
         console.group(`%c${label}`, `color:${this.#_sanitizeColor(color) ?? "inherit"}`);
+        return this;
     }
 
     /**
     * Starts grouped output (collapsed by default).
     * @param {string} label - The group label.
     * @param {string} [color] - The color to be used.
+    * @returns {this} The current instance for chaining.* 
     * @override
     */
     groupCollapsed(label, color) {
         console.groupCollapsed(`%c${label}`, `color:${this.#_sanitizeColor(color) ?? "inherit"}`);
+        return this;
     }
 
     /**
     * Ends group output.
+    * @returns {this} The current instance for chaining.
     * @override
     */
     groupEnd() {
         console.groupEnd();
+        return this;
     }
 }
 
