@@ -1,7 +1,7 @@
 {
   "x-moyal-auto-generated-comment": "THIS IS AN AUTO_GENERATED FILE. DON'T EDIT IT! INSTEAD EDIT build/package.template.jsonc and project.settings.jsonc",
   "name": "@moyal/js-test",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
   "type": "module",
   "main": "./dist/moyal.test.cjs.js",
