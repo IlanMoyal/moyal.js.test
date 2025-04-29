@@ -187,8 +187,9 @@ class SimpleLogger extends LoggerBase {
      * @returns {this} The current instance for chaining.
      * @override
      */
-    log (msg, color, ...args) { 
-        console.log(this.colorfy(this.prefixMessage(msg), color, "white"), ...args);
+    log (message, color, ...args) { 
+        message ??= "";
+        console.log(this.colorfy(this.prefixMessage(message), color, "white"), ...args);
         return this;
     }
 
@@ -200,8 +201,9 @@ class SimpleLogger extends LoggerBase {
      * @returns {this} The current instance for chaining.
      * @override
      */
-    info(msg, color, ...args){ 
-        console.info(this.colorfy(this.prefixMessage(msg), color, "cyan"), ...args);
+    info(message, color, ...args){ 
+        message ??= "";
+        console.info(this.colorfy(this.prefixMessage(message), color, "cyan"), ...args);
         return this;
     }
 
@@ -213,8 +215,9 @@ class SimpleLogger extends LoggerBase {
      * @returns {this} The current instance for chaining.
      * @override
      */
-    warn(msg, color, ...args){ 
-        console.warn(this.colorfy(this.prefixMessage(msg), color, "yellow"), ...args);
+    warn(message, color, ...args){ 
+        message ??= "";
+        console.warn(this.colorfy(this.prefixMessage(message), color, "yellow"), ...args);
         return this;
     }
 
@@ -226,12 +229,14 @@ class SimpleLogger extends LoggerBase {
      * @returns {this} The current instance for chaining.
      * @override
      */
-    error(msg, color, ...args) { 
-        console.error(this.colorfy(this.prefixMessage(msg), color, "red"), ...args);
+    error(message, color, ...args) { 
+        message ??= "";
+        console.error(this.colorfy(this.prefixMessage(message), color, "red"), ...args);
         return this;
     }
 
     #_group_impl(label, color) {
+        label ??= "";
         console.log(this.colorfy(this.prefixMessage(`▼ ${label}`), color, "gray"));
         this.#_incrementLevel();
     }
@@ -294,6 +299,7 @@ class BrowserLogger extends LoggerBase {
      * @override
      */
     log(message, color, ...args) {
+        message ??= "";
          console.log(`%c${message}`, `color:${this.#_sanitizeColor(color) ?? "inherit"}`, ...args);
          return this;
     }
@@ -306,8 +312,9 @@ class BrowserLogger extends LoggerBase {
      * @returns {this} The current instance for chaining.
      * @override
      */
-    info(msg, color, ...args) {
-        console.info(`%c${msg}`, `color:${this.#_sanitizeColor(color) ?? "blue"}`, ...args);
+    info(message, color, ...args) {
+        message ??= "";
+        console.info(`%c${message}`, `color:${this.#_sanitizeColor(color) ?? "blue"}`, ...args);
         return this;
     }
 
@@ -319,8 +326,9 @@ class BrowserLogger extends LoggerBase {
      * @returns {this} The current instance for chaining.
      * @override
      */
-    warn(msg, color, ...args) {
-        console.warn(`%c${msg}`, `color:${this.#_sanitizeColor(color) ?? "orange"}`, ...args);
+    warn(message, color, ...args) {
+        message ??= "";
+        console.warn(`%c${message}`, `color:${this.#_sanitizeColor(color) ?? "orange"}`, ...args);
         return this;
     }
 
@@ -332,8 +340,9 @@ class BrowserLogger extends LoggerBase {
      * @returns {this} The current instance for chaining.
      * @override
      */
-    error(msg, color, ...args) {
-        console.error(`%c${msg}`, `color:${this.#_sanitizeColor(color) ?? "red"}`, ...args);
+    error(message, color, ...args) {
+        message ??= "";
+        console.error(`%c${message}`, `color:${this.#_sanitizeColor(color) ?? "red"}`, ...args);
         return this;
     }
 
@@ -381,7 +390,7 @@ class NodeLogger extends SimpleLogger {
     /**
      * Converts color names to ANSI escape codes for Node.js
      */
-    #_nodeColorize(color, msg) {
+    #_nodeColorize(color, message) {
         color = this.normalizeColor(color);
         const ansi = {
             black: "\x1b[30m", red: "\x1b[31m", green: "\x1b[32m", yellow: "\x1b[33m",
@@ -390,7 +399,7 @@ class NodeLogger extends SimpleLogger {
             lightyellow: "\x1b[93m", lightblue: "\x1b[94m", lightmagenta: "\x1b[95m",
             lightcyan: "\x1b[96m", lightgray: "\x1b[97m"
         };
-        return (ansi[color] ?? "") + msg + "\x1b[0m";
+        return (ansi[color] ?? "") + message + "\x1b[0m";
     }
 
     /**
@@ -402,7 +411,7 @@ class NodeLogger extends SimpleLogger {
      * @override
      */
     colorfy(message, color, defaultColor) {
-        return this.#_nodeColorize(color ?? defaultColor, message)
+        return this.#_nodeColorize(color?.toLowerCase() ?? defaultColor, message)
     }
 }
 

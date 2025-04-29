@@ -19,7 +19,12 @@ function testChainableLogger(){
 				.error("and meybe red error", "red")
 				.warn("some time a yellow warning is all what we need", "yellow")
 			.groupEnd()
-		.groupEnd();
+		.groupEnd()
+		.log()
+		.log()
+		.log("* * * * * LOGGER TEST COMPLETED! * * * * *", "blue")
+		.log()
+		.log();
 		
 		return true;
 	}
