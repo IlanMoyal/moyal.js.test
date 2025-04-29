@@ -61,6 +61,7 @@
 		"pack": "npm run pack:local && npm run pack:preview",
 
 		/* publish and related */
+		"prepublishOnly": "npm run build",
 		"validate:logged-in": "node ./scripts/validate-logged-in.js", 
 		"publish:switch": "node ./scripts/publish-switch.js switch",
 		"publish:npm": "npm run validate:logged-in && npm run publish:switch && npm publish --access public && node ./scripts/publish-switch.js restore", // publish the library to NPM

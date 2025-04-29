@@ -5,6 +5,7 @@ export default {
 		 */
 		"basePath": "./units",
 		"list": [ /* list of the unit tests, excluding the base path */
+			"test.chainable.logger.js",
 			"test.moyal.assertions.js",
 			"test.moyal.autoNumbering.js",
 			"test.moyal.direct.js",
