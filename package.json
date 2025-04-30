@@ -32,15 +32,17 @@
     "version:major": "npm version major",
     "version:release": "node ./scripts/version-release.js",
     "postversion": "git push && git push --tags && echo ✅ All pushed",
+    "generate:readme": "node ./scripts/generate-readme.js",
+    "build:docs": "npm run generate:readme",
     "postinstall": "npm run sync:back",
     "clean": "node ./scripts/clean.js",
     "prebuild": "npm run sync && npm run check",
     "build": "npm run clean && node ./scripts/build.js",
-    "prepack": "npm run build",
+    "prepack": "npm run build && npm run build:docs",
     "pack:local": "npm run publish:switch && bash ./scripts/pack-local.sh && node ./scripts/publish-switch.js restore",
     "pack:preview": "bash ./scripts/pack-preview.sh",
     "pack": "npm run pack:local && npm run pack:preview",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build && npm run build:docs",
     "validate:logged-in": "node ./scripts/validate-logged-in.js",
     "publish:switch": "node ./scripts/publish-switch.js switch",
     "publish:npm": "npm run validate:logged-in && npm run publish:switch && npm publish --access public && node ./scripts/publish-switch.js restore",
@@ -62,7 +64,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/IlanMoyal/moyal.js.test"
+    "url": "https://github.com/{{git:username}}/{{git:repository-name}}"
   },
   "keywords": [
     "test",

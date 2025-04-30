@@ -45,6 +45,10 @@
 		"version:release": "node ./scripts/version-release.js", /* if exist - drops alpha/beta but do not increment patch; imcrement patch if there is no alpha/beta */
 		"postversion": "git push && git push --tags && echo ✅ All pushed",
 
+		/* docs */
+		"generate:readme": "node ./scripts/generate-readme.js",
+		"build:docs": "npm run generate:readme",
+
 		/* dependencies installation */
 		"postinstall": "npm run sync:back", /* update project settings back after install dependencies */
 
@@ -55,13 +59,13 @@
 		"build": "npm run clean && node ./scripts/build.js",
 
 		/* packing */
-		"prepack": "npm run build", /* build before pack */
+		"prepack": "npm run build && npm run build:docs", /* build before pack */
 		"pack:local": "npm run publish:switch && bash ./scripts/pack-local.sh && node ./scripts/publish-switch.js restore", 
 		"pack:preview": "bash ./scripts/pack-preview.sh",
 		"pack": "npm run pack:local && npm run pack:preview",
 
 		/* publish and related */
-		"prepublishOnly": "npm run build",
+		"prepublishOnly": "npm run build && npm run build:docs",
 		"validate:logged-in": "node ./scripts/validate-logged-in.js", 
 		"publish:switch": "node ./scripts/publish-switch.js switch",
 		"publish:npm": "npm run validate:logged-in && npm run publish:switch && npm publish --access public && node ./scripts/publish-switch.js restore", // publish the library to NPM
@@ -76,7 +80,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "{{git}}"
+		"url": "https://github.com/{{git:username}}/{{git:repository-name}}"
 	},
 	"keywords": "::placeholder::"
 }

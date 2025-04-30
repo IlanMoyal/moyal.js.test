@@ -1,15 +1,21 @@
 /*
  * Edit this file to set all project settings.
  */{
+    "project:fullname": "moyal.js.test",
     "scope": "@moyal",
     "lib": "js-test",
     "version": "2.1.3",
     "description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
     "author": "Ilan Moyal",
+    "author:website": "https://www.moyal.es",
+    "author:twitter:username": "i_moyal",
+    "author:linkedin:username":"ilanam",
     "license": "MIT",
+    "license:short-text": "MIT License - free to use, modify, and distribute.",
     "sourceFolder": "src",
     "sourceFile": "moyal.test.js",
     "testFolder": "test",
+    "examplesFolder": "examples",
     "outputFolder": "./dist",
     "outputBaseFilename": "moyal.test",
     "outputExposedName": "MoyalTest",
@@ -22,7 +28,9 @@
         "globals": "^16.0.0",
         "rollup": "^3.0.0"
     },
-    "git": "https://github.com/IlanMoyal/moyal.js.test",
+
+    "git:repository-name": "moyal.js.test",
+    "git:username": "IlanMoyal",
     "keywords": [
         "test",
         "testing",
