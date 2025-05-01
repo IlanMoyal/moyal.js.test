@@ -4,7 +4,7 @@
 
 import utils from './include/utils.js';
 
-if(!utils.isGitTreeClean()) {
+if(!utils.gitIsClean()) {
 	console.error("❌ Git working tree is dirty. Please commit or stash your changes before generating docs.");
 	process.exit(1);
 }
