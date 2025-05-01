@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>BrowserLogger - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AreEqual.html">AreEqual</a></li><li><a href="AreNotEqual.html">AreNotEqual</a></li><li><a href="Assert.html">Assert</a></li><li><a href="AutoNumbering.html">AutoNumbering</a><ul class='methods'><li data-type='method'><a href="AutoNumbering.html#next">next</a></li></ul></li><li><a href="BrowserLogger.html">BrowserLogger</a><ul class='methods'><li data-type='method'><a href="BrowserLogger.html#error">error</a></li><li data-type='method'><a href="BrowserLogger.html#group">group</a></li><li data-type='method'><a href="BrowserLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="BrowserLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="BrowserLogger.html#info">info</a></li><li data-type='method'><a href="BrowserLogger.html#log">log</a></li><li data-type='method'><a href="BrowserLogger.html#warn">warn</a></li></ul></li><li><a href="IsDefined.html">IsDefined</a></li><li><a href="IsFalse.html">IsFalse</a></li><li><a href="IsNotNull.html">IsNotNull</a></li><li><a href="IsNull.html">IsNull</a></li><li><a href="IsTrue.html">IsTrue</a></li><li><a href="IsUndefined.html">IsUndefined</a></li><li><a href="LoggerBase.html">LoggerBase</a><ul class='methods'><li data-type='method'><a href="LoggerBase.html#error">error</a></li><li data-type='method'><a href="LoggerBase.html#group">group</a></li><li data-type='method'><a href="LoggerBase.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="LoggerBase.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="LoggerBase.html#info">info</a></li><li data-type='method'><a href="LoggerBase.html#isSupportedColor">isSupportedColor</a></li><li data-type='method'><a href="LoggerBase.html#log">log</a></li><li data-type='method'><a href="LoggerBase.html#normalizeColor">normalizeColor</a></li><li data-type='method'><a href="LoggerBase.html#warn">warn</a></li><li data-type='method'><a href="LoggerBase.html#.getDefaultLogger">getDefaultLogger</a></li><li data-type='method'><a href="LoggerBase.html#.isLogger">isLogger</a></li></ul></li><li><a href="MultiLevelAutoNumbering.html">MultiLevelAutoNumbering</a><ul class='methods'><li data-type='method'><a href="MultiLevelAutoNumbering.html#nest">nest</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#next">next</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#reset">reset</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#unnest">unnest</a></li></ul></li><li><a href="NoThrows.html">NoThrows</a></li><li><a href="NodeLogger.html">NodeLogger</a><ul class='methods'><li data-type='method'><a href="NodeLogger.html#colorfy">colorfy</a></li></ul></li><li><a href="SequencesAreEqual.html">SequencesAreEqual</a><ul class='methods'><li data-type='method'><a href="SequencesAreEqual.html#runImpl">runImpl</a></li></ul></li><li><a href="SequentialText.html">SequentialText</a><ul class='methods'><li data-type='method'><a href="SequentialText.html#close">close</a></li><li data-type='method'><a href="SequentialText.html#next">next</a></li><li data-type='method'><a href="SequentialText.html#reset">reset</a></li></ul></li><li><a href="SimpleLogger.html">SimpleLogger</a><ul class='methods'><li data-type='method'><a href="SimpleLogger.html#colorfy">colorfy</a></li><li data-type='method'><a href="SimpleLogger.html#error">error</a></li><li data-type='method'><a href="SimpleLogger.html#group">group</a></li><li data-type='method'><a href="SimpleLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="SimpleLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="SimpleLogger.html#info">info</a></li><li data-type='method'><a href="SimpleLogger.html#log">log</a></li><li data-type='method'><a href="SimpleLogger.html#prefixMessage">prefixMessage</a></li><li data-type='method'><a href="SimpleLogger.html#warn">warn</a></li></ul></li><li><a href="Test.html">Test</a><ul class='methods'><li data-type='method'><a href="Test.html#.areEqual">areEqual</a></li><li data-type='method'><a href="Test.html#.areNotEqual">areNotEqual</a></li><li data-type='method'><a href="Test.html#.isDefined">isDefined</a></li><li data-type='method'><a href="Test.html#.isFalse">isFalse</a></li><li data-type='method'><a href="Test.html#.isNotNull">isNotNull</a></li><li data-type='method'><a href="Test.html#.isNull">isNull</a></li><li data-type='method'><a href="Test.html#.isTrue">isTrue</a></li><li data-type='method'><a href="Test.html#.isUndefined">isUndefined</a></li><li data-type='method'><a href="Test.html#.noThrows">noThrows</a></li><li data-type='method'><a href="Test.html#.sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="Test.html#.throws">throws</a></li></ul></li><li><a href="TestBase.html">TestBase</a><ul class='methods'><li data-type='method'><a href="TestBase.html#run">run</a></li><li data-type='method'><a href="TestBase.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestBase.html#write">write</a></li></ul></li><li><a href="TestGroup.html">TestGroup</a><ul class='methods'><li data-type='method'><a href="TestGroup.html#add">add</a></li><li data-type='method'><a href="TestGroup.html#areEqual">areEqual</a></li><li data-type='method'><a href="TestGroup.html#areNotEqual">areNotEqual</a></li><li data-type='method'><a href="TestGroup.html#clear">clear</a></li><li data-type='method'><a href="TestGroup.html#groupClose">groupClose</a></li><li data-type='method'><a href="TestGroup.html#groupStart">groupStart</a></li><li data-type='method'><a href="TestGroup.html#isDefined">isDefined</a></li><li data-type='method'><a href="TestGroup.html#isFalse">isFalse</a></li><li data-type='method'><a href="TestGroup.html#isNotNull">isNotNull</a></li><li data-type='method'><a href="TestGroup.html#isNull">isNull</a></li><li data-type='method'><a href="TestGroup.html#isTrue">isTrue</a></li><li data-type='method'><a href="TestGroup.html#isUndefined">isUndefined</a></li><li data-type='method'><a href="TestGroup.html#noThrows">noThrows</a></li><li data-type='method'><a href="TestGroup.html#run">run</a></li><li data-type='method'><a href="TestGroup.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestGroup.html#sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="TestGroup.html#throws">throws</a></li><li data-type='method'><a href="TestGroup.html#write">write</a></li></ul></li><li><a href="Throws.html">Throws</a></li><li><a href="ThrowsBase.html">ThrowsBase</a><ul class='methods'><li data-type='method'><a href="ThrowsBase.html#runImpl">runImpl</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SequentialText.">SequentialText.</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">BrowserLogger</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+            BrowserLogger
+        
+        </h2>
+        
+            <div class="class-description usertext">BrowserLoggerA simple implementation of browser console logger.</div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="BrowserLogger"><span class="type-signature"></span>new BrowserLogger<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line284">line 284</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="error"><span class="type-signature"></span>error<span class="signature">(message, color<span class="signature-attributes">opt</span>, &hellip;args)</span><span class="type-signature"> &rarr; {this}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Logs error message.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line343">line 343</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The message.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The color to be used.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional arguments.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    The current instance for chaining.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">this</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="group"><span class="type-signature"></span>group<span class="signature">(label, color<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {this}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Starts grouped output.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line356">line 356</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The group label.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The color to be used.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    The current instance for chaining.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">this</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="groupCollapsed"><span class="type-signature"></span>groupCollapsed<span class="signature">(label, color<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {this}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Starts grouped output (collapsed by default).</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line368">line 368</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The group label.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The color to be used.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    The current instance for chaining.*
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">this</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="groupEnd"><span class="type-signature"></span>groupEnd<span class="signature">()</span><span class="type-signature"> &rarr; {this}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Ends group output.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line378">line 378</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    The current instance for chaining.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">this</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="info"><span class="type-signature"></span>info<span class="signature">(message, color<span class="signature-attributes">opt</span>, &hellip;args)</span><span class="type-signature"> &rarr; {this}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Logs information message.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line315">line 315</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The message.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The color to be used.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional arguments.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    The current instance for chaining.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">this</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="log"><span class="type-signature"></span>log<span class="signature">(message, color<span class="signature-attributes">opt</span>, &hellip;args)</span><span class="type-signature"> &rarr; {this}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Logs a message.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line301">line 301</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The message.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The color to be used.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional arguments.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    The current instance for chaining.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">this</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="warn"><span class="type-signature"></span>warn<span class="signature">(message, color<span class="signature-attributes">opt</span>, &hellip;args)</span><span class="type-signature"> &rarr; {this}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Logs warning message.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="logger.js.html">logger.js</a>, <a href="logger.js.html#line329">line 329</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The message.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The color to be used.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Additional arguments.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    The current instance for chaining.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">this</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri May 02 2025 01:14:59 GMT+0300 (שעון ישראל (קיץ)) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

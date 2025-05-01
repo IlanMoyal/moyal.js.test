@@ -45,8 +45,8 @@ function readContent() {
 		throw new Error("Invalid README.content.md format. Ensure it includes <!-- TOC --> and <!-- CONTENT --> in the correct order.");
 	}
 
-	const toc = raw.slice(tocStart + tocMarker.length, contentStart).trim();
-	const content = raw.slice(contentStart + contentMarker.length).trim();
+	const toc = applyPlaceholders(raw.slice(tocStart + tocMarker.length, contentStart).trim(),  SettingsAccessor.projectSettings);
+	const content = applyPlaceholders(raw.slice(contentStart + contentMarker.length).trim(),  SettingsAccessor.projectSettings);
 
 	return {
 		toc,

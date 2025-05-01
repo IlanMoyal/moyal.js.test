@@ -13,7 +13,14 @@ function syncBuildInfo() {
     const targetDir = path.join(utils.getRootDirectory(), settingsAccessor.projectSettings.sourceFolder, "auto-generated");
     const target = path.join(targetDir, "build-info.js");
     const buildInfo = 
-`export default class BuildInfo {
+`/**
+* @module
+* @ignore
+*/
+/**
+* @ignore
+*/
+export default class BuildInfo {
     static version = "${settingsAccessor.projectSettings.version}";
 }`;
     fs.mkdirSync(targetDir, { recursive: true });

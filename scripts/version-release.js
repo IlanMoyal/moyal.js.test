@@ -10,8 +10,7 @@ const __root = utils.getRootDirectory();
 
 // Check git status is clean
 function ensureGitClean() {
-  const status = execSync("git status --porcelain").toString();
-  if (status.trim() !== "") {
+  if (!utils.gitIsClean()) {
       console.error("❌ Git working tree is dirty! Commit or stash changes before releasing.");
       process.exit(1);
   }

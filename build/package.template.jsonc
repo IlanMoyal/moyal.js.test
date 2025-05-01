@@ -21,6 +21,9 @@
 	"author": "{{author}}",
 	"license": "{{license}}",
 	"scripts": {
+		/* utils*/
+		"validate:clean": "node ./scripts/validate-clean.js",
+
 		/* synchronizing */
 		"sync:package": "node ./scripts/sync-package.js", /* synchronize the content of package.json with the merged content of this template and project.settings.js */
 		"sync:back-to-project-settings": "node ./scripts/sync-back-to-project-settings.js", /* synchronize the content of project.settings.jsonc with values from package.json */
@@ -34,20 +37,26 @@
 		"check": "npm run lint && npm run test", /* full check! */
 		
 		/* version commands */
-		"preversion": "npm run check",
-		"version": "npm run sync:back && git add project.settings.jsonc", /* TODO: on complete development - replace with project.settings.jsonc */
+		"preversion": "npm run validate:clean && npm run check",
+		"version": "npm run sync:back && git add project.settings.jsonc", /* Synchronizes back the new version, dependencies, etc... */
+		"postversion": "node ./scripts/version-post.js",
+		
+		/* version shortcust fo sub-commands */
+		"version:alpha": "npm version prerelease --preid=alpha", // sets or increments alpha → 1.2.3 → 1.2.3-alpha.1
+		"version:beta": "npm version prerelease --preid=beta", // sets or increments beta → 1.2.3 → 1.2.3-beta.1; 1.2.3-beta.1 → 1.2.3-beta.2; 1.2.3-alpha.1 → 1.2.3-beta.1;
+		"version:rc": "npm version prerelease --preid=rc", // sets or increments rc (release candidate) → 1.2.3 → 1.2.3-rc.1; 1.2.3-rc.1 → 1.2.3-rc.2; 1.2.3-beta.1 → 1.2.3-rc.1;
+		"version:patch": "npm version patch", // increments patch e.g. 1.2.3 → 1.2.4
+		"version:minor": "npm version minor", // increments minor e.g. 1.2.3 → 1.3.0
+		"version:major": "npm version major", // increments major e.g. 1.2.3 → 2.0.0
 		"version:current": "node ./scripts/version-current.js", // create tag for the current version (without bumping) and push it remotely.
-		"version:alpha": "npm version prerelease --preid=alpha", // alpha → 1.2.3 → 1.2.3-alpha.1
-		"version:beta": "npm version prerelease --preid=beta", // beta → 1.2.3 → 1.2.3-beta.1; 1.2.3-beta.1 → 1.2.3-beta.2; 1.2.3-alpha.1 → 1.2.3-beta.1;
-		"version:patch": "npm version patch", // patch → 1.2.3 → 1.2.4
-		"version:minor": "npm version minor", // minor → 1.2.3 → 1.3.0
-		"version:major": "npm version major", // major → 1.2.3 → 2.0.0
 		"version:release": "node ./scripts/version-release.js", /* if exist - drops alpha/beta but do not increment patch; imcrement patch if there is no alpha/beta */
-		"postversion": "git push && git push --tags && echo ✅ All pushed",
 
 		/* docs */
-		"generate:readme": "node ./scripts/generate-readme.js",
-		"build:docs": "npm run generate:readme",
+		"docs:readme": "node ./scripts/generate-readme.js",
+		"docs:api:html": "npx jsdoc --readme README.md src -r -d docs/api-html --verbose --template ./node_modules/docdash",
+		"docs:api:md": "jsdoc2md src/**/*.js > docs/API.md",
+		"docs:api": "npm run docs:api:html && npm run docs:api:md",
+		"docs": "npm run docs:readme && npm run docs:api",
 
 		/* dependencies installation */
 		"postinstall": "npm run sync:back", /* update project settings back after install dependencies */
@@ -59,13 +68,13 @@
 		"build": "npm run clean && node ./scripts/build.js",
 
 		/* packing */
-		"prepack": "npm run build && npm run build:docs", /* build before pack */
+		"prepack": "npm run build && npm run docs", /* build before pack */
 		"pack:local": "npm run publish:switch && bash ./scripts/pack-local.sh && node ./scripts/publish-switch.js restore", 
 		"pack:preview": "bash ./scripts/pack-preview.sh",
 		"pack": "npm run pack:local && npm run pack:preview",
 
 		/* publish and related */
-		"prepublishOnly": "npm run build && npm run build:docs",
+		"prepublishOnly": "npm run build && npm run docs",
 		"validate:logged-in": "node ./scripts/validate-logged-in.js", 
 		"publish:switch": "node ./scripts/publish-switch.js switch",
 		"publish:npm": "npm run validate:logged-in && npm run publish:switch && npm publish --access public && node ./scripts/publish-switch.js restore", // publish the library to NPM

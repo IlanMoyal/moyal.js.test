@@ -5,10 +5,13 @@
 import fs from "fs";
 import SettingsAccessor from "./include/settings-accessor.js";
 import { execSync } from "child_process";
+import utils from "./include/utils.js";
+import path from "path";
 
 const PACKAGE_JSON = SettingsAccessor.packagePath;
 const PACKAGE_PUBLISH_JSON = SettingsAccessor.publishPackagePath;
 const PACKAGE_BACKUP_JSON = PACKAGE_JSON + ".publish-backup";
+const README_PATH = path.join(utils.getRootDirectory(), "README.md");
 
 function gitAssumeUnchanged(filePath) {
     execSync(`git update-index --assume-unchanged "${filePath}"`);
@@ -60,6 +63,9 @@ async function publishSwitch() {
     // mark package.json as git-unchanged, so version command can work.
     gitAssumeUnchanged(PACKAGE_JSON);
 
+    /* The readme was updated */
+    gitAssumeUnchanged(README_PATH);
+
     console.log("✅ Switched package.json for publish.");
 }
 
@@ -82,6 +88,9 @@ async function publishRestore() {
 
     // clear the flag the mark package.json as git-unchanged.
     gitNoAssumeUnchanged(PACKAGE_JSON);
+
+    // clear the flag the mark README.md as git-unchanged.
+    gitNoAssumeUnchanged(README_PATH);
 
     console.log("✅ Restored original package.json.");
 }

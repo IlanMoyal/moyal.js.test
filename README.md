@@ -15,6 +15,7 @@
 **Repository:** [GitHub](https://github.com/IlanMoyal/moyal.js.test)
 **License:** MIT
 **NPM:** [https://www.npmjs.com/package/@moyal/js-test](https://www.npmjs.com/package/@moyal/js-test)
+**Full API Documentation:** [View online](https://IlanMoyal.github.io/moyal.js.test/)
 
 ## 📖 Table of Contents
 
@@ -106,7 +107,7 @@ Use the library directly from a CDN like [jsDelivr](https://www.jsdelivr.com/) o
 Or using **unpkg**:
 ```html
 <script type="module">
-  import "https://unpkg.com/@moyal/js-test@2..0/dist/moyal.test.umd.min.js";
+  import "https://unpkg.com/@moyal/js-test@2.1.3/dist/moyal.test.umd.min.js";
 </script>
 ```
 Note: When using CDN import, `MoyalTest` exposes all types globally, including `Test`, `TestGroup`, `SequentialText`, `AutoNumbering`, and `MultiLevelAutoNumbering` (full list below).

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Utils.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AreEqual.html">AreEqual</a></li><li><a href="AreNotEqual.html">AreNotEqual</a></li><li><a href="Assert.html">Assert</a></li><li><a href="AutoNumbering.html">AutoNumbering</a><ul class='methods'><li data-type='method'><a href="AutoNumbering.html#next">next</a></li></ul></li><li><a href="BrowserLogger.html">BrowserLogger</a><ul class='methods'><li data-type='method'><a href="BrowserLogger.html#error">error</a></li><li data-type='method'><a href="BrowserLogger.html#group">group</a></li><li data-type='method'><a href="BrowserLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="BrowserLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="BrowserLogger.html#info">info</a></li><li data-type='method'><a href="BrowserLogger.html#log">log</a></li><li data-type='method'><a href="BrowserLogger.html#warn">warn</a></li></ul></li><li><a href="IsDefined.html">IsDefined</a></li><li><a href="IsFalse.html">IsFalse</a></li><li><a href="IsNotNull.html">IsNotNull</a></li><li><a href="IsNull.html">IsNull</a></li><li><a href="IsTrue.html">IsTrue</a></li><li><a href="IsUndefined.html">IsUndefined</a></li><li><a href="LoggerBase.html">LoggerBase</a><ul class='methods'><li data-type='method'><a href="LoggerBase.html#error">error</a></li><li data-type='method'><a href="LoggerBase.html#group">group</a></li><li data-type='method'><a href="LoggerBase.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="LoggerBase.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="LoggerBase.html#info">info</a></li><li data-type='method'><a href="LoggerBase.html#isSupportedColor">isSupportedColor</a></li><li data-type='method'><a href="LoggerBase.html#log">log</a></li><li data-type='method'><a href="LoggerBase.html#normalizeColor">normalizeColor</a></li><li data-type='method'><a href="LoggerBase.html#warn">warn</a></li><li data-type='method'><a href="LoggerBase.html#.getDefaultLogger">getDefaultLogger</a></li><li data-type='method'><a href="LoggerBase.html#.isLogger">isLogger</a></li></ul></li><li><a href="MultiLevelAutoNumbering.html">MultiLevelAutoNumbering</a><ul class='methods'><li data-type='method'><a href="MultiLevelAutoNumbering.html#nest">nest</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#next">next</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#reset">reset</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#unnest">unnest</a></li></ul></li><li><a href="NoThrows.html">NoThrows</a></li><li><a href="NodeLogger.html">NodeLogger</a><ul class='methods'><li data-type='method'><a href="NodeLogger.html#colorfy">colorfy</a></li></ul></li><li><a href="SequencesAreEqual.html">SequencesAreEqual</a><ul class='methods'><li data-type='method'><a href="SequencesAreEqual.html#runImpl">runImpl</a></li></ul></li><li><a href="SequentialText.html">SequentialText</a><ul class='methods'><li data-type='method'><a href="SequentialText.html#close">close</a></li><li data-type='method'><a href="SequentialText.html#next">next</a></li><li data-type='method'><a href="SequentialText.html#reset">reset</a></li></ul></li><li><a href="SimpleLogger.html">SimpleLogger</a><ul class='methods'><li data-type='method'><a href="SimpleLogger.html#colorfy">colorfy</a></li><li data-type='method'><a href="SimpleLogger.html#error">error</a></li><li data-type='method'><a href="SimpleLogger.html#group">group</a></li><li data-type='method'><a href="SimpleLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="SimpleLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="SimpleLogger.html#info">info</a></li><li data-type='method'><a href="SimpleLogger.html#log">log</a></li><li data-type='method'><a href="SimpleLogger.html#prefixMessage">prefixMessage</a></li><li data-type='method'><a href="SimpleLogger.html#warn">warn</a></li></ul></li><li><a href="Test.html">Test</a><ul class='methods'><li data-type='method'><a href="Test.html#.areEqual">areEqual</a></li><li data-type='method'><a href="Test.html#.areNotEqual">areNotEqual</a></li><li data-type='method'><a href="Test.html#.isDefined">isDefined</a></li><li data-type='method'><a href="Test.html#.isFalse">isFalse</a></li><li data-type='method'><a href="Test.html#.isNotNull">isNotNull</a></li><li data-type='method'><a href="Test.html#.isNull">isNull</a></li><li data-type='method'><a href="Test.html#.isTrue">isTrue</a></li><li data-type='method'><a href="Test.html#.isUndefined">isUndefined</a></li><li data-type='method'><a href="Test.html#.noThrows">noThrows</a></li><li data-type='method'><a href="Test.html#.sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="Test.html#.throws">throws</a></li></ul></li><li><a href="TestBase.html">TestBase</a><ul class='methods'><li data-type='method'><a href="TestBase.html#run">run</a></li><li data-type='method'><a href="TestBase.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestBase.html#write">write</a></li></ul></li><li><a href="TestGroup.html">TestGroup</a><ul class='methods'><li data-type='method'><a href="TestGroup.html#add">add</a></li><li data-type='method'><a href="TestGroup.html#areEqual">areEqual</a></li><li data-type='method'><a href="TestGroup.html#areNotEqual">areNotEqual</a></li><li data-type='method'><a href="TestGroup.html#clear">clear</a></li><li data-type='method'><a href="TestGroup.html#groupClose">groupClose</a></li><li data-type='method'><a href="TestGroup.html#groupStart">groupStart</a></li><li data-type='method'><a href="TestGroup.html#isDefined">isDefined</a></li><li data-type='method'><a href="TestGroup.html#isFalse">isFalse</a></li><li data-type='method'><a href="TestGroup.html#isNotNull">isNotNull</a></li><li data-type='method'><a href="TestGroup.html#isNull">isNull</a></li><li data-type='method'><a href="TestGroup.html#isTrue">isTrue</a></li><li data-type='method'><a href="TestGroup.html#isUndefined">isUndefined</a></li><li data-type='method'><a href="TestGroup.html#noThrows">noThrows</a></li><li data-type='method'><a href="TestGroup.html#run">run</a></li><li data-type='method'><a href="TestGroup.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestGroup.html#sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="TestGroup.html#throws">throws</a></li><li data-type='method'><a href="TestGroup.html#write">write</a></li></ul></li><li><a href="Throws.html">Throws</a></li><li><a href="ThrowsBase.html">ThrowsBase</a><ul class='methods'><li data-type='method'><a href="ThrowsBase.html#runImpl">runImpl</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SequentialText.">SequentialText.</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Utils.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*!
+ * File: src/Utils.js
+ */
+
+import InternalUtils from "./_InternalUtils.js";
+
+/**
+ * @class SequentialText
+ *
+ * A utility class that generates a sequence of formatted strings like `"1"`, `"2"`, etc., using a
+ * text template such as `"{0}"` or `"Step {0}"`.
+ * 
+ * Supports resetting and iteration with `for...of`.
+ *
+ * Example:
+ * ```js
+ * const st = new SequentialText("Item {0}", 1);
+ * st.next(); // "Item 1"
+ * st.next(); // "Item 2"
+ * ```
+ */
+class SequentialText {
+    /**
+     * Generator that produces an infinite sequence of formatted strings using a number.
+     * Example: "{0}" → "1", "2", "3", ...
+     * @param {string} textFormat - A string template, e.g., "{0}" or "Step {0}".
+     * @param {number} startValue - The initial numeric value.
+     * @yields {string} Formatted strings.
+     */
+    static *#_sequentialTextGen(textFormat, startValue) {
+        while (true) {
+            yield textFormat.replace("{0}", startValue++)
+        };
+    }
+
+    #_textFormat = null;
+    #_startValue = null;
+    #_gen = null;
+
+    /**
+     * Constructs a sequential text generator instance.
+     * @param {string} textFormat - The format string, default is "{0}".
+     * @param {number} startValue - The starting number, default is 1.
+     */
+    constructor(textFormat, startValue) {
+        if (startValue != null &amp;&amp; (!Number.isInteger(startValue) || startValue &lt; 1)) {
+            throw new Error("startValue must be a positive integer");
+        }
+        this.#_textFormat = textFormat ?? "{0}";
+        this.#_startValue = startValue ?? 1;
+    }
+
+    /**
+     * Resets the generator state so iteration starts over from startValue.
+     */
+    reset() {
+        this.#_gen = SequentialText.#_sequentialTextGen(this.#_textFormat, this.#_startValue);
+    }
+
+    /**
+     * Returns the next generated formatted string.
+     * 
+     * @returns {string}
+     */
+    next() {
+        if (this.#_gen == null) 
+            this.reset();
+        return this.#_gen.next().value;
+    }
+
+    /**
+     * Closes the generator and cleans up internal state.
+     */
+    close() {
+        if (this.#_gen?.return) 
+            this.#_gen.return();
+        this.#_gen = null;
+	}
+
+    /**
+     * Enables iteration using for...of syntax on the class.
+     * Each call to the iterator returns a fresh generator.
+     */
+    *[Symbol.iterator]() {
+        let gen = SequentialText.#_sequentialTextGen(this.#_textFormat, this.#_startValue);
+        for (let item of gen) {
+            yield item;
+        }
+    }
+}
+
+/**
+ * @class AutoNumbering
+ *
+ * Extends {@link SequentialText} to support formatted auto-numbered items like `"1. Step A"`.
+ * 
+ * Useful for numbering tests, documentation sections, or steps in a procedure.
+ *
+ * Example:
+ * ```js
+ * const an = new AutoNumbering();
+ * an.next("Initialize DB"); // "1. Initialize DB"
+ * an.next("Check Schema");  // "2. Check Schema"
+ * ```
+ */
+class AutoNumbering extends SequentialText {
+    /**
+     * Constructs an auto-numbering generator that prefixes a number to each item.
+     * 
+     * This is a convenience wrapper around `SequentialText` for cases where you want
+     * numbered outputs like "1. Item A", "2. Item B", etc.
+     * 
+     * @param {number} [startValue=1] - Starting number for the sequence.
+     * @param {string} [numberingTextFormat="{0}. "] - Format for the numeric prefix.
+     *        The string must contain "{0}" as a placeholder.
+     */
+    constructor(startValue = 1, numberingTextFormat = "{0}. ") {
+        numberingTextFormat ??= "{0}. ";
+        if(!InternalUtils.isString(numberingTextFormat) || numberingTextFormat.indexOf("{0}") &lt; 0) 
+            throw new Error("Automatic numbering format must include {0}");
+
+        super(numberingTextFormat, startValue ?? 1);
+    }
+
+    /**
+     * Generates the next string in the sequence by prefixing a number to the given text.
+     * 
+     * This method calls the base `next()` to get the current number
+     * and appends the optional string after it.
+     * 
+     * @param {string} [text=""] - Optional content to append after the number.
+     * @returns {string} Numbered string like "1. Hello"
+     */
+    next(text) { return super.next() + (text ?? ""); }
+}
+
+/**
+ * @class MultiLevelAutoNumbering
+ *
+ * A hierarchical auto-numbering utility supporting nested sequences like:
+ * ```
+ * 1.
+ * 1.1.
+ * 1.2.
+ * 2.
+ * 2.1.1.
+ * ```
+ * 
+ * Internally uses a stack of {@link AutoNumbering} instances, one for each level.
+ * Supports `nest()` to go deeper and `unnest()` to go back.
+ *
+ * Example:
+ * ```js
+ * const ml = new MultiLevelAutoNumbering();
+ * ml.next("Root A");           // "1. Root A"
+ * ml.nest().next("Child A");   // "1.1. Child A"
+ * ml.next("Child B");         // "1.2. Child B"
+ * ml.unnest().next("Root B");  // "2. Root B"
+ * ml.next("Root C");           // "3. Root B"
+ * ```
+ */
+class MultiLevelAutoNumbering{
+    /**
+     * Stores the most recent result to calculate the nested prefix 
+     * 
+     * @type {string}  
+     * */
+    #_current = "";
+
+    /**
+     * Stack of AutoNumbering generators, one per nesting level
+     *  
+     * @type {AutoNumbering[]} 
+     * */
+    #_an = [];
+
+    /**
+     * The start value of the auto numbering
+     * 
+     *  @type {number}  
+     */
+    #_startValue = 1;
+
+    /**
+     * Creates a new multi-level auto-numbering generator.
+     * 
+     * Only the default format `"{0}. "` is supported — other formats are not allowed.
+     *
+     * @param {number} [startValue=1] - The starting number for the top-level counter.
+     * 
+     * @throws {Error} If a custom numbering format is provided.
+     */
+    constructor(startValue) {
+        this.#_startValue = startValue ?? 1;
+        this.reset();
+    }
+
+    /**
+     * Resets this instance of {@link MultiLevelAutoNumbering}.
+     */ 
+    reset(){
+        this.#_current = "";
+        this.#_an.length = 0;
+        this.#_an.push(new AutoNumbering(this.#_startValue, null));
+    }
+
+    /**
+     *  Gets the current nesting level (1 = root).
+     * 
+     * @returns {number} Current nesting level (1 = root) 
+     * */
+    get level() { return this.#_an.length; }
+
+    /**
+     * Returns the next string in the current nesting level.
+     * 
+     * @param {string} [text] - Optional content to append after the number (e.g., a title).
+     * @returns {string} Formatted numbered string like `1. Title` or `2.3. Another`.
+     */
+    next(text) {
+        this.#_current = this.#_an[this.#_an.length - 1].next();
+        return this.#_current + (text ?? "");
+    }
+
+    /**
+     * Increases the nesting level (e.g., goes from `2.` to `2.1.`, or from `1.2.` to `1.2.1.`).
+     * 
+     * The new level resets its own counter, while prefixing the last generated parent string.
+     * 
+     * @param {number} [startValue=1] - Starting number for the new level.
+     * @returns {MultiLevelAutoNumbering} The current instance (for chaining).
+     */
+    nest(startValue) {
+        let nxtFormat = this.#_current.trim();
+        nxtFormat += "{0}. ";
+        this.#_an.push(new AutoNumbering(startValue ?? 1, nxtFormat));
+        return this;
+    }
+
+    /**
+     * Decreases the nesting level (e.g., goes from `1.1.1.` to `1.1.`).
+     * 
+     * Does nothing if already at the top-level (level 1).
+     *
+     * @returns {MultiLevelAutoNumbering} The current instance (for chaining).
+     */
+    unnest() { 
+        if(this.#_an.length > 1)
+            this.#_an.pop();
+        return this;
+    }
+}
+
+// Bundle all loggers together (optional default export)
+const MoyalTestUtils = {
+    SequentialText,
+    AutoNumbering,
+    MultiLevelAutoNumbering
+};
+
+export default MoyalTestUtils;
+
+export {
+    SequentialText,
+    AutoNumbering,
+    MultiLevelAutoNumbering
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri May 02 2025 01:14:59 GMT+0300 (שעון ישראל (קיץ)) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

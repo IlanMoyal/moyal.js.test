@@ -10,6 +10,7 @@ export default class InternalUtils {
 	 * Checks if an object is a string.
 	 * @param {*} obj - The object to test.
 	 * @returns {boolean} True if the object is a string.
+	 * @ignore
 	 */
 	static isString(obj) { return typeof obj === "string" || Object.prototype.toString.call(obj) === "[object String]"; }
 
@@ -17,6 +18,7 @@ export default class InternalUtils {
 	 * Checks if an object is iterable (i.e., supports Symbol.iterator).
 	 * @param {*} obj - The object to check.
 	 * @returns {boolean} True if it's iterable.
+	 * @ignore
 	 */
 	static isIterable(obj) { return InternalUtils.isFunctionOrGeneratorFunction(obj?.[Symbol.iterator]); }
 
@@ -24,6 +26,7 @@ export default class InternalUtils {
 	 * Checks if an object is a function.
 	 * @param {*} obj - The object to check.
 	 * @returns {boolean} True if the object is a function.
+	 * @ignore
 	 */
 	static isFunction(obj) {
 		let too = typeof obj;
@@ -34,6 +37,7 @@ export default class InternalUtils {
 	 * Checks if an object is either a normal function or a generator function.
 	 * @param {*} obj - The object to check.
 	 * @returns {boolean} True if the object is a function or generator function.
+	 * @ignore
 	 */
 	static isFunctionOrGeneratorFunction(obj) {
 		const typeOfObj = typeof obj;

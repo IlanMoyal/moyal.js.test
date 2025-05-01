@@ -20,7 +20,7 @@
  */
 
 import BuildInfo from "./auto-generated/build-info.js";
-import InternalUtils from "./InternalUtils.js";
+import InternalUtils from "./_InternalUtils.js";
 import { LoggerBase, SimpleLogger, BrowserLogger, NodeLogger } from "./logger.js";
 import { AutoNumbering, MultiLevelAutoNumbering, SequentialText } from "./Utils.js";
 
@@ -82,8 +82,8 @@ class Test {
      * @param {string} testName - Descriptive test title.
      * @param {*} expected - Expected value.
      * @param {*} actual - Actual value to compare.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {function(any, any):boolean} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static areEqual(testName, expected, actual, comparer, write) { return new AreEqual(testName, expected, actual, comparer).run(write);}
@@ -94,8 +94,8 @@ class Test {
      * @param {string} testName - Descriptive test title.
      * @param {*} not_expected - The value we not expecting.
      * @param {*} actual - Actual value to compare.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [comparer] - Optional custom comparison function ((not_expected, actual) => boolean).
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {function(any, any):boolean} [comparer] - Optional custom comparison function ((not_expected, actual) => boolean).
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static areNotEqual(testName, not_expected, actual, comparer, write) { return new AreNotEqual(testName, not_expected, actual, comparer).run(write);}
@@ -105,7 +105,7 @@ class Test {
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `true`.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static isTrue(testName, actual, write) { return new IsTrue(testName, actual).run(write); }
@@ -115,17 +115,17 @@ class Test {
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `false`.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static isFalse(testName, actual, write) { return new IsFalse(testName, actual).run(write); }
 
     /**
-     * Assets that the specfied value is strictly `null`.
+     * Asserts that the specfied value is strictly `null`.
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `null`.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static isNull(testName, actual, write) { return new IsNull(testName, actual).run(write); }
@@ -135,7 +135,7 @@ class Test {
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is not `null`.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static isNotNull(testName, actual, write) {return new IsNotNull(testName, actual).run(write);}
@@ -145,7 +145,7 @@ class Test {
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is defined.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static isDefined(testName, actual, write) { return new IsDefined(testName, actual).run(write); }
@@ -155,7 +155,7 @@ class Test {
      *
      * @param {string} testName - Descriptive test title.
      * @param {*} actual - Value to assert is `undefined`.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static isUndefined(testName, actual, write) { return new IsUndefined(testName, actual).run(write); }
@@ -165,10 +165,10 @@ class Test {
      * Optionally verifies the error with a predicate.
      *
      * @param {string} testName - Descriptive test title.
-     * @param {Function} fn - Function expected to throw.
-     * @param {(err: any) => boolean} [checkErrorFn] - Optional predicate to inspect the thrown error.
+     * @param {function} fn - Function expected to throw.
+     * @param {function(any):boolean} [checkErrorFn] - Optional predicate to inspect the thrown error.
      * @param {object} [thisArg] - Optional `this` binding for `fn` and `checkErrorFn`.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static throws(testName, fn, checkErrorFn, thisArg, write) { return new Throws(testName, fn, checkErrorFn, thisArg).run(write); }
@@ -177,9 +177,9 @@ class Test {
      * Adds an assertion that verifies a function does NOT throw.
      *
      * @param {string} testName - Descriptive test title.
-     * @param {Function} fn - Function expected to execute without throwing.
+     * @param {function} fn - Function expected to execute without throwing.
      * @param {object} [thisArg] - Optional `this` binding for `fn`.
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static noThrows(testName, fn, thisArg, write) { return new NoThrows(testName, fn, thisArg).run(write);}
@@ -191,8 +191,8 @@ class Test {
      * @param {string} testName - Descriptive test title.
      * @param {Iterable} expected - The expected iterable sequence.
      * @param {Iterable} actual - The actual iterable sequence.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [itemComparer] - Optional custom item-level comparison function ((expected, actual) => boolean).
-     * @param {boolean | null | undefined} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
+     * @param {function(any, any):boolean} [itemComparer] - Optional custom item-level comparison function ((expected, actual) => boolean).
+     * @param {?boolean} [write] - The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.
      * @returns {boolean} True if the test succeeded; otherwise, false.
      */
     static sequencesAreEqual(testName, expected, actual, itemComparer, write) { return new SequencesAreEqual(testName, expected, actual, itemComparer).run(write); }
@@ -208,12 +208,16 @@ class Test {
  */
 class TestInternalResult{
     /**
-     * @type {boolean} Indicates if the test passed or failed.
+     * Indicates if the test passed or failed.
+     * 
+     * @type {boolean} 
      */
     _result = null;
 
     /**
-     * @type {any} Additional context (e.g., expected/actual values) to display with the result.
+     * Additional context (e.g., expected/actual values) to display with the result.
+     * 
+     * @type {any} 
      */
     _additionalData = null;
 
@@ -235,8 +239,8 @@ class TestInternalResult{
  * Abstract base class for all test types.
  * 
  * Provides a unified interface for managing test name, success/failure status, timing, and output.
- * Subclasses must override the `_run_impl()` method to implement test logic.
- * @abstract
+ * Subclasses must override the `runImpl()` method to implement test logic.
+ * @abstract 
  */
 class TestBase {
     /** @type {string} */
@@ -345,7 +349,7 @@ class TestBase {
      * @returns {boolean} Whether the test passed.
      */
     run(write, mlAutoNumber) { 
-        this.succeeded = this._run_impl();
+        this.succeeded = this.runImpl();
         if (write === true || (write !== false && !this.succeeded)) {
             this.write(mlAutoNumber);
 		}
@@ -358,14 +362,15 @@ class TestBase {
      * @returns {boolean} Whether the test passed.
      * @abstract
      */
-    _run_impl() {
-        throw new Error("Method 'run_impl()' must be implemented by subclass");
+    runImpl() {
+        throw new Error("Method 'runImpl()' must be implemented by subclass");
     }
 
     /**
      * Pushes the specified error to the error list.
      * 
      * @param {Error} e - The error.
+     * @ignore
      */
     _push_error(e){
         this.#_errors.push(e);
@@ -448,7 +453,7 @@ class TestBase {
  */
 class Assert extends TestBase {
     // Holds the test logic, result, context, error and timing info
-    /** @type {function|boolean} */
+    /** @type {(function|boolean)} */
     #_test = null;
 
     /** @type {any} */
@@ -461,7 +466,7 @@ class Assert extends TestBase {
      * If the function throws, it fails and captures the error.
      * 
      * @param {string} testName - Name of the test.
-     * @param {Function|boolean} test - Test logic (function or static boolean).
+     * @param {(function|boolean)} test - Test logic (function or static boolean).
      * @param {string} [successMessage] - Custom message on success.
      * @param {string} [failureMessage] - Custom message on failure.
      * @param {any} [additionalData] - Extra data to log.
@@ -478,8 +483,9 @@ class Assert extends TestBase {
      * 
      * @returns {boolean} Whether the test passed.
      * @override
+     * @ignore
      */
-    _run_impl() {
+    runImpl() {
         if (this.#_test === true) 
             return true;
 
@@ -524,7 +530,7 @@ class AreEqual extends Assert {
      * @param {string} testName - Name of the test.
      * @param {any|Function} expected - Expected value or function returning it.
      * @param {any|Function} actual - Actual value or function returning it.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
+     * @param {function(any, any):boolean} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
      * @param {any} [thisArg] - Optional context for invoking deferred or comparison functions.
      */
     constructor(testName, expected, actual, comparer, thisArg) {
@@ -579,7 +585,7 @@ class AreNotEqual extends Assert {
      * @param {string} testName - Name of the test.
      * @param {any|Function} not_expected - Value the actual result must NOT match.
      * @param {any|Function} actual - Actual value or function returning it.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [comparer] - Optional custom comparison function ((not_expected, actual) => boolean).
+     * @param {function(any, any):boolean} [comparer] - Optional custom comparison function ((not_expected, actual) => boolean).
      * @param {any} [thisArg] - Optional context for invoking deferred or comparison functions.
      */
     constructor(testName, not_expected, actual, comparer, thisArg) {
@@ -781,8 +787,8 @@ class ThrowsBase extends Assert {
      *
      * @param {string} testName - Name of the test.
      * @param {boolean} expectingError - Whether an error is expected (`true` = should throw).
-     * @param {Function} fn - Function to test.
-     * @param {Function|null|undefined} [checkErrorFn] - Optional error predicate to validate the thrown error.
+     * @param {function} fn - Function to test.
+     * @param {function(any):boolean} [checkErrorFn] - Optional error predicate to validate the thrown error.
      * @param {any} [thisArg] - Optional `this` context for invoking the test/check function.
      */
     constructor(testName, expectingError, fn, checkErrorFn, thisArg) {
@@ -808,11 +814,10 @@ class ThrowsBase extends Assert {
      * Executes the test, checking if an error was thrown and optionally applying a predicate on the error.
      * 
      * @returns {boolean} Whether the test passed.
-     * @override
-     *
+     * @override 
      */
-    _run_impl() {
-        const basePassed = super._run_impl();
+    runImpl() {
+        const basePassed = super.runImpl();
 
         if (!basePassed && this.errors.length === 1) {
             return this.#_expected && (this.#_checkErrorFn == null || this.#_checkErrorFn.call(this.#_thisArg, this.errors[0]) === true);
@@ -835,8 +840,8 @@ class Throws extends ThrowsBase {
      * Tests that a function throws, and optionally that the thrown error satisfies a condition.
      *
      * @param {string} testName - Name of the test.
-     * @param {Function} fn - The function that should throw.
-     * @param {Function|null|undefined} [checkErrorFn] - Optional error predicate.
+     * @param {function} fn - The function that should throw.
+     * @param {function(any):boolean} [checkErrorFn] - Optional error predicate.
      * @param {any} [thisArg] - Optional `this` context.
      */
     constructor(testName, fn, checkErrorFn, thisArg) {
@@ -856,7 +861,7 @@ class NoThrows extends ThrowsBase {
      * Tests that a function does NOT throw.
      *
      * @param {string} testName - Name of the test.
-     * @param {Function|null|undefined} fn - The function to test.
+     * @param {?function} fn - The function to test.
      * @param {any} [thisArg] - Optional `this` context.
      */
     constructor(testName, fn, thisArg) {
@@ -895,7 +900,7 @@ class SequencesAreEqual extends TestBase {
      * @param {string} testName - Name of the test.
      * @param {Iterable<any>} expected - Expected sequence.
      * @param {Iterable<any>} actual - Actual sequence.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [itemComparer] - Optional custom comparison function to compare individual items ((expected, actual) => boolean).
+     * @param {function(any, any):boolean} [itemComparer] - Optional custom comparison function to compare individual items ((expected, actual) => boolean).
      * @param {any} [thisArg] - Optional `this` binding for the itemComparer.
      */
     constructor(testName, expected, actual, itemComparer, thisArg) {
@@ -925,9 +930,9 @@ class SequencesAreEqual extends TestBase {
      * Runs the test without printing.
      * 
      * @returns {boolean} Whether the test passed.
-     * @override
+     * @override 
      */
-    _run_impl() {
+    runImpl() {
         if(!this.#_validIterables) 
             return false;
         
@@ -1002,7 +1007,7 @@ class TestGroup extends TestBase {
     /** @type {number} */
     #_unexpectedErrorCount = 0;
 
-    /** @type {TestGroup | null} */
+    /** @type {TestGroup|null} */
     #_parentGroup = null;
 
     /** @type {boolean|null} */
@@ -1054,16 +1059,16 @@ class TestGroup extends TestBase {
      * Aggregates error and timing info, but delays output if `write` is false.*
      
      * @returns {boolean} True if all direct tests succeeded.
-     * @override
+     * @override 
      */
-    _run_impl() {
+    runImpl() {
         this.#_directFailureCount = 0;
         this.#_totalErrorCount = 0;
         this.#_unexpectedErrorCount = 0;
         
         const t0 = _now();
         for (let t of this.#_tests) {
-            t._run_impl(); 
+            t.runImpl(); 
 
             this.#_directFailureCount += t.succeeded ? 0 : 1;
 
@@ -1177,7 +1182,7 @@ class TestGroup extends TestBase {
      * @param {string} testName - Descriptive test title.
      * @param {*} expected - Expected value.
      * @param {*} actual - Actual value to compare.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
+     * @param {function(any, any):boolean} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
      * @param {any} [thisArg] - Optional context for evaluation.
      * @returns {TestGroup} The current test group (for chaining).
      */
@@ -1190,7 +1195,7 @@ class TestGroup extends TestBase {
      * @param {string} testName - Descriptive test title.
      * @param {*} not_expected - The value we're not expecting.
      * @param {*} actual - Actual value to compare.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
+     * @param {function(any, any):boolean} [comparer] - Optional custom comparison function ((expected, actual) => boolean).
      * @param {any} [thisArg] - Optional context for evaluation.
      * @returns {TestGroup} The current test group (for chaining).
      */
@@ -1261,8 +1266,8 @@ class TestGroup extends TestBase {
      * Optionally verifies the error with a predicate.
      *
      * @param {string} testName - Descriptive test title.
-     * @param {Function} fn - Function expected to throw.
-     * @param {(err: any) => boolean} [checkErrorFn] - Optional predicate to inspect the thrown error.
+     * @param {function} fn - Function expected to throw.
+     * @param {function(any):boolean} [checkErrorFn] - Optional predicate to inspect the thrown error.
      * @param {any} [thisArg] - Optional context for evaluation.
      * @returns {TestGroup} The current test group (for chaining).
      */
@@ -1272,7 +1277,7 @@ class TestGroup extends TestBase {
      * Adds an assertion that verifies a function does NOT throw.
      *
      * @param {string} testName - Descriptive test title.
-     * @param {Function} fn - Function expected to execute without throwing.
+     * @param {function} fn - Function expected to execute without throwing.
      * @param {object} [thisArg] - Optional `this` binding for `fn`.
      * @returns {TestGroup} The current test group (for chaining).
      */
@@ -1285,7 +1290,7 @@ class TestGroup extends TestBase {
      * @param {string} testName - Descriptive test title.
      * @param {Iterable} expected - The expected iterable sequence.
      * @param {Iterable} actual - The actual iterable sequence.
-     * @param {((a: any, b: any) => boolean) | null | undefined} [itemComparer] - Optional custom item-level comparison function ((expected, actual) => boolean).
+     * @param {function(any, any):boolean [itemComparer] - Optional custom item-level comparison function ((expected, actual) => boolean).
      * @returns {TestGroup} The current test group (for chaining).
      */
     sequencesAreEqual(testName, expected, actual, itemComparer) { this.add(new SequencesAreEqual(testName, expected, actual, itemComparer)); return this; }

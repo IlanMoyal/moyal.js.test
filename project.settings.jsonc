@@ -9,7 +9,7 @@
     "author": "Ilan Moyal",
     "author:website": "https://www.moyal.es",
     "author:twitter:username": "i_moyal",
-    "author:linkedin:username":"ilanam",
+    "author:linkedin:username": "ilanam",
     "license": "MIT",
     "license:short-text": "MIT License - free to use, modify, and distribute.",
     "sourceFolder": "src",
@@ -26,9 +26,10 @@
         "comment-json": "^4.2.5",
         "eslint": "^9.25.0",
         "globals": "^16.0.0",
+        "jsdoc": "^4.0.4",
+        "jsdoc-to-markdown": "^9.1.1",
         "rollup": "^3.0.0"
     },
-
     "git:repository-name": "moyal.js.test",
     "git:username": "IlanMoyal",
     "keywords": [

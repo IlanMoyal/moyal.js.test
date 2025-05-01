@@ -100,4 +100,48 @@ export default class utils {
 			return false;
 		}
 	}
+
+	static gitIsClean(includingUntracked){
+		if(includingUntracked === true) {
+			const status = execSync("git status --porcelain").toString();
+			return status.trim() === "";
+		}
+		else {
+			try {
+				execSync("git rev-parse --verify HEAD", { stdio: "ignore" });
+				execSync("git diff-index --quiet HEAD --", { stdio: "ignore" });
+				
+				return true;
+			} catch {
+				return false;
+			}
+		}
+	}
+
+	static gitTagExists(tag) {
+		try {
+			const output = execSync(`git tag -l "${tag}"`).toString().trim();
+			return output.length > 0;
+		} catch {
+			return false;
+		}
+	}
+
+	/**
+	 * Conditionally adds and commits a file if it has changed.
+	 * @param {string} filePath - Path to the file (relative to repo root).
+	 * @param {string} message - Commit message.
+	 */
+	static conditionallyCommitFile(filePath, message) {
+		try {
+			// Check if the file has changes compared to the index
+			execSync(`git diff --quiet ${filePath}`);
+			console.log(`✅ No changes in ${filePath}, skipping commit.`);
+		} catch {
+			// File has changes
+			console.log(`📄 ${filePath} changed. Committing...`);
+			execSync(`git add ${filePath}`);
+			execSync(`git commit -m "${message}"`);
+		}
+	}
 }

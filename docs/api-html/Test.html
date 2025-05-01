@@ -1,0 +1,3166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Test - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AreEqual.html">AreEqual</a></li><li><a href="AreNotEqual.html">AreNotEqual</a></li><li><a href="Assert.html">Assert</a></li><li><a href="AutoNumbering.html">AutoNumbering</a><ul class='methods'><li data-type='method'><a href="AutoNumbering.html#next">next</a></li></ul></li><li><a href="BrowserLogger.html">BrowserLogger</a><ul class='methods'><li data-type='method'><a href="BrowserLogger.html#error">error</a></li><li data-type='method'><a href="BrowserLogger.html#group">group</a></li><li data-type='method'><a href="BrowserLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="BrowserLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="BrowserLogger.html#info">info</a></li><li data-type='method'><a href="BrowserLogger.html#log">log</a></li><li data-type='method'><a href="BrowserLogger.html#warn">warn</a></li></ul></li><li><a href="IsDefined.html">IsDefined</a></li><li><a href="IsFalse.html">IsFalse</a></li><li><a href="IsNotNull.html">IsNotNull</a></li><li><a href="IsNull.html">IsNull</a></li><li><a href="IsTrue.html">IsTrue</a></li><li><a href="IsUndefined.html">IsUndefined</a></li><li><a href="LoggerBase.html">LoggerBase</a><ul class='methods'><li data-type='method'><a href="LoggerBase.html#error">error</a></li><li data-type='method'><a href="LoggerBase.html#group">group</a></li><li data-type='method'><a href="LoggerBase.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="LoggerBase.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="LoggerBase.html#info">info</a></li><li data-type='method'><a href="LoggerBase.html#isSupportedColor">isSupportedColor</a></li><li data-type='method'><a href="LoggerBase.html#log">log</a></li><li data-type='method'><a href="LoggerBase.html#normalizeColor">normalizeColor</a></li><li data-type='method'><a href="LoggerBase.html#warn">warn</a></li><li data-type='method'><a href="LoggerBase.html#.getDefaultLogger">getDefaultLogger</a></li><li data-type='method'><a href="LoggerBase.html#.isLogger">isLogger</a></li></ul></li><li><a href="MultiLevelAutoNumbering.html">MultiLevelAutoNumbering</a><ul class='methods'><li data-type='method'><a href="MultiLevelAutoNumbering.html#nest">nest</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#next">next</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#reset">reset</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#unnest">unnest</a></li></ul></li><li><a href="NoThrows.html">NoThrows</a></li><li><a href="NodeLogger.html">NodeLogger</a><ul class='methods'><li data-type='method'><a href="NodeLogger.html#colorfy">colorfy</a></li></ul></li><li><a href="SequencesAreEqual.html">SequencesAreEqual</a><ul class='methods'><li data-type='method'><a href="SequencesAreEqual.html#runImpl">runImpl</a></li></ul></li><li><a href="SequentialText.html">SequentialText</a><ul class='methods'><li data-type='method'><a href="SequentialText.html#close">close</a></li><li data-type='method'><a href="SequentialText.html#next">next</a></li><li data-type='method'><a href="SequentialText.html#reset">reset</a></li></ul></li><li><a href="SimpleLogger.html">SimpleLogger</a><ul class='methods'><li data-type='method'><a href="SimpleLogger.html#colorfy">colorfy</a></li><li data-type='method'><a href="SimpleLogger.html#error">error</a></li><li data-type='method'><a href="SimpleLogger.html#group">group</a></li><li data-type='method'><a href="SimpleLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="SimpleLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="SimpleLogger.html#info">info</a></li><li data-type='method'><a href="SimpleLogger.html#log">log</a></li><li data-type='method'><a href="SimpleLogger.html#prefixMessage">prefixMessage</a></li><li data-type='method'><a href="SimpleLogger.html#warn">warn</a></li></ul></li><li><a href="Test.html">Test</a><ul class='methods'><li data-type='method'><a href="Test.html#.areEqual">areEqual</a></li><li data-type='method'><a href="Test.html#.areNotEqual">areNotEqual</a></li><li data-type='method'><a href="Test.html#.isDefined">isDefined</a></li><li data-type='method'><a href="Test.html#.isFalse">isFalse</a></li><li data-type='method'><a href="Test.html#.isNotNull">isNotNull</a></li><li data-type='method'><a href="Test.html#.isNull">isNull</a></li><li data-type='method'><a href="Test.html#.isTrue">isTrue</a></li><li data-type='method'><a href="Test.html#.isUndefined">isUndefined</a></li><li data-type='method'><a href="Test.html#.noThrows">noThrows</a></li><li data-type='method'><a href="Test.html#.sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="Test.html#.throws">throws</a></li></ul></li><li><a href="TestBase.html">TestBase</a><ul class='methods'><li data-type='method'><a href="TestBase.html#run">run</a></li><li data-type='method'><a href="TestBase.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestBase.html#write">write</a></li></ul></li><li><a href="TestGroup.html">TestGroup</a><ul class='methods'><li data-type='method'><a href="TestGroup.html#add">add</a></li><li data-type='method'><a href="TestGroup.html#areEqual">areEqual</a></li><li data-type='method'><a href="TestGroup.html#areNotEqual">areNotEqual</a></li><li data-type='method'><a href="TestGroup.html#clear">clear</a></li><li data-type='method'><a href="TestGroup.html#groupClose">groupClose</a></li><li data-type='method'><a href="TestGroup.html#groupStart">groupStart</a></li><li data-type='method'><a href="TestGroup.html#isDefined">isDefined</a></li><li data-type='method'><a href="TestGroup.html#isFalse">isFalse</a></li><li data-type='method'><a href="TestGroup.html#isNotNull">isNotNull</a></li><li data-type='method'><a href="TestGroup.html#isNull">isNull</a></li><li data-type='method'><a href="TestGroup.html#isTrue">isTrue</a></li><li data-type='method'><a href="TestGroup.html#isUndefined">isUndefined</a></li><li data-type='method'><a href="TestGroup.html#noThrows">noThrows</a></li><li data-type='method'><a href="TestGroup.html#run">run</a></li><li data-type='method'><a href="TestGroup.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestGroup.html#sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="TestGroup.html#throws">throws</a></li><li data-type='method'><a href="TestGroup.html#write">write</a></li></ul></li><li><a href="Throws.html">Throws</a></li><li><a href="ThrowsBase.html">ThrowsBase</a><ul class='methods'><li data-type='method'><a href="ThrowsBase.html#runImpl">runImpl</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SequentialText.">SequentialText.</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Test</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+            Test
+        
+        </h2>
+        
+            <div class="class-description usertext">TestThe main static interface for the moyal.js.test framework.Provides assertion utilities for test development and a central entry point to define and run tests.Also contains type utilities to assist in dynamic validation.Example usage:```jsTest.isTrue("Test if value is true", myValue);Test.areEqual("Value check", expected, actual);```</div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Test"><span class="type-signature"></span>new Test<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".Version"><span class="type-signature type-signature-static">(static) </span>Version<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Returns the version of the test library.This is a read-only property used for diagnostics or compatibility checks.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line56">line 56</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Returns the version of the test library.This is a read-only property used for diagnostics or compatibility checks.
+</div>
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".areEqual"><span class="type-signature type-signature-static">(static) </span>areEqual<span class="signature">(testName, expected, actual, comparer<span class="signature-attributes">opt</span>, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts strict equality - checks if `actual === expected`, or uses a custom comparer if provided.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line89">line 89</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Expected value.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Actual value to compare.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>comparer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Optional custom comparison function ((expected, actual) => boolean).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".areNotEqual"><span class="type-signature type-signature-static">(static) </span>areNotEqual<span class="signature">(testName, not_expected, actual, comparer<span class="signature-attributes">opt</span>, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts strict inequality - checks if `actual !== not_expected`, or uses a custom comparer if provided.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>not_expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The value we not expecting.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Actual value to compare.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>comparer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Optional custom comparison function ((not_expected, actual) => boolean).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isDefined"><span class="type-signature type-signature-static">(static) </span>isDefined<span class="signature">(testName, actual, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts that specified value is **not** `undefined`.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line151">line 151</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Value to assert is defined.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isFalse"><span class="type-signature type-signature-static">(static) </span>isFalse<span class="signature">(testName, actual, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts that specified value is strictly `false`.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line121">line 121</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Value to assert is `false`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isNotNull"><span class="type-signature type-signature-static">(static) </span>isNotNull<span class="signature">(testName, actual, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts that the specified value is **not** `null`.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line141">line 141</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Value to assert is not `null`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isNull"><span class="type-signature type-signature-static">(static) </span>isNull<span class="signature">(testName, actual, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts that the specfied value is strictly `null`.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line131">line 131</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Value to assert is `null`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isTrue"><span class="type-signature type-signature-static">(static) </span>isTrue<span class="signature">(testName, actual, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts that specified value is strictly `true`.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line111">line 111</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Value to assert is `true`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isUndefined"><span class="type-signature type-signature-static">(static) </span>isUndefined<span class="signature">(testName, actual, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Asserts that specified value is strictly `undefined`.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line161">line 161</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Value to assert is `undefined`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".noThrows"><span class="type-signature type-signature-static">(static) </span>noThrows<span class="signature">(testName, fn, thisArg<span class="signature-attributes">opt</span>, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Adds an assertion that verifies a function does NOT throw.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line185">line 185</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Function expected to execute without throwing.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thisArg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Optional `this` binding for `fn`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".sequencesAreEqual"><span class="type-signature type-signature-static">(static) </span>sequencesAreEqual<span class="signature">(testName, expected, actual, itemComparer<span class="signature-attributes">opt</span>, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Adds a sequence equality assertion to the group.Compares two iterable sequences element-by-element.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line198">line 198</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The expected iterable sequence.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>actual</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The actual iterable sequence.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>itemComparer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Optional custom item-level comparison function ((expected, actual) => boolean).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".throws"><span class="type-signature type-signature-static">(static) </span>throws<span class="signature">(testName, fn, checkErrorFn<span class="signature-attributes">opt</span>, thisArg<span class="signature-attributes">opt</span>, write<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-description">Description:</dt>
+    <dd class="tag-description"><ul class="dummy"><li>Adds an assertion that verifies a function throws an error.Optionally verifies the error with a predicate.</li></ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moyal.test.js.html">moyal.test.js</a>, <a href="moyal.test.js.html#line174">line 174</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="h5-parameters">Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>testName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Descriptive test title.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Function expected to throw.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>checkErrorFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Optional predicate to inspect the thrown error.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>thisArg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Optional `this` binding for `fn` and `checkErrorFn`.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>write</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The write mode: true - log all; false - don't log anything; null (or undefined) - log only errors.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5 class="h5-returns">Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the test succeeded; otherwise, false.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Fri May 02 2025 01:14:59 GMT+0300 (שעון ישראל (קיץ)) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

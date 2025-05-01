@@ -19,6 +19,7 @@ Dynamic blocks: {{::command:...::}} resolved at generation time
 **Repository:** [GitHub](https://github.com/{{git:username}}/{{git:repository-name}})
 **License:** {{license}}
 **NPM:** [https://www.npmjs.com/package/{{scope}}/{{lib}}](https://www.npmjs.com/package/{{scope}}/{{lib}})
+**Full API Documentation:** [View online](https://{{git:username}}.github.io/{{git:repository-name}}/)
 
 ## 📖 Table of Contents
 
@@ -36,7 +37,7 @@ Access the library version directly:
 ```js
 import * as myLib from "{{scope}}/{{lib}}";
 
-myLib.Version // → e.g., "2.1.3"
+myLib.Version // → e.g., "{{version}}"
 ```
 
 ## 📂 Example files and test files

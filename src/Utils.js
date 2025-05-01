@@ -2,7 +2,7 @@
  * File: src/Utils.js
  */
 
-import InternalUtils from "./InternalUtils.js";
+import InternalUtils from "./_InternalUtils.js";
 
 /**
  * @class SequentialText
@@ -59,6 +59,7 @@ class SequentialText {
 
     /**
      * Returns the next generated formatted string.
+     * 
      * @returns {string}
      */
     next() {
@@ -159,13 +160,25 @@ class AutoNumbering extends SequentialText {
  * ```
  */
 class MultiLevelAutoNumbering{
-    /** @type {string} Stores the most recent result to calculate the nested prefix */
+    /**
+     * Stores the most recent result to calculate the nested prefix 
+     * 
+     * @type {string}  
+     * */
     #_current = "";
 
-    /** @type {AutoNumbering[]} Stack of AutoNumbering generators, one per nesting level */
+    /**
+     * Stack of AutoNumbering generators, one per nesting level
+     *  
+     * @type {AutoNumbering[]} 
+     * */
     #_an = [];
 
-    /** @type {number} The start value of the auto numbering */
+    /**
+     * The start value of the auto numbering
+     * 
+     *  @type {number}  
+     */
     #_startValue = 1;
 
     /**
