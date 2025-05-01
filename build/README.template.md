@@ -14,11 +14,17 @@ Dynamic blocks: {{::command:...::}} resolved at generation time
 > {{description}}
 
 **Version:** {{version}}
+
 **Author:** {{author}}
+
 **Website:** {{author:website}}
+
 **Repository:** [GitHub](https://github.com/{{git:username}}/{{git:repository-name}})
+
 **License:** {{license}}
+
 **NPM:** [https://www.npmjs.com/package/{{scope}}/{{lib}}](https://www.npmjs.com/package/{{scope}}/{{lib}})
+
 **Full API Documentation:** [View online](https://{{git:username}}.github.io/{{git:repository-name}}/)
 
 ## 📖 Table of Contents

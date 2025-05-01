@@ -182,4 +182,15 @@ export default class utils {
 			execSync(`git commit -m "${message}"`);
 		}
 	}
+
+	static cleanHtmlDocFooters(directory) {
+		const files = fs.readdirSync(directory).filter(f => f.endsWith('.html'));
+		files.forEach(file => {
+			const filePath = path.join(directory, file);
+			let content = fs.readFileSync(filePath, 'utf8');
+			content = content.replace(/<footer>[\s\S]*?<\/footer>/, '<footer></footer>');
+			fs.writeFileSync(filePath, content, 'utf8');
+			console.log(`🧹 Cleaned footer in ${file}`);
+		});
+	}
 }

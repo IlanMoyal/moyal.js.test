@@ -9,12 +9,18 @@
 
 > A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.
 
-**Version:** 2.1.4
+**Version:** 2.1.5
+
 **Author:** Ilan Moyal
+
 **Website:** https://www.moyal.es
+
 **Repository:** [GitHub](https://github.com/IlanMoyal/moyal.js.test)
+
 **License:** MIT
+
 **NPM:** [https://www.npmjs.com/package/@moyal/js-test](https://www.npmjs.com/package/@moyal/js-test)
+
 **Full API Documentation:** [View online](https://IlanMoyal.github.io/moyal.js.test/)
 
 ## 📖 Table of Contents
@@ -94,20 +100,20 @@ Use the library directly from a CDN like [jsDelivr](https://www.jsdelivr.com/) o
 ```html
 <!-- Minified version -->
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.1.4/dist/moyal.test.umd.min.js";
+  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.1.5/dist/moyal.test.umd.min.js";
   MoyalTest.Test.isTrue("CDN test", true);
 </script>
 
 <!-- Full version (non-minified) -->
 <script type="module">
-  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.1.4/dist/moyal.test.umd.js";
+  import "https://cdn.jsdelivr.net/npm/@moyal/js-test@2.1.5/dist/moyal.test.umd.js";
 </script>
 ```
 
 Or using **unpkg**:
 ```html
 <script type="module">
-  import "https://unpkg.com/@moyal/js-test@2.1.4/dist/moyal.test.umd.min.js";
+  import "https://unpkg.com/@moyal/js-test@2.1.5/dist/moyal.test.umd.min.js";
 </script>
 ```
 Note: When using CDN import, `MoyalTest` exposes all types globally, including `Test`, `TestGroup`, `SequentialText`, `AutoNumbering`, and `MultiLevelAutoNumbering` (full list below).
@@ -254,7 +260,7 @@ Access the library version directly:
 ```js
 import * as myLib from "@moyal/js-test";
 
-myLib.Version // → e.g., "2.1.4"
+myLib.Version // → e.g., "2.1.5"
 ```
 
 ## 📂 Example files and test files

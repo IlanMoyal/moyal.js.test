@@ -56,7 +56,7 @@
 		"docs:api:html": "npx jsdoc --readme README.md src -r -d docs/api-html --verbose --template ./node_modules/docdash",
 		"docs:api:md": "jsdoc2md src/**/*.js > docs/API.md",
 		"docs:api": "npm run docs:api:html && npm run docs:api:md",
-		"docs": "npm run docs:readme && npm run docs:api",
+		"docs": "npm run docs:readme && npm run docs:api && node ./scripts/finish-docs.js",
 
 		/* dependencies installation */
 		"postinstall": "npm run sync:back", /* update project settings back after install dependencies */
