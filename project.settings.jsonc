@@ -4,7 +4,7 @@
     "project:fullname": "moyal.js.test",
     "scope": "@moyal",
     "lib": "js-test",
-    "version": "2.1.3",
+    "version": "2.1.4",
     "description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
     "author": "Ilan Moyal",
     "author:website": "https://www.moyal.es",

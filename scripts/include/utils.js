@@ -144,4 +144,42 @@ export default class utils {
 			execSync(`git commit -m "${message}"`);
 		}
 	}
+
+	/**
+	 * Conditionally adds and commits files in a directory if any have changed.
+	 * @param {string} dirPath - Path to the directory (relative to repo root).
+	 * @param {string} message - Commit message.
+	 */
+	static conditionallyCommitDirectory(dirPath, message) {
+		try {
+			// Check if there are any changes in the directory
+			execSync(`git diff --quiet ${dirPath}`);
+			console.log(`✅ No changes in ${dirPath}, skipping commit.`);
+		} catch {
+			// There are changes in the directory
+			console.log(`📂 Changes detected in ${dirPath}. Committing modified files...`);
+			
+			// Get list of modified files (including added, modified, deleted)
+			const changedFiles = execSync(`git status --porcelain ${dirPath}`)
+				.toString()
+				.split('\n')
+				.filter(line => line.trim() !== '')
+				.map(line => line.slice(3)); // strip status (e.g., " M path/to/file")
+			
+			if (changedFiles.length === 0) {
+				console.log(`⚠️ Detected changes but no files to commit in ${dirPath}.`);
+				return;
+			}
+
+			console.log(`📝 Adding files:\n${changedFiles.join('\n')}`);
+			
+			// Add each changed file
+			changedFiles.forEach(file => {
+				execSync(`git add "${file}"`);
+			});
+
+			// Commit the changes
+			execSync(`git commit -m "${message}"`);
+		}
+	}
 }
