@@ -62,7 +62,8 @@
     "globals": "^16.0.0",
     "jsdoc": "^4.0.4",
     "jsdoc-to-markdown": "^9.1.1",
-    "rollup": "^3.0.0"
+    "rollup": "^3.0.0",
+    "docdash": "^2.0.2"
   },
   "files": [
     "./dist/",
