@@ -193,4 +193,57 @@ export default class utils {
 			console.log(`🧹 Cleaned footer in ${file}`);
 		});
 	}
+
+	/**
+	 * Cleans a directory by deleting all files and subdirectories inside it.
+	 * Does NOT delete the directory itself.
+	 * 
+	 * @param {string} dirPath - The path to the directory to clean.
+	 */
+	static cleanDirectory(dirPath) {
+		if (!fs.existsSync(dirPath)) {
+			console.log(`⚠️ Directory ${dirPath} does not exist.`);
+			return;
+		}
+
+		const entries = fs.readdirSync(dirPath);
+
+		for (const entry of entries) {
+			const fullPath = path.join(dirPath, entry);
+			const stat = fs.lstatSync(fullPath);
+
+			if (stat.isDirectory()) {
+				// Recursively remove the directory and its contents
+				fs.rmSync(fullPath, { recursive: true, force: true });
+				console.log(`🗑️ Deleted directory: ${fullPath}`);
+			} else {
+				// Delete file
+				fs.unlinkSync(fullPath);
+				console.log(`🗑️ Deleted file: ${fullPath}`);
+			}
+		}
+
+		console.log(`✅ Cleaned directory: ${dirPath}`);
+	}
+
+	/**
+	 * Validates that the current working directory is the project root.
+	 * If not, prints an error and exits.
+	 */
+	static validateRunFromRoot() {
+		const cwd = process.cwd();  // current working directory
+		const root = this.getRootDirectory();  // your known repo root
+
+		const resolvedCwd = path.resolve(cwd);
+		const resolvedRoot = path.resolve(root);
+
+		if (resolvedCwd !== resolvedRoot) {
+			console.error(`❌ Error: This script must be run from the project root directory.`);
+			console.error(`   Expected: ${resolvedRoot}`);
+			console.error(`   Got:      ${resolvedCwd}`);
+			process.exit(1);
+		} else {
+			console.log(`✅ Running from the project root: ${resolvedRoot}`);
+		}
+	}
 }
