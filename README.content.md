@@ -18,6 +18,7 @@
 
 ## 🚀 Quick Start
 
+See also quick-start folder for the source code of the examples.
 
 ```js
 import {MultiLevelAutoNumbering, TestGroup} from '@moyal/js-test';
