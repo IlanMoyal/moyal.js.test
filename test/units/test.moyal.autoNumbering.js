@@ -2,7 +2,7 @@
  * File: test.moyal.autoNumbering.js
  */
 
-import { AutoNumbering, TestGroup } from "../../src/moyal.test.js";
+import { AutoNumbering, TestGroup } from "../../src/index.js";
 
 export default new TestGroup("AutoNumbering Tests")
 	.groupStart("Simple numbered output")

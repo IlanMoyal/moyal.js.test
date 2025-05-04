@@ -2,7 +2,7 @@
  * File: test.moyal.direct.js
  */
 
-import { MultiLevelAutoNumbering, Test as tst } from "../../src/moyal.test.js";
+import { MultiLevelAutoNumbering, Test as tst } from "../../src/index.js";
 
 class DirectTest{
 	/**

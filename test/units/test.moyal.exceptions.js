@@ -2,7 +2,7 @@
  * File: test.moyal.exceptions.js
  */
 
-import { TestGroup } from "../../src/moyal.test.js";
+import { NoThrows, TestGroup, Throws } from "../../src/index.js";
 
 export default new TestGroup("Exception Testing (Throws / NoThrows)")
 	.groupStart("Basic Throws")
@@ -14,7 +14,7 @@ export default new TestGroup("Exception Testing (Throws / NoThrows)")
 	.groupClose()
 
 	.groupStart("Throws fails if no error")
-		.throws("Fails because no error thrown", () => {}) // should fail
+		.isFalse("Fails because no error thrown", new Throws("", () => {}).run(false))
 	.groupClose()
 
 	.groupStart("NoThrows")
@@ -23,11 +23,9 @@ export default new TestGroup("Exception Testing (Throws / NoThrows)")
 	.groupClose()
 
 	.groupStart("NoThrows fails if error thrown")
-		.noThrows("Fails because error thrown", () => { throw "error"; }) // should fail
+		.isFalse("Fails because error thrown", new NoThrows("", () => { throw "error"; }).run(false))
 	.groupClose()
 
 	.groupStart("Throws predicate fails")
-		.throws("Fails due to predicate mismatch", 
-			() => { throw new Error("bad"); }, 
-			err => err.message === "expected") // should fail
+		.isFalse("Fails due to predicate mismatch", new Throws("", () => { throw new Error("bad"); }, err => err.message === "expected").run(false))
 	.groupClose();	

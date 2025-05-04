@@ -3,7 +3,7 @@
  */
 
 
-import { SequentialText, TestGroup } from "../../src/moyal.test.js";
+import { SequentialText, TestGroup } from "../../src/index.js";
 
 export default new TestGroup("SequentialText Tests")
 	.groupStart("Basic sequence")

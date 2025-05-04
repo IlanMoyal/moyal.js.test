@@ -2,7 +2,7 @@
  * File: test.moyal.assertions.js
  */
 
-import { TestGroup } from "../../src/moyal.test.js";
+import { IsNull, IsTrue, IsFalse, TestGroup } from "../../src/index.js";
 
 export default new TestGroup("Basic Assertion Tests")
 
@@ -20,30 +20,26 @@ export default new TestGroup("Basic Assertion Tests")
 		.areEqual("Same values should fail", 3, 3)
 	.groupClose()
 
-	.groupStart("isTrue")
+	.groupStart("isTrue / isFalse")
 		.isTrue("True literal", true)
 		.isTrue("Expression is true", 10 > 1)
 		.isFalse("False literal", false)
-		.isFalse("Falsy value", 0)
-	.groupClose()
-
-	.groupStart("isFalse")
-		.isFalse("False literal", false)
 		.isFalse("Expression is false", 5 < 3)
-		.isTrue("True literal", true)
-		.isTrue("Truthy value", 42)
+		.isFalse("Falsy value is not strict false", new IsFalse("", 0).run(false))
+		.isFalse("Truthy value is not strict true", new IsTrue("", 42).run(false))
 	.groupClose()
 
 	.groupStart("isNull and isNotNull")
 		.isNull("null is null", null)
 		.isNotNull("empty object is not null", {})
 		.isNotNull("zero is not null", 0)
-		.isNull("undefined is not null", undefined)
+		.isFalse("undefined is not null", new IsNull("", undefined).run(false))
+		.isNotNull("zero is not null", undefined)
 	.groupClose()
 
 	.groupStart("isDefined and isUndefined")
 		.isDefined("zero is defined", 0)
-		.isDefined("false is defined", false)
+		.isDefined ("false is defined", false)
 		.isUndefined("undefined is undefined", undefined)
 		.isDefined("null is defined", null) // note: null is defined!
 	.groupClose();

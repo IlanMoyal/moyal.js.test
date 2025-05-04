@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>core.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AreEqual.html">AreEqual</a></li><li><a href="AreNotEqual.html">AreNotEqual</a></li><li><a href="Assert.html">Assert</a></li><li><a href="AutoNumbering.html">AutoNumbering</a><ul class='methods'><li data-type='method'><a href="AutoNumbering.html#next">next</a></li></ul></li><li><a href="BrowserLogger.html">BrowserLogger</a><ul class='methods'><li data-type='method'><a href="BrowserLogger.html#error">error</a></li><li data-type='method'><a href="BrowserLogger.html#group">group</a></li><li data-type='method'><a href="BrowserLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="BrowserLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="BrowserLogger.html#info">info</a></li><li data-type='method'><a href="BrowserLogger.html#log">log</a></li><li data-type='method'><a href="BrowserLogger.html#warn">warn</a></li></ul></li><li><a href="IsDefined.html">IsDefined</a></li><li><a href="IsFalse.html">IsFalse</a></li><li><a href="IsNotNull.html">IsNotNull</a></li><li><a href="IsNull.html">IsNull</a></li><li><a href="IsTrue.html">IsTrue</a></li><li><a href="IsUndefined.html">IsUndefined</a></li><li><a href="LoggerBase.html">LoggerBase</a><ul class='methods'><li data-type='method'><a href="LoggerBase.html#error">error</a></li><li data-type='method'><a href="LoggerBase.html#group">group</a></li><li data-type='method'><a href="LoggerBase.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="LoggerBase.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="LoggerBase.html#info">info</a></li><li data-type='method'><a href="LoggerBase.html#isSupportedColor">isSupportedColor</a></li><li data-type='method'><a href="LoggerBase.html#log">log</a></li><li data-type='method'><a href="LoggerBase.html#normalizeColor">normalizeColor</a></li><li data-type='method'><a href="LoggerBase.html#warn">warn</a></li><li data-type='method'><a href="LoggerBase.html#.getDefaultLogger">getDefaultLogger</a></li><li data-type='method'><a href="LoggerBase.html#.isLogger">isLogger</a></li></ul></li><li><a href="MultiLevelAutoNumbering.html">MultiLevelAutoNumbering</a><ul class='methods'><li data-type='method'><a href="MultiLevelAutoNumbering.html#nest">nest</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#next">next</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#reset">reset</a></li><li data-type='method'><a href="MultiLevelAutoNumbering.html#unnest">unnest</a></li></ul></li><li><a href="NoThrows.html">NoThrows</a></li><li><a href="NodeLogger.html">NodeLogger</a><ul class='methods'><li data-type='method'><a href="NodeLogger.html#colorfy">colorfy</a></li></ul></li><li><a href="SequencesAreEqual.html">SequencesAreEqual</a><ul class='methods'><li data-type='method'><a href="SequencesAreEqual.html#runImpl">runImpl</a></li></ul></li><li><a href="SequentialText.html">SequentialText</a><ul class='methods'><li data-type='method'><a href="SequentialText.html#close">close</a></li><li data-type='method'><a href="SequentialText.html#next">next</a></li><li data-type='method'><a href="SequentialText.html#reset">reset</a></li></ul></li><li><a href="SimpleLogger.html">SimpleLogger</a><ul class='methods'><li data-type='method'><a href="SimpleLogger.html#colorfy">colorfy</a></li><li data-type='method'><a href="SimpleLogger.html#error">error</a></li><li data-type='method'><a href="SimpleLogger.html#group">group</a></li><li data-type='method'><a href="SimpleLogger.html#groupCollapsed">groupCollapsed</a></li><li data-type='method'><a href="SimpleLogger.html#groupEnd">groupEnd</a></li><li data-type='method'><a href="SimpleLogger.html#info">info</a></li><li data-type='method'><a href="SimpleLogger.html#log">log</a></li><li data-type='method'><a href="SimpleLogger.html#prefixMessage">prefixMessage</a></li><li data-type='method'><a href="SimpleLogger.html#warn">warn</a></li></ul></li><li><a href="Test.html">Test</a><ul class='methods'><li data-type='method'><a href="Test.html#.areEqual">areEqual</a></li><li data-type='method'><a href="Test.html#.areNotEqual">areNotEqual</a></li><li data-type='method'><a href="Test.html#.isDefined">isDefined</a></li><li data-type='method'><a href="Test.html#.isFalse">isFalse</a></li><li data-type='method'><a href="Test.html#.isNotNull">isNotNull</a></li><li data-type='method'><a href="Test.html#.isNull">isNull</a></li><li data-type='method'><a href="Test.html#.isTrue">isTrue</a></li><li data-type='method'><a href="Test.html#.isUndefined">isUndefined</a></li><li data-type='method'><a href="Test.html#.noThrows">noThrows</a></li><li data-type='method'><a href="Test.html#.sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="Test.html#.throws">throws</a></li></ul></li><li><a href="TestBase.html">TestBase</a><ul class='methods'><li data-type='method'><a href="TestBase.html#run">run</a></li><li data-type='method'><a href="TestBase.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestBase.html#write">write</a></li></ul></li><li><a href="TestGroup.html">TestGroup</a><ul class='methods'><li data-type='method'><a href="TestGroup.html#add">add</a></li><li data-type='method'><a href="TestGroup.html#areEqual">areEqual</a></li><li data-type='method'><a href="TestGroup.html#areNotEqual">areNotEqual</a></li><li data-type='method'><a href="TestGroup.html#clear">clear</a></li><li data-type='method'><a href="TestGroup.html#groupClose">groupClose</a></li><li data-type='method'><a href="TestGroup.html#groupStart">groupStart</a></li><li data-type='method'><a href="TestGroup.html#isDefined">isDefined</a></li><li data-type='method'><a href="TestGroup.html#isFalse">isFalse</a></li><li data-type='method'><a href="TestGroup.html#isNotNull">isNotNull</a></li><li data-type='method'><a href="TestGroup.html#isNull">isNull</a></li><li data-type='method'><a href="TestGroup.html#isTrue">isTrue</a></li><li data-type='method'><a href="TestGroup.html#isUndefined">isUndefined</a></li><li data-type='method'><a href="TestGroup.html#noThrows">noThrows</a></li><li data-type='method'><a href="TestGroup.html#run">run</a></li><li data-type='method'><a href="TestGroup.html#runImpl">runImpl</a></li><li data-type='method'><a href="TestGroup.html#sequencesAreEqual">sequencesAreEqual</a></li><li data-type='method'><a href="TestGroup.html#throws">throws</a></li><li data-type='method'><a href="TestGroup.html#write">write</a></li></ul></li><li><a href="Throws.html">Throws</a></li><li><a href="ThrowsBase.html">ThrowsBase</a><ul class='methods'><li data-type='method'><a href="ThrowsBase.html#runImpl">runImpl</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#SequentialText.">SequentialText.</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">core.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// eslint-disable-next-line no-unused-vars
+import { LoggerBase } from "./logClasses/LoggerBase.js";
+import { InternalUtils } from "./utilClasses/_InternalUtils.js";
+import { MultiLevelAutoNumbering } from "./utilClasses/textAutomation.js";
+
+/**
+ * Internal class used by assertions to carry both the result of a test evaluation
+ * and any associated metadata (such as expected/actual values) for logging.
+ *
+ * @private
+ * @class
+ */
+class TestInternalResult{
+    /**
+     * Indicates if the test passed or failed.
+     * 
+     * @type {boolean} 
+     */
+    _result = null;
+
+    /**
+     * Additional context (e.g., expected/actual values) to display with the result.
+     * 
+     * @type {any} 
+     */
+    _additionalData = null;
+
+    /**
+     * Constructs a new result object for use in lazy assertions.
+     *
+     * @param {boolean} result - The outcome of the test (true/false).
+     * @param {any} additionalData - Extra metadata to assist in diagnostics (optional).
+     */
+    constructor(result, additionalData) {
+        this._result = result;
+        this._additionalData = additionalData;
+    }
+}
+
+/**
+ * @class BaseTest
+ *
+ * Abstract base class for all test types.
+ * 
+ * Provides a unified interface for managing test name, success/failure status, timing, and output.
+ * Subclasses must override the `runImpl()` method to implement test logic.
+ * @abstract 
+ */
+class TestBase {
+    /** @type {string} */
+    #_testName = null;
+    
+    /** @type {boolean} */
+    #_succeeded = true;
+
+    /** @type {string} */
+    #_successMessage = null;
+
+    /** @type {string} */
+    #_failureMessage = null;
+
+    /** @type {any} */
+    #_additionalData = null;
+
+    /** @type {Array&lt;Error>} */
+    #_errors = [];
+
+    /** @type {number} */
+    #_elapsed = 0;
+
+    /** @type {{logger: LoggerBase}} */
+    static #_test = null;
+
+    /**  
+     * @param {{{logger: LoggerBase}}} test 
+     * @ignore
+     */
+    static __setup(test) {
+        this.#_test = test;
+    }
+
+    /**
+     * Base class for all test types.
+     * 
+     * This class defines the common interface for test name, result summary,
+     * success/failure messages, optional data, and a way to log results.
+     *
+     * @param {string} testName - The name of the test (must be string).
+     * @param {string} [successMessage="success"] - Message when the test passes.
+     * @param {string} [failureMessage="failure"] - Message when the test fails.
+     * @param {any} [additionalData] - Arbitrary data to show with test output.
+     */
+    constructor(testName, successMessage, failureMessage, additionalData) {
+        if (!InternalUtils.isString(testName)) { throw new Error("testName must be string"); }
+        if (successMessage != null &amp;&amp; !InternalUtils.isString(successMessage)) { throw new Error("successMessage must be string, null or undefined"); }
+        if (failureMessage != null &amp;&amp; !InternalUtils.isString(failureMessage)) { throw new Error("failureMessage must be string, null or undefined"); }
+        this.#_testName = testName;
+        this.#_successMessage = successMessage ?? "success";
+        this.#_failureMessage = failureMessage ?? "failure";
+        this.#_additionalData = additionalData;
+	}
+
+    /** 
+     * Returns the name of the test.
+     * 
+     * @returns {string} - The name of the test.
+     */
+    get name() { return this.#_testName; }
+
+    /** 
+     * Returns the message to display on test success.
+     * 
+     *  @returns {string} - The message to display on test success.
+     */
+    get successMessage() { return this.#_successMessage; }
+
+    /** 
+     * Returns the message to display on test failure.
+     * 
+     * @returns {string} - The message to display on test failure.
+     */
+    get failureMessage() { return this.#_failureMessage; }
+
+    /**
+     * Gets the duration in milliseconds.
+     * 
+     * @returns {number} The duration in milliseconds. */
+    get elapsed() { return this.#_elapsed; } /* milliseconds*/
+
+    /** 
+     * Sets the time elapsed.
+     * 
+     * @param {number} value - Duration in milliseconds
+     */
+    set elapsed(value) {  this.#_elapsed = value; } /* milliseconds*/
+
+    /** 
+     * Returns whether the test passed — overridden in derived classes.
+     * 
+     * @returns {boolean} - Whether the test passed — overridden in derived classes.
+     */
+    get succeeded() { return this.#_succeeded;}
+    
+    /**
+     * Sets a value indicating whether the test passed.
+     * 
+     * @param {boolean} value - A value indicating whether the test passed.
+     */
+    set succeeded(value) { this.#_succeeded = (value === true);}
+
+    /**
+     * Returns whether the test failed (inverse of succeeded).
+     * 
+     * @returns {boolean} - Whether the test failed (inverse of succeeded). 
+     */
+    get failed() { return this.succeeded !== true; }
+
+    /** 
+     * Returns the list of errors associated with the test.
+     * 
+     * @returns {Array&lt;Error>} - The list of errors associated with the test. 
+     */
+    get errors() { return this.#_errors; }
+
+    /** 
+     * Returns the count of errors (possibly from child tests)
+     * 
+     * @returns {number} - The count of errors (possibly from child tests).
+     */
+    get errorCount() { return this.errors.length; } /* might be the count of inner tests' errors, so in derived class might be positive even though the errors collection is null! */
+    
+    /** 
+     * Gets extra information to log with the test.
+     * 
+     * @returns {any} Extra information to log with the test  
+     */
+    get additionalData() { return this.#_additionalData; }
+
+    /** 
+     * Sets extra information to log with the test.
+     * 
+     * @param {any} value The additional data.
+     */
+    set additionalData(value) { this.#_additionalData = value; }
+
+    /**
+     * Returns the logger used to log test results.
+     * 
+     * @returns {LoggerBase} - The logger used to log test results.
+     */
+    get logger() { return TestBase.#_test.logger; }
+
+    /**
+     * Runs the test and optionally writes its result.
+     * 
+     * @param {boolean} write - If true, writes the result to the console; 
+     *          If false doesn't write the result to the console; 
+     *          Otherwise writes only failures to the console.
+     * @param {MultiLevelAutoNumbering} [mlAutoNumber] - Optional multi-level automatic numbering to automatically prefix messages with numbers.
+     * @returns {boolean} Whether the test passed.
+     */
+    run(write, mlAutoNumber) { 
+        this.runImpl();
+        if (write === true || (write !== false &amp;&amp; !this.succeeded)) {
+            this.write(mlAutoNumber);
+		}
+        return this.succeeded;
+    }
+
+    /**
+     * Runs the test without printing, just settings succeeded to the test result.
+     * 
+     * @abstract
+     */
+    runImpl() {
+        throw new Error("Method 'runImpl()' must be implemented by subclass");
+    }
+
+    /**
+     * Pushes the specified error to the error list.
+     * 
+     * @param {Error} e - The error.
+     * @ignore
+     */
+    _push_error(e){
+        this.#_errors.push(e);
+    }
+
+    /**
+     * Logs the result of the test to the console.
+     * 
+     * If the test passes with no errors, it uses a flat `console.log`.
+     * If there are errors or additional data, it uses a collapsed group for clarity.
+     * @param {MultiLevelAutoNumbering} [mlAutoNumber] - Optional multi-level automatic numbering to automatically prefix messages with numbers. 
+     */
+    write(mlAutoNumber) {        
+        if(mlAutoNumber == null || !(mlAutoNumber instanceof MultiLevelAutoNumbering)) 
+            mlAutoNumber = null;
+        
+        const labelName = this.name?.trim() || "(unnamed test)";
+        let label = `${(mlAutoNumber?.next() ?? "")}${labelName}: ${(this.succeeded ? this.successMessage : this.failureMessage)} (${this.elapsed} ms`
+        let color = this.succeeded ? "green" : "red";
+        if (this.errorCount === 0) {
+            label += ")";
+        }
+        else {
+            let errorStr = (this.succeeded ? "" : "un") + "expected " + (this.errorCount > 1 ? "errors" : "error");
+            label += `, ${this.errorCount} ${errorStr})`;
+        }
+
+        if (this.errorCount == 0 &amp;&amp; this.additionalData == null) {
+            // Simple success case
+            this.logger.log(label, color);
+            return;
+        }
+        
+        // Grouped output with errors or extra info
+        this.logger.groupCollapsed(label, color);
+
+        // Show errors if available
+        if (this.errorCount > 0) {
+            if (this.additionalData != null) {
+                this.logger.groupCollapsed("errors");
+            }
+            /*
+             * Available colors:
+             *   "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "gray", "lightred", 
+             *   "lightgreen", "lightyellow", "lightblue", "lightmagenta", "lightcyan", "lightgray"
+             */
+            for (let err of this.errors) {
+                if(this.succeeded)                    
+                    this.logger.error(err, "black");
+                else
+                this.logger.error(err);
+            }
+            if (this.additionalData != null) {
+                this.logger.groupEnd();
+            }
+        }
+
+        // Show additional data if available
+        if (this.additionalData != null) {
+            if (this.errorCount > 0) {
+                this.logger.groupCollapsed("additional data");
+            }
+            this.logger.log(JSON.stringify(this.additionalData));
+            if (this.errorCount > 0) {
+                this.logger.groupEnd();
+            }
+        }
+
+        this.logger.groupEnd();
+    }
+}
+
+/**
+ * @class Assert
+ *
+ * A generic assertion test class that evaluates either a boolean or a function returning boolean.
+ * 
+ * Inherits from {@link TestBase}.
+ * Typically used for boolean tests or custom logic.
+ */
+class Assert extends TestBase {
+    // Holds the test logic, result, context, error and timing info
+    /** @type {(function|boolean)} */
+    #_test = null;
+
+    /** @type {any} */
+    #_thisArg = null;
+
+    /**
+     * A test that evaluates a function or boolean and tracks its result.
+     * 
+     * If the test value is a function, it's called and timed.
+     * If the function throws, it fails and captures the error.
+     * 
+     * @param {string} testName - Name of the test.
+     * @param {(function|boolean)} test - Test logic (function or static boolean).
+     * @param {string} [successMessage] - Custom message on success.
+     * @param {string} [failureMessage] - Custom message on failure.
+     * @param {any} [additionalData] - Extra data to log.
+     * @param {any} [thisArg=globalThis] - `this` context to bind when calling the function.
+     */
+    constructor(testName, test, successMessage, failureMessage, additionalData, thisArg) {
+        super(testName, successMessage, failureMessage, additionalData);
+        this.#_test = test;
+        this.#_thisArg = thisArg ?? globalThis;
+    }
+
+    /**
+     * Runs the test without printing, just set `succeeded` property to the test result.
+     * 
+     * @override
+     * @ignore
+     */
+    runImpl() {
+        if (this.#_test === true) {
+            this.succeeded = true;
+        }
+        else if (!InternalUtils.isFunction(this.#_test)) {
+            this.succeeded =  false; // Test is neither true nor a function
+        }
+        else {
+            let res;
+            const t0 = InternalUtils.now();
+            try {
+                let tmp =  this.#_test.call(this.#_thisArg);
+                if(tmp instanceof TestInternalResult){
+                    this.additionalData = tmp._additionalData;
+                    res = tmp._result === true;
+                }
+                else {
+                    res = tmp;
+                }
+            }
+            catch (e) {
+                this._push_error(e);
+                res = false;
+            }
+            const t1 = InternalUtils.now();
+            this.elapsed = t1 - t0;
+
+            this.succeeded = res;
+        }
+        return this.succeeded;
+    }
+};
+
+/**
+ * @class ThrowsBase
+ *
+ * Base class for tests that evaluate whether a function throws or not.
+ * 
+ * Supports optional error validation via predicate functions.
+ *
+ * Inherits from {@link Assert}.
+ * Not used directly — use {@link Throws} or {@link NoThrows} instead.
+ */
+class ThrowsBase extends Assert {
+    /** @type {function} */
+    #_checkErrorFn = null;
+
+    /** @type {any} */
+    #_thisArg = null;
+
+    /** @type {boolean} */
+    #_expected = true;
+
+    /**
+     * Base class to test whether a function throws (or not), and optionally validate the error thrown.
+     *
+     * @param {string} testName - Name of the test.
+     * @param {boolean} expectingError - Whether an error is expected (`true` = should throw).
+     * @param {function} fn - Function to test.
+     * @param {function(any):boolean} [checkErrorFn] - Optional error predicate to validate the thrown error.
+     * @param {any} [thisArg] - Optional `this` context for invoking the test/check function.
+     */
+    constructor(testName, expectingError, fn, checkErrorFn, thisArg) {
+        expectingError = (expectingError === true);
+        const errWasThrownAsExpected = "An error was thrown (as expected)!"; 
+        const errWasNotThrownAsExpected = "An error was NOT thrown (as expected)."; 
+        const errExpectedFail = "Expected an error, but none was thrown or it did not satisfy the predicate."; 
+        const errWasThrownAsUnexpectedly = "An error was not thrown (unexpectedly)."; 
+
+        super(testName, fn, 
+            expectingError ? errWasThrownAsExpected : errWasNotThrownAsExpected, 
+            expectingError ? errExpectedFail : errWasThrownAsUnexpectedly, 
+            thisArg);
+        if (!InternalUtils.isFunction(fn)) { throw new Error("fn parameter must be a function"); }
+        if (expectingError &amp;&amp; checkErrorFn != null &amp;&amp; !InternalUtils.isFunction(checkErrorFn)) { throw new Error("checkErrorFn parameter must be a function, null or undefined"); }
+        this.#_expected = expectingError;
+        this.#_thisArg = thisArg;
+        this.#_checkErrorFn = checkErrorFn;
+    }
+    
+    /**
+     * Executes the test, checking if an error was thrown and optionally applying a predicate on the error.
+     * 
+     * @override 
+     */
+    runImpl() {
+        super.runImpl();
+        const basePassed = super.succeeded;
+
+        if (!basePassed &amp;&amp; this.errors.length === 1) {
+            this.succeeded = this.#_expected &amp;&amp; (this.#_checkErrorFn == null || this.#_checkErrorFn.call(this.#_thisArg, this.errors[0]) === true);
+        }
+        else {
+            this.succeeded = !this.#_expected; 
+        }
+    }
+}
+
+export {
+    TestInternalResult,
+    TestBase,
+    Assert,
+    ThrowsBase
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer></footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

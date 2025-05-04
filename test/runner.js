@@ -11,7 +11,7 @@ import { Portability } from "../scripts/include/portability.js";
 //Portability.fixGlobal();
 
 /* create global multi level automatic number  */
-import {MultiLevelAutoNumbering} from "../src/moyal.test.js";
+import {MultiLevelAutoNumbering} from "../src/index.js";
 const mlAutoNumber = new MultiLevelAutoNumbering();
 
 /* Loads the test and run each of them, one by one */

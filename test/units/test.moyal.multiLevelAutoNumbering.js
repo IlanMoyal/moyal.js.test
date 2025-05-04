@@ -2,7 +2,7 @@
  * File:  test.moyal.multiLevelAutoNumbering.js
  */
 
-import { MultiLevelAutoNumbering, TestGroup } from "../../src/moyal.test.js";
+import { MultiLevelAutoNumbering, TestGroup } from "../../src/index.js";
 
 const grp = new TestGroup("MultiLevelAutoNumbering Tests");
 

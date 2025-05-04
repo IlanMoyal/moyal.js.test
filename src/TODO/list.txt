@@ -1,0 +1,64 @@
+/*
+    TODO - Implement:
+
+*Type & instance checks:*
+
+    IsTypeOf / IsFunction / IsReturningFunction
+        Test.isTypeOf('is string', 'string', typeof myVar); /* Test if actual is excepted type (except for function types) */
+        Test.IsFunction('is string', 'string', typeof myVar); /* Test if actual is function  */
+        Test.IsReturningTypeOfFunction('is string', 'string', typeof myVar); /* Test if actual is function returning the specified type  */
+        Test.IsReturningFunction('is string', 'string', typeof myVar); /* Test if actual is function returning function type */
+
+    IsInstanceOf
+        Test.isInstanceOf('is Date', myDate, Date);
+
+*Collection checks:*
+
+    ArrayContains
+        Check if an array contains a specific item.
+        Test.arrayContains('array has value', [1,2,3], 2);
+
+    ArrayNotContains
+        Opposite of above.
+
+    IsEmpty
+        Asserts a value is empty (string/array/object).
+        Test.isEmpty('empty array', []);
+
+*String checks:*
+
+    StringContains
+        Check if a string includes a substring.
+        Test.stringContains('hello contains ell', 'hello', 'ell');
+
+    StringMatches
+        Regex pattern match.
+        Test.stringMatches('email format', 'foo@bar.com', /^[\w.-]+@[\w.-]+$/);
+
+*Equality with deep compare:*
+
+    DeepEqual
+        Deep comparison of objects (e.g., { a:1 } vs { a:1 }).
+        (Can make this opt-in to avoid bloating the lib staying lean is important.)
+
+*Range & numeric:*
+
+    IsGreaterThan / IsLessThan / IsBetween
+    Numeric assertions.
+    Test.isGreaterThan('value > 10', 15, 10);
+    Test.isBetween('between 1 and 5', 3, 1, 5);
+
+*Property & key checks:*
+
+    HasProperty
+        Check if an object has a specific property/key.
+        Test.hasProperty('has .foo', { foo: 123 }, 'foo');
+
+    HasOwnProperty
+        Strict own-property check (no inheritance).
+
+
+
+
+
+*/

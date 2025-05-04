@@ -1,4 +1,4 @@
-import { Test, TestGroup } from "../../src/moyal.test.js";
+import { Test, TestGroup } from "../../src/index.js";
 
 function testChainableLogger(){
 	try{
@@ -33,5 +33,5 @@ function testChainableLogger(){
 	}
 }
 
-export default new TestGroup("test chanable logger")
+export default new TestGroup("test chainable logger")
 	.isTrue("validate that chainable log calls work as expected", testChainableLogger);

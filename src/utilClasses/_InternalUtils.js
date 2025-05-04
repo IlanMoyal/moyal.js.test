@@ -1,11 +1,29 @@
 /*!
- * File: src/InternalUtils.js 
+ * File: src/utilClasses/_InternalUtils.js 
  */
 
 /**
  * A set of internal utility functions for type checking.
+ * @ignore
  */
-export default class InternalUtils {
+class InternalUtils {
+	static #_now;
+	
+	static {
+		// Safe timer that always exists
+		this.#_now = (typeof performance !== "undefined" && typeof performance.now === "function")
+		? () => performance.now() : () => Date.now();
+	}
+
+	/**
+	 * 
+	 * @returns {Number}
+	 * @ignore
+	 */
+	static now() {
+		return this.#_now();
+	}
+
 	/**
 	 * Checks if an object is a string.
 	 * @param {*} obj - The object to test.
@@ -47,3 +65,7 @@ export default class InternalUtils {
 		return tag === "[object Function]" || tag === "[object GeneratorFunction]";
 	}
 }
+
+export {
+	InternalUtils
+};
