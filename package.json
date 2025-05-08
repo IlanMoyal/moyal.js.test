@@ -1,7 +1,7 @@
 {
   "x-moyal-auto-generated-comment": "THIS IS AN AUTO_GENERATED FILE. DON'T EDIT IT! INSTEAD EDIT build/package.template.jsonc and project.settings.jsonc",
   "name": "@moyal/js-test",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
   "type": "module",
   "main": "./dist/moyal.test.cjs.js",
@@ -72,7 +72,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/{{git:username}}/{{git:repository-name}}"
+    "url": "https://github.com/IlanMoyal/moyal.js.test"
   },
   "keywords": [
     "test",

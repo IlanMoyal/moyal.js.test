@@ -5,13 +5,11 @@
  * However, under Node environment it is better to execure runner-for-node.js
  */
 
+import {MultiLevelAutoNumbering} from "../src/index.js";
+
 import { Portability } from "../scripts/include/portability.js";
 
-/* ensures existence of globalThis */
-//Portability.fixGlobal();
-
-/* create global multi level automatic number  */
-import {MultiLevelAutoNumbering} from "../src/index.js";
+/* Good practice - use automatic test numerator */
 const mlAutoNumber = new MultiLevelAutoNumbering();
 
 /* Loads the test and run each of them, one by one */

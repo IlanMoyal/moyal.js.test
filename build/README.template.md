@@ -4,7 +4,8 @@ Placeholders: {{...}} from project.settings.jsonc
 Dynamic blocks: {{::command:...::}} resolved at generation time
 -->
 
-# {{project:fullname}} · 
+# {{project:fullname}} 
+
 [![license](https://img.shields.io/npm/l/{{scope}}/{{lib}})](https://github.com/{{git:username}}/{{git:repository-name}}/blob/main/LICENSE)
 [![npm version](https://img.shields.io/npm/v/{{scope}}/{{lib}})](https://www.npmjs.com/package/{{scope}}/{{lib}})
 [![jsDelivr CDN](https://data.jsdelivr.com/v1/package/npm/{{scope}}/{{lib}}/badge)](https://www.jsdelivr.com/package/npm/{{scope}}/{{lib}})
@@ -20,17 +21,59 @@ Dynamic blocks: {{::command:...::}} resolved at generation time
 - **NPM:** [https://www.npmjs.com/package/{{scope}}/{{lib}}](https://www.npmjs.com/package/{{scope}}/{{lib}})
 - **API Documentation:** [View online](https://{{git:username}}.github.io/{{git:repository-name}}/)
 
-## 📖 Table of Contents
-
+## Table of Contents
+- [Installation](#installation)
+- [Importing](#importing)
 {{::readme-content:toc::}}
-- [🔁 Version Access](#-version-access)
-- [📂 Example files and test files](#-example-files-and-test-files)
-- [📄 License](#-license)
-- [🧠 Author](#-author)
+- [Version Access](#version-access)
+- [Example files and test files](#example-files-and-test-files)
+- [License](#license)
+- [Author](#author)
+
+<!-- CONTENT -->
+## Installation
+
+> npm install {{scope}}/{{lib}}
+
+## Importing
+
+### In Node.js (ES Module)
+
+```js
+import { {{exampleExportedName}} } from "{{scope}}/{{lib}}";
+```
+
+### In Node.js (CommonJS)
+
+```js
+const { {{exampleExportedName}} } = require("{{scope}}/{{lib}}");
+```
+
+### In the Browser (ES Module via CDN)
+
+```html
+<!-- From jsDelivr CDN (minified version) -->
+<script type="module">
+  import "https://cdn.jsdelivr.net/npm/{{scope}}/{{lib}}@{{version}}/dist/{{outputBaseFilename}}.umd.min.js";
+</script>
+
+<!-- From jsDelivr CDN (non minified version with documentation) -->
+<script type="module">
+  import "https://cdn.jsdelivr.net/npm/{{scope}}/{{lib}}@{{version}}/dist/{{outputBaseFilename}}.umd.js";
+</script>
+```
+
+Or using **unpkg**:
+
+```html
+<script type="module">
+  import "https://unpkg.com/{{scope}}/{{lib}}@{{version}}/dist/{{outputBaseFilename}}.umd.min.js";
+</script>
+```
 
 {{::readme-content::}}
 
-## 🔁 Version Access
+## Version Access
 
 Access the library version directly:
 ```js
@@ -39,23 +82,21 @@ import * as myLib from "{{scope}}/{{lib}}";
 myLib.Version // → e.g., "{{version}}"
 ```
 
-## 📂 Example files and test files
+## Example files and test files
 
 Example files can be found under `{{examplesFolder}}` folder and/or  `{{testFolder}}/units` folder
 (You can treat these test files as examples)
 
 
-## 📄 License
+## License
 
 {{license:short-text}}
 
-## 🧠 Author
+## Author
 
 **{{author}}**
 Website: [{{author:website}}]({{author:website}})
 
-GitHub: [{{git:username}}](https://github.com/{{git:username}})
+GitHub: [{{author}}](https://github.com/{{git:username}})
 
-X: [{{author:twitter:username}}](https://x.com/{{author:twitter:username}})
-
-LinkedIn: [{{author:linkedin:username}}](https://www.linkedin.com/in/{{author:linkedin:username}})
+LinkedIn: [{{author}}](https://www.linkedin.com/in/{{author:linkedin:username}})

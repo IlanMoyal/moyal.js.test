@@ -7,7 +7,7 @@ import settingsAccessor from "./scripts/include/settings-accessor.js";
 const __projectSettings = settingsAccessor.projectSettings;
 
 const __terserBanner = `/*!
- * ${settingsAccessor.scope}/${__projectSettings.lib} v${settingsAccessor.package.version}
+ * ${__projectSettings.scope}/${__projectSettings.lib} v${settingsAccessor.package.version}
  * (c) 2000–present Ilan Moyal
  * Released under the ${__projectSettings.license} License
  */`;

@@ -4,7 +4,7 @@
     "project:fullname": "moyal.js.test",
     "scope": "@moyal",
     "lib": "js-test",
-    "version": "2.1.7",
+    "version": "2.1.8",
     "description": "A lightweight, dependency-free JavaScript testing utility. This project is framework-agnostic and usable in both browser and Node.js environments.",
     "author": "Ilan Moyal",
     "author:website": "https://www.moyal.es",
@@ -19,6 +19,7 @@
     "outputFolder": "./dist",
     "outputBaseFilename": "moyal.test",
     "outputExposedName": "MoyalTest",
+    "exampleExportedName": "Test",
     "devDependencies": {
         "@eslint/js": "^9.25.0",
         "@rollup/plugin-terser": "^0.4.3",

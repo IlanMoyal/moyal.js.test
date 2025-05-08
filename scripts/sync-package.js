@@ -12,7 +12,7 @@ function applyTemplate(template, values) {
 
     // Perform interpolation
     let publishInterpolated = "";
-    let interpolated = template.replace(/{{(\w+)}}/g, (_, key) => {
+    let interpolated = template.replace(/{{([\w:-]+)}}/g, (_, key) => {
         return values[key] ?? `{{${key}}}`;
     });
 
